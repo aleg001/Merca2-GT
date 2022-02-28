@@ -1,6 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
+
 * {
     margin: 0;
     padding: 0;
+    font-family: roboto;
 }
 
 #page {
@@ -18,8 +21,9 @@ header {
     min-height: 100px;
 }
 
-header:first-child {
-    position: relative;
+.logo {
+    margin: 0px;
+    margin-left: 35px;
 }
 
 body {
@@ -41,10 +45,11 @@ section {
 .wrapper {
     display: flex;
     justify-content: center;
-    flex-basis: 1em;
-    /* width: 800px; */
-    height: minmax(700px, auto);
-    margin-top: 120px;
+    margin-top: 3em;
+    --width-grey: 800px;
+    --height-grey: 750px;
+    width: var(--width-grey);
+    height: var(--height-grey);
     border-radius: 15px;
     background: #E7E7E7;
 }
@@ -55,18 +60,11 @@ section {
     height: 650px;
     grid-template-rows: 2fr 4fr 3fr;
     grid-template-areas: "info-seller" "info-product" "footer";
-    grid-gap: 1em;
-}
-
-.main-grid > div {
-    /* background: #E7E7E7;
-    border:1px solid #333; */
-    padding:1em;
-    border:1px solid #333
+    grid-gap: 2em;
 }
 
 .seller-info {
-    padding:1em;
+    padding:2em;
     display: grid;
     grid-area: info-seller;
     align-items: center;
@@ -74,7 +72,6 @@ section {
 }
 
 .seller-info > .profile-pic {
-    grid-row: 1/3;
     display:flex;
     justify-content: center;
 }
@@ -84,9 +81,48 @@ section {
     justify-content: center;
     flex-direction: column;
 }
-/* .seller-info > div{
-    border:1px solid #333;
-} */
+
+.image-grid {
+    grid-area: info-product;
+    margin-left: 35px;
+    margin-right: 35px;
+    --gap: 16px;
+    --num-cols: 4;
+    --row-height: 300px;
+    box-sizing: border-box;
+    padding: var(--gap);
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: (--row-height);
+    gap: var(--gap);
+}
+
+.image-grid > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-grid-col-2 {
+    grid-column: span 2;
+}
+
+.image-grid-row-2 {
+    grid-row: span 2;
+}
+
+/* Cuando la pantalla sea menor a 1024 px */
+@media screen and (max-width: 1024px) {
+    .image-grid {
+        --num-cols: 2;
+        --row-height: 100px;
+    }
+
+    .wrapper {
+        --height-grey: 1500px;
+        --width-grey: 500px;
+    }
+}
 
 /*
 PALETA DE COLORES
