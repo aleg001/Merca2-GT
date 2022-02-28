@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
 
+/* Inicio página general */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +13,10 @@
     width: 100%;
     background-color: #ffffff;
   }
+/* Fin página general */
 
+
+/* Inicio barra principal */
 header {
     display: flex;
     flex-direction: column;
@@ -25,7 +29,10 @@ header {
     margin: 0px;
     margin-left: 35px;
 }
+/* Fin barra principal */
 
+
+/* Inicio contenido general */
 body {
     display: flex;
     flex-grow: 1;
@@ -33,7 +40,6 @@ body {
     flex-direction: row;
     background: #ffffff;
 }
-
 
 section {
     display: flex;
@@ -62,7 +68,10 @@ section {
     grid-template-areas: "info-seller" "info-product" "footer";
     grid-gap: 2em;
 }
+/* Fin contenido general */
 
+
+/* Inicio información de vendedor */
 .seller-info {
     padding:2em;
     display: grid;
@@ -81,7 +90,10 @@ section {
     justify-content: center;
     flex-direction: column;
 }
+/* Fin información de vendedor */
 
+
+/* Inicio contenido main de producto */
 .image-grid {
     grid-area: info-product;
     margin-left: 35px;
@@ -110,6 +122,9 @@ section {
 .image-grid-row-2 {
     grid-row: span 2;
 }
+/* Fin contenido main de producto */
+
+
 
 /* Cuando la pantalla sea menor a 1024 px */
 @media screen and (max-width: 1024px) {
