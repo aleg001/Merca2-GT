@@ -62,8 +62,8 @@ section {
 
 .main-grid {
     display: grid;
-    width: 750px;
-    height: 650px;
+    width: var(--width-grey);
+    height: var(--height-grey);
     grid-template-rows: 2fr 4fr 3fr;
     grid-template-areas: "info-seller" "info-product" "footer";
     grid-gap: 2em;
@@ -73,7 +73,7 @@ section {
 
 /* Inicio información de vendedor */
 .seller-info {
-    padding:2em;
+    padding-top: 1em;
     display: grid;
     grid-area: info-seller;
     align-items: center;
@@ -94,15 +94,21 @@ section {
 
 
 /* Inicio contenido main de producto */
+.product-info {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.product-name {
+    font-size: 120%;
+    margin-bottom: 15px;
+}
+
 .image-grid {
     grid-area: info-product;
-    margin-left: 35px;
-    margin-right: 35px;
     --gap: 16px;
     --num-cols: 4;
     --row-height: 300px;
     box-sizing: border-box;
-    padding: var(--gap);
     display: grid;
     grid-template-columns: repeat(var(--num-cols), 1fr);
     grid-auto-rows: (--row-height);
@@ -124,7 +130,9 @@ section {
 }
 /* Fin contenido main de producto */
 
+/* Inicio footer */
 
+/* Fin footer */
 
 /* Cuando la pantalla sea menor a 1024 px */
 @media screen and (max-width: 1024px) {
