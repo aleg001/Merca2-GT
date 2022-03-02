@@ -62,6 +62,8 @@ const verifyInfo = () => {
   // Cuenta creada con éxito
   if (password == rptPass && user_email1 != "") {
     alert(`Bienvenido ${name_lastname}. Cuenta creada exitosamente!`);
+    const a_id = document.getElementById("crearCuenta");
+    a_id.click();
   }
 
   // Se verifica que el usuario haya ingresado su correo
@@ -70,15 +72,17 @@ const verifyInfo = () => {
   }
 
   // Se verifica que se cumplan todos los parámetros
-  if (
-    user_email1 != "" &&
-    password.length > 8 &&
-    password.length < 20 &&
-    rptPass != "" &&
-    password != ""
-  ) {
-    alert(`Bienvenido ${name_lastname}. Cuenta creada exitosamente!`);
-  }
+  //if (
+  //user_email1 != "" &&
+  //password.length > 8 &&
+  //password.length < 20 &&
+  //rptPass != "" &&
+  //password != ""
+  //) {
+  //  alert(`Bienvenido ${name_lastname}. Cuenta creada exitosamente!`);
+  //  const a_id = document.getElementById("submit");
+  //  a_id.click();
+  // }
 
   // Almacenamiento en JSON de la información
   let infoForm = {

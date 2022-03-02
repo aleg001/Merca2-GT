@@ -58,6 +58,12 @@ input[type="text"] {
   margin-right: -10%;
 }
 
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 select[name="gender"] {
   width: 21.8%;
   padding: 15px;
@@ -74,7 +80,6 @@ input[name="birthdate"] {
   width: 22%;
   padding: 15px;
   margin: 50px -70px 22px;
-  display: inline-block;
   border: none;
   background: #f1f1f1;
   margin-top: -10px;
@@ -144,15 +149,25 @@ button:hover {
 
 .create_account {
   margin: 0% 38%;
-  margin-left: 31%;
+  margin-left: 29%;
   font-size: 45px;
 }
 
 .signupbtn {
   float: left;
   margin-top: 2%;
-  margin-left: 25%;
+  margin-left: 22%;
   width: 30%;
+  border-radius: 20px;
+
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #00c2cb;
 }
 
 .container {
@@ -167,7 +182,7 @@ button:hover {
 
 /* ------ Footer ------ */
 footer {
-  width: 100%;
+  width: 111.5%;
 
   font-size: 12px;
   padding: 15px 15px;
@@ -176,8 +191,9 @@ footer {
 
   margin: 0;
   position: relative;
-  bottom: -80px;
-  margin-left: -5%;
+  bottom: -87px;
+  margin-left: -11%;
+  background-color: #e7e7e7;
 }
 
 @media screen and (max-width: 300px) {
