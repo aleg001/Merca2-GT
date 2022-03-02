@@ -1,0 +1,37 @@
+[
+  {
+    "fname": "Alejandro",
+    "flast": "Gomez",
+    "pwd": "12345678",
+    "email": "alejandrogomez294@gmail.com",
+    "username": "Alecraft_01"
+  },
+  {
+    "fname": "Marco",
+    "flast": "Jurado",
+    "pwd": "12345678",
+    "email": "marcojurado@gmail.com",
+    "username": "Jur20308"
+  },
+  {
+    "fname": "Paola",
+    "flast": "de León",
+    "pwd": "12345678",
+    "email": "badbunny_fan1@gmail.com",
+    "username": "PaolitaDLM"
+  },
+  {
+    "fname": "Paola",
+    "flast": "Contreras",
+    "pwd": "12345678",
+    "email": "gabycontreras@gmail.com",
+    "username": "GabyContreras01"
+  },
+  {
+    "fname": "Diego",
+    "flast": "Cordova",
+    "pwd": "12345678",
+    "email": "dacb_nes@gmail.com",
+    "username": "Nes5523"
+  }
+]
