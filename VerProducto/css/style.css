@@ -1,0 +1,266 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400); */
+
+/* Inicio página general */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight:normal;
+}
+
+#page {
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+  }
+/* Fin página general */
+
+
+/* Inicio barra principal */
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: #00C2CB;
+    height: 110px;
+    min-height: 100px;
+}
+
+.logo {
+    margin: 0px;
+    margin-left: 40px;
+}
+/* Fin barra principal */
+
+
+/* Inicio contenido general */
+body {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: row;
+    background: #ffffff;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    --width-grey: 800px;
+    --height-grey: 750px;
+    width: var(--width-grey);
+    height: var(--height-grey);
+    border-radius: 15px;
+    background: #E7E7E7;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr 1fr;
+    grid-template-areas: "info-seller" "info-product" "footer";
+    grid-gap: 1em;
+}
+/* Fin contenido general */
+
+
+/* Inicio información de vendedor */
+.seller-info {
+    padding-top: 1em;
+    display: grid;
+    grid-area: info-seller;
+    align-items: center;
+    grid-template-columns: 1fr 4fr;
+    font-size: 11px;
+}
+
+.seller-name{
+    font-size: 15px;
+}
+
+.seller-info > .profile-pic {
+    display:flex;
+    justify-content: center;
+}
+
+.profile-pic > img {
+    padding-top: 1em;
+    border-radius: 6%;
+}
+
+.seller-info > .seller-data {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.stars {
+    user-select:none;
+}
+
+.star {
+    font-size: 1rem;
+    color: #ff9800;
+    background-color: unset;
+    border:none;
+}
+
+.star:hover {
+    cursor: pointer;
+}
+
+/* Fin información de vendedor */
+
+
+/* Inicio contenido main de producto */
+.product-info {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.product-name {
+    font-size: 120%;
+    margin-bottom: 15px;
+}
+
+.image-grid {
+    grid-area: info-product;
+    --gap: 16px;
+    --num-cols: 4;
+    --row-height: 300px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: (--row-height);
+    gap: var(--gap);
+}
+
+.image-grid > a > img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(20%);
+    transition: 1s;
+    object-fit: cover;
+    border-radius: 2%;
+}
+
+.image-grid > a > img:hover {
+    filter: grayscale(0);
+    transform: scale(1.05);
+}
+
+
+.image-grid-col-2 {
+    grid-column: span 2;
+}
+
+.image-grid-row-2 {
+    grid-row: span 2;
+}
+/* Fin contenido main de producto */
+
+/* Inicio footer */
+.product-footer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.product-details {
+    padding-right:3em;
+}
+
+.location{
+    display:flex;
+    justify-content: center;
+    padding-left:1em;
+}
+
+.price {
+    display:flex;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content:flex-end;
+}
+
+.price * {
+    font-weight:bold;
+}
+
+.description{
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 15px;
+}
+
+
+.myButton {
+	background-color:#00C2CB;
+	border-radius:20px;
+	display:flex;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:16px;
+	font-weight:bold;
+	padding:8px;
+    margin-left:3em;
+    margin-right:3em;
+    justify-content: center;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #018b92;
+}
+.myButton:hover {
+	background-color:#03A5AD;
+}
+
+
+/* Fin footer */
+
+/* Cuando la pantalla sea menor a 1024 px */
+@media screen and (max-width: 850px) {
+    .image-grid {
+        --num-cols: 2;
+        --row-height: 100px;
+    }
+
+    .profile-pic {
+        padding:3em;
+    }
+    
+    .wrapper {
+        --height-grey: 1300px;
+        --width-grey: 500px;
+    }
+
+    .seller-info {
+        padding-top: 0em;
+    }
+
+    .image-grid > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .location {
+        display:none;
+    }
+
+    .product-footer{
+        display:flex;
+        padding-left: 2em;
+    }
+
+}
+
+/*
+PALETA DE COLORES
+Azul logo claro: #00C2CB
+Azul logo oscuro: #03A5AD
+Beige: #EDCAA8
+Gris: #E7E7E7
+*/
