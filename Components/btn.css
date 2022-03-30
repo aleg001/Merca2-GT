@@ -1,0 +1,66 @@
+:root {
+    --light: #00C2CB;
+    --dark:  #03A5AD;
+    --white: #ffffff;
+}
+
+.btn {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+/* ----------------------- colors and styles -------------------------*/
+.btn--light--solid {
+    background-color: var(--light);
+    color: var(--white);
+    border: none;
+}
+.btn--light--outline {
+    background-color: transparent;
+    border: 3px solid var(--light);
+    color: var(--light);
+}
+
+.btn--dark--solid {
+    background-color: var(--dark);
+    color: var(--white);
+    border: none;
+}
+.btn--dark--outline {
+    background-color: transparent;
+    border: 3px solid var(--dark);
+    color: var(--dark);
+}
+
+.btn--white--solid {
+    background-color: var(--white);
+    color: var(--light);
+    border: none;
+}
+.btn--white--outline {
+    background-color: transparent;
+    border: 3px solid var(--white);
+    color: var(--white);
+}
+
+/* sizes */
+
+.btn--big {
+    padding: 35px 50px;
+    font-size: 22px;
+}
+.btn--medium {
+    padding: 25px 40px;
+    font-size: 20px;
+}
+.btn--small {
+    padding: 15px 20px;
+    font-size: 18px;
+}
