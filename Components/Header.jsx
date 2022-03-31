@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "Nav";
+import navbar from "navbar";
 
 const Header = ({ user }) => {
   user === null ? (user = " ") : "";
@@ -11,7 +11,7 @@ const Header = ({ user }) => {
         alt="Logo de Merca2-gt"
         className="Header-logo"
       ></img>
-      <Nav />
+      <navbar />
       <h3>{user}</h3>
     </header>
   );
