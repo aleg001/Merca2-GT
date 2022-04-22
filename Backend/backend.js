@@ -51,30 +51,37 @@ app.post('/checkNewUser', (req, res) => {
 	})
 })
 
-app.post('/register', (req, res) => {  
-		
-	const sql = `
-		INSERT INTO users (username, email, user_password, plan, administrador, habilitado) 
-        VALUES (
+app.post('/register', (req, res) => {
+
+    const sql = `
+    INSERT INTO users (name, lastname, username, email, user_password, gender, create_date, administrador, habilitado) 
+    VALUES (
+            '${req.body.name}', 
+            '${req.body.lastname}', 
             '${req.body.username}', 
             '${req.body.email}', 
             '${req.body.password}', 
-            ${parseInt(req.body.plan)},
-            ${req.body.admin}, 
+            ${parseInt(req.body.gender)}, 
+            '${req.body.date}',
+            ${req.body.admin},
             true
-        )`
-  
-	const client = new pg.Client(conString)
+        )
+	`
 
-	client.connect((err) => {
-		if(err) return console.error('could not connect to postgres', err)
-		
-		client.query(sql, (err, result) => {
-			if(err) return console.error('error running query', err)
-			client.end()
-			res.json({ success: true })
-		})
-	})
+    const client = new pg.Client(conString)
+
+    client.connect((err) => {
+        if(err) return console.error('could not connect to postgres', err)
+
+        client.query(sql, (err, result) => {
+            client.end()
+            if(err){
+                console.error('error running query', err)
+                res.json({ success: false })
+            }
+            res.json({ success: true })
+        })
+    })
 })
 
 app.post('/login', (req, res) => {
@@ -101,10 +108,11 @@ app.post('/login', (req, res) => {
 app.post('/checkLogin', (req, res) => {  
 		
 	const sql = `
-		INSERT INTO bad_login (username, user_password) 
+		INSERT INTO loginfails (username, user_password, time_of_fail) 
         VALUES (
             '${req.body.username}', 
-            '${req.body.password}'
+            '${req.body.password}',
+			CURRENT_TIMESTAMP
         )`
   
 	const client = new pg.Client(conString)
@@ -113,9 +121,12 @@ app.post('/checkLogin', (req, res) => {
 		if(err) return console.error('could not connect to postgres', err)
 		
 		client.query(sql, (err, result) => {
-			if(err) return console.error('error running query', err)
 			client.end()
-			res.json({ success: false })
+			if(err) {
+				res.json({ success: false })
+				return console.error('error running query', err)
+			}
+			res.json({ success: true })
 		})
 	})
 })
