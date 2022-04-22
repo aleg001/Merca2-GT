@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../components/Header.jsx";
-import TextInput from "../components/Text_Input.jsx";
+import TextInput from "../components/TextInput.jsx";
 
 import MD5 from "../../node_modules/crypto-js/md5.js";
 import setDocTitle from "../util/docTitle.js";
@@ -72,22 +72,24 @@ const Login = ({ setIsRegis, setIsLogedIn, setUsername, setIsAdmin }) => {
       <Header title="Login" />
       <div className="main-content-login">
         <form>
-          <div className="userInput">
+          <div className="inputsLogin">
             <TextInput
               set={setUsernameL}
-              title="Ingrese Nombre de Usuario"
+              title="Ingrese su nombre de Usuario"
               className="userInput"
+              placeholderText="Usuario"
             />
             <TextInput
+              placeholderText="Contraseña"
               set={setPasswordL}
-              title="Ingrese Contraseña"
+              title="Ingrese su contraseña"
               className="userInput"
               password={true}
             />
           </div>
           <button
             type="button"
-            className="button-C2"
+            className="btnLogin"
             onClick={() => {
               if (usernameL == "" || passwordL == "") {
                 return alert("Llene los campos para continuar");
@@ -104,11 +106,11 @@ const Login = ({ setIsRegis, setIsLogedIn, setUsername, setIsAdmin }) => {
           >
             Login
           </button>
-          {!isRegistering && (
-            <a className="SignIn-op" onClick={() => setIsRegis(true)}>
-              Sign In
-            </a>
-          )}
+          <br />
+          <br />
+          <button className="btnSignup">
+            {!isRegistering && <a onClick={() => setIsRegis(true)}>Sign Up</a>}
+          </button>
         </form>
       </div>
     </div>

@@ -1,20 +1,19 @@
-import React from "react";
-import navbar from "navbar";
+import React from "react"
+import logo from '../images/logo.png'
 
-const Header = ({ user }) => {
-  user === null ? (user = " ") : "";
+import '../styles/header.css'
 
-  return (
-    <header>
-      <img
-        src="./images/logo_merca2gt.png"
-        alt="Logo de Merca2-gt"
-        className="Header-logo"
-      ></img>
-      <navbar />
-      <h3>{user}</h3>
-    </header>
-  );
-};
+const Header = ({title, user}) => {
 
-export default Header;
+	(user === null) ? user = ' ': ''
+
+	return (
+		<header>
+			<img src={logo} alt=""/>
+			<h2>{title}</h2>
+			<h3>{user}</h3>
+		</header>
+	)
+}
+
+export default Header
