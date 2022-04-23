@@ -14,55 +14,34 @@ const handleRegister = (
   lastname,
   username,
   email,
-  password,
+  contra,
   gender,
   date,
-  admin,
   setIsRegis
 ) => {
-  fetch("http://127.0.0.1:8000/checkNewUser", {
+  fetch("http://127.0.0.1:8000/register", {
     headers: {
       "Content-Type": "application/json",
     },
     method: "POST",
     body: JSON.stringify({
+      name,
+      lastname,
       username,
+      email,
+      password: MD5(contra).toString(),
+      gender: "2",
+      date: "04-18-2022: 00:00:00",
+      admin: "false",
     }),
   })
     .then((response) => response.json())
     .then((result) => {
-      if (result.userExist) return alert("El usuario ya existe");
-
-      fetch("http://127.0.0.1:8000/register", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          lastname,
-          username,
-          email,
-          password: MD5(password).toString(),
-          gender,
-          date,
-          admin: admin.toString(),
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          if (!result.success) return alert("Error al crear usuario");
-          alert("Se creo usuario con exito!!");
-          setTimeout(setIsRegis, 2000, false);
-        })
-        .catch((error) => {
-          console.error("Failed to sign in", error);
-          alert("Error de conexion: intente más tarde");
-        });
+      alert("Se creo usuario con exito!!");
+      setTimeout(setIsRegis, 500, false);
     })
     .catch((error) => {
-      console.error("Failed to check for user", error);
-      alert("Error de conexion: intente más tarde");
+      setTimeout(setIsRegis, 500, false);
     });
 };
 
@@ -145,7 +124,7 @@ const SignIn = ({ setIsRegis }) => {
         type="button"
         className="btnLogin"
         onClick={() => {
-          if (username == "" || email == "" || password == "" || plan == "-1") {
+          if (username == "" || email == "" || password == "") {
             return alert("Llene los campos para continuar");
           }
           handleRegister(
@@ -154,10 +133,8 @@ const SignIn = ({ setIsRegis }) => {
             username,
             email,
             password,
-            pass2,
             gender,
             date,
-
             setIsRegis
           );
         }}

@@ -16,7 +16,7 @@ const App = () => {
   const [isAdmin, setIsAdmin] = React.useState(false);
 
   // if (isLogedIn) return <DirectUser username={username} isAdmin={isAdmin}/>
-  if (isRegis) return <SignIn setIsRegis />;
+  if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
   return (
     <Login
       setIsRegis={setIsRegis}

@@ -1,19 +1,18 @@
-import React from "react"
-import logo from '../images/logo.png'
+import React from "react";
+import logo from "../images/logo.png";
 
-import '../styles/header.css'
+import "../styles/header.css";
 
-const Header = ({title, user}) => {
+const Header = ({ title, user }) => {
+  user === null ? (user = " ") : "";
 
-	(user === null) ? user = ' ': ''
+  return (
+    <header>
+      <img src={logo} alt="" />
+      <h2>{title}</h2>
+      <h3>{user}</h3>
+    </header>
+  );
+};
 
-	return (
-		<header>
-			<img src={logo} alt=""/>
-			<h2>{title}</h2>
-			<h3>{user}</h3>
-		</header>
-	)
-}
-
-export default Header
+export default Header;
