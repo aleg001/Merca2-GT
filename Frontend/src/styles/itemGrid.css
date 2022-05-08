@@ -1,12 +1,12 @@
-* {
-  font-family: "Roboto", sans-serif;
-  font-weight: normal;
-}
-
 :root {
   --color-merca2: #00c2cb;
   --gris-merca2: #e7e7e7;
   --oscuro: #03a5ad;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
 }
 
 body {

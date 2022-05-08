@@ -7,7 +7,8 @@ const itemInGrid = (
   itemPrice,
   itemPublishDate,
   itemRating,
-  itemImage
+  itemImage,
+  itemDetail
 ) => {
   const [itemName, setitemName] = React.useState("");
   const [itemLocation, setitemLocation] = React.useState("");
@@ -15,10 +16,11 @@ const itemInGrid = (
   const [itemPublishDate, setitemPublishDate] = React.useState("");
   const [itemRating, setitemRating] = React.useState("");
   const [itemImage, setitemImage] = React.useState("");
+  const [itemDetail, setitemDetail] = React.useState("");
 
   return (
     <div className="container">
-      <a href="../VerProducto/Producto1/index.html">
+      <a href={itemDetail}>
         <div className="container_item">
           <figure className="fotositem_portada">
             <img src={itemImage} width="200px" height="200px" />
