@@ -9,7 +9,6 @@ var itemInGrid = React.createClass({
             <figure className="fotositem_portada">
               <img
                 src="https://m.media-amazon.com/images/I/61MAaDuEyJS._AC_SX425_.jpg"
-                alt="Echo show"
                 width="200px"
                 height="200px"
               />
@@ -23,8 +22,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 23 horas </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -51,8 +49,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 5 días </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -81,8 +78,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 2 semanas </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -109,8 +105,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 3 horas </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -137,8 +132,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 3 horas </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -165,8 +159,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 3 horas </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -193,8 +186,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 3 horas </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -221,8 +213,7 @@ var itemInGrid = React.createClass({
               <h6 className="hora_publicacion"> Hace 1 mes </h6>
               <figure className="temporalrating">
                 <img
-                  src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                  alt="ratingstars"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                   height="40px"
                   width="100px"
                 />
@@ -248,8 +239,7 @@ var itemInGrid = React.createClass({
             <h6 className="hora_publicacion"> Hace 3 horas </h6>
             <figure className="temporalrating">
               <img
-                src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                alt="ratingstars"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                 height="40px"
                 width="100px"
               />
@@ -275,8 +265,7 @@ var itemInGrid = React.createClass({
             <h6 className="hora_publicacion"> Hace 3 horas </h6>
             <figure className="temporalrating">
               <img
-                src="https://media.istockphoto.com/vectors/three-star-rating-illustration-vector-vector-id1169299632?k=20&m=1169299632&s=170667a&w=0&h=i-jYTw_JTOjuDwY0LezLYhaO4V2Euy8uYbfnBs5wj40="
-                alt="ratingstars"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
                 height="40px"
                 width="100px"
               />
