@@ -1,6 +1,7 @@
 import React from "react";
+import itemGrid from "../styles/itemGrid.css";
 
-const itemInGrid1 = (
+const itemInGrid = (
   itemName,
   itemLocation,
   itemPrice,
@@ -42,4 +43,4 @@ const itemInGrid1 = (
     </div>
   );
 };
-export default itemInGrid1;
+export default itemInGrid;
