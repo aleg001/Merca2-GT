@@ -1,23 +1,15 @@
 import React from "react";
 import itemGrid from "../styles/itemGrid.css";
 
-const itemInGrid = (
+const itemInGrid = ([
   itemName,
   itemLocation,
   itemPrice,
   itemPublishDate,
   itemRating,
   itemImage,
-  itemDetail
-) => {
-  const [itemName, setitemName] = React.useState("");
-  const [itemLocation, setitemLocation] = React.useState("");
-  const [itemPrice, setitemPrice] = React.useState("");
-  const [itemPublishDate, setitemPublishDate] = React.useState("");
-  const [itemRating, setitemRating] = React.useState("");
-  const [itemImage, setitemImage] = React.useState("");
-  const [itemDetail, setitemDetail] = React.useState("");
-
+  itemDetail,
+]) => {
   return (
     <div className="container">
       <a href={itemDetail}>
