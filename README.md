@@ -3,10 +3,8 @@
 Repo del proyecto para Ing. en Software
 
 ### Tecnologias utilizadas
-#### Frontend
 - React ⚛
 - webpack ⚒
-#### Backend
 - nodeJs ⚙ 
 - Express 📡
 - npm 💾
@@ -19,6 +17,7 @@ Repo del proyecto para Ing. en Software
 - Paola de León
 - Paola Contreras
 
+## Comandos
 ### Frontend
 - Dev Server: npm start
 - Compile: npm run build
