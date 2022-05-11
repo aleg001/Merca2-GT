@@ -2,25 +2,28 @@
 
 Repo del proyecto para Ing. en Software
 
+### Tecnologias utilizadas
+#### Frontend
+- React ⚛
+- webpack ⚒
+#### Backend
+- nodeJs ⚙ 
+- Express 📡
+- npm 💾
+- Postgres SQL 🐘
+
 ### Miembros:
+- Alejandro Gómez
+- Marco Jurado
+- Diego Córdova
+- Paola de León
+- Paola Contreras
 
-#### Alejandro Gómez
+### Frontend
+- Dev Server: npm start
+- Compile: npm run build
+- Crear carpeta "node_modules": npm install (dentro de Frontend)
 
-#### Marco Jurado
-
-#### Diego Córdova
-
-#### Paola de León
-
-#### Paola Contreras
-
-> ### Frontend
->
-> - Dev Server: npm start
-> - Compile: npm run build
-> - Crear carpeta "node_modules": npm install (dentro de Frontend)
-
-> ### Backend
->
-> - Deploy api server: npm start
-> - Crear carpeta "node_modules": npm install (dentro de Backend)
+### Backend
+- Deploy api server: npm start
+- Crear carpeta "node_modules": npm install (dentro de Backend)
