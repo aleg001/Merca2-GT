@@ -20,9 +20,6 @@ const cors = require('cors')
 const { checkNewUser, register, login, checkLogin } = require('./controllers/Users')
 const { getItems, addItem, deleteItem, filterItemsCat } = require('./controllers/Items')
 
-// Conexion con base de datos
-const conString = 'postgres://cjnkhxhk:0-qiJNzlV-_6cRq97WG1BaoPKmn9Jj0H@isilo.db.elephantsql.com/cjnkhxhk'
-
 // Server para API
 const app = express()
 app.use(bodyParser.json())
@@ -39,3 +36,9 @@ app.post('/checkNewUser', checkNewUser)
 app.post('/register', register)
 app.post('/login', login)
 app.post('/checkLogin', checkLogin)
+
+// Manejo de items
+app.get('/getItems', getItems)
+app.post('/addItem', addItem)
+app.post('/deleteItem', deleteItem)
+app.post('/filterItemsCat', filterItemsCat)
