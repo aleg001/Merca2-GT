@@ -6,20 +6,34 @@ import itemInGrid from "../components/itemInGrid.jsx";
 
 const Homepage = () => {
   setDocTitle("Homepage");
+  // Hacer llamado a backend para llenar de los items de la bd
+  var items = [];
+  // Array temporal con elementos
+  var itemsInDB = [];
+  // Se itera sobre los productos existentes
+  for (var i = 0; i < items.length; i++) {
+    itemsInDB.push(
+      // Revisar lo q le ingresa por el items[i], no se si necesitamos otro for, creo q si XD
+      <itemInGrid
+        value={items[i]}
+        itemName={items[i]}
+        itemLocation={items[i]}
+        itemPrice={items[i]}
+        itemPublishDate={items[i]}
+        itemRating={items[i]}
+        itemImage={items[i]}
+        itemDetail={items[i]}
+      />
+    );
+  }
 
   return (
     <div className="content">
       <Navbar></Navbar>
       <div className="main-content-login"></div>
-      <itemInGrid
-        itemName="XD"
-        itemLocation="XD"
-        itemPrice="XD"
-        itemPublishDate="XD"
-        itemRating="XD"
-        itemImage="XD"
-        itemDetail="XD"
-      ></itemInGrid>
+      <div class="container">
+        <div> {itemsInDB}</div>
+      </div>
       <footer>
         Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
       </footer>
