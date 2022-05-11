@@ -12,19 +12,21 @@ const Homepage = () => {
   var itemsInDB = [];
   // Se itera sobre los productos existentes
   for (var i = 0; i < items.length; i++) {
-    itemsInDB.push(
-      // Revisar lo q le ingresa por el items[i], no se si necesitamos otro for, creo q si XD
-      <itemInGrid
-        value={items[i]}
-        itemName={items[i]}
-        itemLocation={items[i]}
-        itemPrice={items[i]}
-        itemPublishDate={items[i]}
-        itemRating={items[i]}
-        itemImage={items[i]}
-        itemDetail={items[i]}
-      />
-    );
+    // Se itera sobre parametros por item
+    for (var j = 0; j < i.length; j++) {
+      itemsInDB.push(
+        <itemInGrid
+          value={items[j]}
+          itemName={items[j]}
+          itemLocation={items[j]}
+          itemPrice={items[j]}
+          itemPublishDate={items[j]}
+          itemRating={items[j]}
+          itemImage={items[j]}
+          itemDetail={items[j]}
+        />
+      );
+    }
   }
 
   return (
