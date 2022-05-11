@@ -5,6 +5,9 @@ import Navbar from "../components/Navbar.jsx";
 import itemInGrid from "../components/itemInGrid.jsx";
 
 const Homepage = () => {
+  // PENDIENTE:
+  // Hacer llamada a API para renderizarlo
+
   setDocTitle("Homepage");
   // Hacer llamado a backend para llenar de los items de la bd
   var items = [];
