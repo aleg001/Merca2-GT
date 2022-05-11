@@ -11,7 +11,7 @@ const itemInGrid = ([
   itemDetail,
 ]) => {
   return (
-    <div className="container">
+    <div className="container_item">
       <a href={itemDetail}>
         <div className="container_item">
           <figure className="fotositem_portada">
