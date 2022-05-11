@@ -1,8 +1,7 @@
 # Merca2-GT
-
 Repo del proyecto para Ing. en Software
 
-### Tecnologias utilizadas
+## Tecnologias utilizadas
 - React ⚛
 - webpack ⚒
 - nodeJs ⚙ 
@@ -10,7 +9,7 @@ Repo del proyecto para Ing. en Software
 - npm 💾
 - Postgres SQL 🐘
 
-### Miembros:
+## Miembros
 - Alejandro Gómez
 - Marco Jurado
 - Diego Córdova
