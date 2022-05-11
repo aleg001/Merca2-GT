@@ -11,6 +11,18 @@ const Homepage = () => {
     <div className="content">
       <Navbar></Navbar>
       <div className="main-content-login"></div>
+      <itemInGrid
+        itemName="XD"
+        itemLocation="XD"
+        itemPrice="XD"
+        itemPublishDate="XD"
+        itemRating="XD"
+        itemImage="XD"
+        itemDetail="XD"
+      ></itemInGrid>
+      <footer>
+        Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
+      </footer>
     </div>
   );
 };
