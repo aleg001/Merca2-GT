@@ -16,14 +16,14 @@ const Homepage = () => {
     for (var j = 0; j < i.length; j++) {
       itemsInDB.push(
         <itemInGrid
-          value={items[j]}
-          itemName={items[j]}
-          itemLocation={items[j]}
-          itemPrice={items[j]}
-          itemPublishDate={items[j]}
-          itemRating={items[j]}
-          itemImage={items[j]}
-          itemDetail={items[j]}
+          value={items[j.value]}
+          itemName={items[j.itemName]}
+          itemLocation={items[j.itemLocation]}
+          itemPrice={items[j.itemPrice]}
+          itemPublishDate={items[j.itemPublishDate]}
+          itemRating={items[j.itemRating]}
+          itemImage={items[j.itemImage]}
+          itemDetail={items[j.itemDetail]}
         />
       );
     }
