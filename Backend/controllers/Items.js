@@ -49,7 +49,7 @@ const getItems = (req, res) => {
 const getSelectedItem = (req, res) => {
   console.log('\n> POST request /getSelectedItem with body: ', req.body)
   const sql = `
-    SELECT * , to_char(post_time,'HH24:MI') as HOUR FROM item i
+    SELECT * FROM item i
     LEFT JOIN denunciado d ON i.id = d.item_id
     WHERE d.item_id IS NULL AND i.id = '${req.body.id}'`
   
@@ -68,59 +68,7 @@ const getSelectedItem = (req, res) => {
       client.end()
       res.json({ 
         succes:true,
-        items: result.rows,
-      })
-    })
-  })
-}
-
-const getSellerName = (req, res) => {
-  console.log('\n> POST request /getSellerName with body: ', req.body)
-  const sql = `
-    SELECT name, lastname FROM users WHERE username = '${req.body.id}'`
-  
-  const client = new pg.Client(conString)
-
-  client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
-    
-    client.query(sql, (err, result) => {
-      if(err) {
-        client.end()
-        res.json({ succes: false })
-        return console.error('error running query', err)
-      }
-      
-      client.end()
-      res.json({ 
-        succes:true,
-        user: result.rows,
-      })
-    })
-  })
-}
-
-const getSellerPic = (req, res) => {
-  console.log('\n> POST request /getSellerPic with body: ', req.body)
-  const sql = `
-    SELECT profile_pic FROM users WHERE username = '${req.body.id}'`
-  
-  const client = new pg.Client(conString)
-
-  client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
-    
-    client.query(sql, (err, result) => {
-      if(err) {
-        client.end()
-        res.json({ succes: false })
-        return console.error('error running query', err)
-      }
-      
-      client.end()
-      res.json({ 
-        succes:true,
-        user: result.rows,
+        items: result.rows
       })
     })
   })
@@ -216,8 +164,6 @@ const filterItemsCat = (req, res) => {
 module.exports = {
   getItems,
   getSelectedItem,
-  getSellerName,
-  getSellerPic,
   addItem,
   deleteItem,
   filterItemsCat

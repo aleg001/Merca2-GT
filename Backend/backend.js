@@ -18,7 +18,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const { checkNewUser, register, login, checkLogin } = require('./controllers/Users')
-const { getItems, getSelectedItem, getSellerName, getSellerPic, addItem, deleteItem, filterItemsCat } = require('./controllers/Items')
+const { getItems, getSelectedItem, addItem, deleteItem, filterItemsCat } = require('./controllers/Items')
 
 // Server para API
 const app = express()
@@ -38,10 +38,8 @@ app.post('/login', login)
 app.post('/checkLogin', checkLogin)
 
 // Manejo de items
-app.post('/addItem', addItem)
 app.get('/getItems', getItems)
+app.post('/addItem', addItem)
 app.post('/deleteItem', deleteItem)
-app.post('/getSellerPic', getSellerPic)
-app.post('/getSellerName', getSellerName)
 app.post('/filterItemsCat', filterItemsCat)
 app.post('/getSelectedItem', getSelectedItem)
