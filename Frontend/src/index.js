@@ -1,9 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
+
 import setIcon from "./util/setIcon.js";
 import Login from "./pages/Login.jsx";
 import SignIn from "./pages/SignIn.jsx";
+import DetallesProductos from "./pages/detallesProductos.jsx";
 
 import "./styles/master.css";
 
@@ -16,14 +18,15 @@ const App = () => {
   const [isAdmin, setIsAdmin] = React.useState(false);
 
   // if (isLogedIn) return <DirectUser username={username} isAdmin={isAdmin}/>
-  if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
+  // if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
   return (
-    <Login
-      setIsRegis={setIsRegis}
-      setIsLogedIn={setIsLogedIn}
-      setUsername={setUsername}
-      setIsAdmin={setIsAdmin}
-    />
+    <DetallesProductos/>
+  //   <Login
+  //     setIsRegis={setIsRegis}
+  //     setIsLogedIn={setIsLogedIn}
+  //     setUsername={setUsername}
+  //     setIsAdmin={setIsAdmin}
+  //   />
   );
 };
 

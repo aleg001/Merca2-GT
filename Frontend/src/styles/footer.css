@@ -1,13 +1,12 @@
-* {
+:root {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
-  color: #848586;
   font-weight: 400;
 }
 
 .main-footer {
   background-color: #e7e7e7;
-  padding-top: 3em;
+  padding-top: 1em;
   padding-bottom: 1em;
   position: relative;
   bottom: 0;
@@ -19,6 +18,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: #848586;
   font-weight: 600;
 }
 
@@ -28,8 +28,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: #848586;
 }
 
 .contact {
   font-weight: 600;
+  color: #848586;
 }

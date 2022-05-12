@@ -39,7 +39,35 @@ const getItems = (req, res) => {
       
       client.end()
       res.json({ 
-        succes: true,
+        succes:true,
+        items: result.rows
+      })
+    })
+  })
+}
+
+const getSelectedItem = (req, res) => {
+  console.log('\n> POST request /getSelectedItem with body: ', req.body)
+  const sql = `
+    SELECT * FROM item i
+    LEFT JOIN denunciado d ON i.id = d.item_id
+    WHERE d.item_id IS NULL AND i.id = '${req.body.id}'`
+  
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+    
+    client.query(sql, (err, result) => {
+      if(err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+      
+      client.end()
+      res.json({ 
+        succes:true,
         items: result.rows
       })
     })
@@ -135,6 +163,7 @@ const filterItemsCat = (req, res) => {
 // Exports
 module.exports = {
   getItems,
+  getSelectedItem,
   addItem,
   deleteItem,
   filterItemsCat
