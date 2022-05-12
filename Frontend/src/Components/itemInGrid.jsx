@@ -11,7 +11,7 @@ const itemInGrid = ([
   itemDetail,
 ]) => {
   return (
-    <div className="container">
+    <div className="container_item">
       <a href={itemDetail}>
         <div className="container_item">
           <figure className="fotositem_portada">
@@ -25,12 +25,7 @@ const itemInGrid = ([
           <div className="contenidositem_tiemporating">
             <h6 className="hora_publicacion"> {itemPublishDate} </h6>
             <figure className="temporalrating">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Star_rating_3_of_5.png"
-                alt={itemRating}
-                height="40px"
-                width="100px"
-              />
+              <h6 className="hora_publicacion"> Rating: {itemRating} </h6>
             </figure>
           </div>
         </div>
