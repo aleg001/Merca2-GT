@@ -46,6 +46,32 @@ const getItems = (req, res) => {
   })
 }
 
+const addImageItem = (req, res) => {
+  console.log('\n> Post request /addImageItem with body:\n', req.body)
+  const sql = `
+  INSERT INTO item_partes VALUES (
+    '${req.body.id}',
+    '${req.body.image}'
+  )`
+  
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+    
+    client.query(sql, (err, result) => {
+      if(err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+      
+      client.end()
+      res.json({ succes: true })
+    })
+  })
+}
+
 const addItem = (req, res) => {
   console.log('\n> Post request /addItem with body:\n', req.body)
   const sql = `
@@ -58,7 +84,8 @@ const addItem = (req, res) => {
     '${req.body.username}',
     '${req.body.ubicacion}',
     CURRENT_TIMESTAMP,
-    '${req.body.rating}'
+    ${req.body.rating},
+    '${req.body.image}'
   )`
   
   const client = new pg.Client(conString)
@@ -137,5 +164,6 @@ module.exports = {
   getItems,
   addItem,
   deleteItem,
-  filterItemsCat
+  filterItemsCat,
+  addImageItem
 }
