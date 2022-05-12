@@ -100,6 +100,32 @@ const getSellerName = (req, res) => {
   })
 }
 
+const getProductPics = (req, res) => {
+  console.log('\n> POST request /getProductPics with body: ', req.body)
+  const sql = `
+    SELECT imagen FROM item_partes WHERE id_item = '${req.body.id}'`
+  
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+    
+    client.query(sql, (err, result) => {
+      if(err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+      
+      client.end()
+      res.json({ 
+        succes:true,
+        pictures: result.rows,
+      })
+    })
+  })
+}
+
 const getSellerPic = (req, res) => {
   console.log('\n> POST request /getSellerPic with body: ', req.body)
   const sql = `
@@ -215,10 +241,11 @@ const filterItemsCat = (req, res) => {
 // Exports
 module.exports = {
   getItems,
-  getSelectedItem,
-  getSellerName,
-  getSellerPic,
   addItem,
   deleteItem,
-  filterItemsCat
+  getSellerPic,
+  getSellerName,
+  getProductPics,
+  filterItemsCat,
+  getSelectedItem
 }

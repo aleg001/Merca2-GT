@@ -57,8 +57,27 @@ const handleSellerPic = (setSellerPic, id) => {
     })
     .then(response => response.json())
     .then(result => {
-        console.log('lkdsjflksadj', result.user)
         setSellerPic(result.user[0].profile_pic)
+    })
+    .catch(error => console.log('error', error));
+
+}
+
+const handleProductPics = (setProductPics, id) => {
+    
+    fetch("http://127.0.0.1:8000/getProductPics", {
+        headers: {
+			'Content-Type': 'application/json'
+		},
+		method: 'POST',
+		body: JSON.stringify({
+            id,
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('pics: ', result.pictures)
+        setProductPics(result.pictures)
     })
     .catch(error => console.log('error', error));
 
@@ -68,6 +87,7 @@ const DetallesProductos = () => {
 
     const [items, setItems] = React.useState()
     const [sellerPic, setSellerPic] = React.useState()
+    const [productPics, setProductPics] = React.useState()
     const [sellerName, setSellerName] = React.useState()
     const [sellerLastName, setSellerLastName] = React.useState()
     
@@ -79,10 +99,10 @@ const DetallesProductos = () => {
         items && items.map((item) => {
             handleSellerPic(setSellerPic, item.id_usuario)
             handleSellerName(setSellerName, setSellerLastName, item.id_usuario)
+            handleProductPics(setProductPics, 'item_prueba')
         }
     )}, [items])
 
-    console.log('items dkljsjf: ', items)
     return (
         <React.Fragment>
             <Header title="Producto"/>
@@ -93,7 +113,7 @@ const DetallesProductos = () => {
                             <div className="main-grid">
                                 <div className="seller-info">
                                     <div className="profile-pic">
-                                        <img id="img_profile" src={sellerPic} />
+                                        <img id="img_profile" src={sellerPic}/>
                                     </div>
                                     <div className="seller-data">
                                         <div className="seller-name" >
@@ -103,7 +123,6 @@ const DetallesProductos = () => {
                                         <div className="publication-time"  >
                                             {/* <!-- Hora de publicación --> */}
                                             <h3 key={index}>Publicado a las {item.post_time} </h3>
-                                            
                                         </div>
                                         <div className="stars">
                                             {/* <!-- Calificación con estrellas --> */}
@@ -122,7 +141,11 @@ const DetallesProductos = () => {
                                     </div>
                                     <div className="image-grid">
                                         {/* <!-- Imágen de producto --> */}
-
+                                        {productPics && productPics.map((pic) => {
+                                            return (
+                                                <img className="Pic" scr={pic.imagen}/>
+                                            )
+                                        })}
                                     </div>
                                 </div>
                                 <div className="product-footer">

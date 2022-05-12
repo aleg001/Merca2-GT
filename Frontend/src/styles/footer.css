@@ -19,7 +19,7 @@
   align-items: center;
   flex-direction: column;
   color: #848586;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .col {
@@ -32,6 +32,6 @@
 }
 
 .contact {
-  font-weight: 600;
+  font-weight: 400;
   color: #848586;
 }

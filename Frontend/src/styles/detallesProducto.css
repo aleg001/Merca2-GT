@@ -39,7 +39,7 @@
     justify-content: center;
     margin-top: 3em;
     --width-grey: 800px;
-    --height-grey: 750px;
+    --height-grey: 700px;
     width: var(--width-grey);
     height: var(--height-grey);
     border-radius: 15px;
@@ -247,4 +247,9 @@
       padding-left: 2em;
     }
   }
+
+  /* .Pic {
+    height: 200px;
+    width: 200px;
+  } */
   
