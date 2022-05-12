@@ -39,7 +39,7 @@ const DetallesProductos = () => {
             <div className="content">
                 {items && items.map((item,index) => {
                     return(
-                        <div className= 'show'>
+                        <div className= 'show'key={index}>
                             <div className="nameProduct">
                                 <h1>{item.nombre}</h1>
                             </div>
