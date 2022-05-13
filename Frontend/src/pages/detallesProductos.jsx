@@ -127,7 +127,7 @@ const DetallesProductos = () => {
                                     </div>
                                     <div className="publication-time"  >
                                         {/* <!-- Hora de publicación --> */}
-                                        <h3 key={index + 1}>Publicado a las {item.post_time} </h3>
+                                        <h3 key={index + 1}>Publicado el {item.post_time[8]}{item.post_time[9]}/{item.post_time[5]}{item.post_time[6]}/{item.post_time[0]}{item.post_time[1]}{item.post_time[2]}{item.post_time[3]}</h3>
                                     </div>
                                     <div className="stars">
                                         {/* <!-- Calificación con estrellas --> */}
