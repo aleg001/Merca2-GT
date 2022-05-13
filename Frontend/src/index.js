@@ -1,11 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-
+import Homepage from "./pages/Homepage.jsx";
 import setIcon from "./util/setIcon.js";
-import Login from "./pages/Login.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import DetallesProductos from "./pages/detallesProductos.jsx";
+import Login from "./pages/Login.jsx";
 
 import "./styles/master.css";
 
@@ -17,16 +17,16 @@ const App = () => {
   const [username, setUsername] = React.useState("");
   const [isAdmin, setIsAdmin] = React.useState(false);
 
-  // if (isLogedIn) return <DirectUser username={username} isAdmin={isAdmin}/>
-  // if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
+  if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
+  if (isLogedIn) return <Homepage />;
   return (
-    <DetallesProductos id_item={'item_prueba'}/>
-  //   <Login
-  //     setIsRegis={setIsRegis}
-  //     setIsLogedIn={setIsLogedIn}
-  //     setUsername={setUsername}
-  //     setIsAdmin={setIsAdmin}
-  //   />
+    <DetallesProductos id_item={"item_prueba"} />
+    //   <Login
+    //     setIsRegis={setIsRegis}
+    //     setIsLogedIn={setIsLogedIn}
+    //     setUsername={setUsername}
+    //     setIsAdmin={setIsAdmin}
+    //   />
   );
 };
 
