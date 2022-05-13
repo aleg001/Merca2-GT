@@ -3,49 +3,51 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import TextInput from "../components/TextInput.jsx";
 
-import MD5 from "crypto-js/md5";
 import setDocTitle from "../util/docTitle.js";
 
-import login from "../styles/login.css";
-import signin from "../styles/SignIn.css";
+import "../styles/login.css";
+import "../styles/SignIn.css";
 
-//const handleRegister = (
-//name,
-// description,
-// productName,
-// email,
-// contra,
-// gender,
-// date,
-// setIsRegis
-//) => {
-// fetch("http://127.0.0.1:8000/register", {
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   method: "POST",
-//  body: JSON.stringify({
-//    name,
-//    description,
-//    productName,
-//    email,
-//    password: MD5(contra).toString(),
-//    gender: "2",
-//   date: "04-18-2022: 00:00:00",
-//   admin: "false",
-// }),
-//})
-// .then((response) => response.json())
-// .then((result) => {
-//   alert("Se añadió el producto con exito!!");
-//   setTimeout(setIsRegis, 500, false);
-// })
-//  .catch((error) => {
-//   setTimeout(setIsRegis, 500, false);
-//  });
-//};
+const handleAddItem = (
+  id,
+  itemName,
+  categoryId,
+  description,
+  price,
+  username,
+  ubicacion,
+  rating,
+  image
+) => {
+  fetch("http://127.0.0.1:8000/addItem", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      id,
+      itemName,
+      categoryId,
+      description,
+      price,
+      username,
+      ubicacion,
+      rating,
+      image
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
+      alert("Se añadió el producto con exito!!");
+      setTimeout(setIsRegis, 500, false);
+    })
+    .catch((error) => {
+      setTimeout(setIsRegis, 500, false);
+    });
+};
 
-const AddProduct = ({ setIsRegis }) => {
+const AddProduct = ({ setIsRegis, idUser }) => {
   setDocTitle("Agregar producto");
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
@@ -138,15 +140,14 @@ const AddProduct = ({ setIsRegis }) => {
           ) {
             return alert("Llene los campos para ingresar su producto");
           }
-          handleRegister(
+          handleAddItem(
             randomID(),
             productName,
             Cat,
             description,
             price,
-            id_user,
+            idUser,
             ubication,
-            postTime(),
             rating(),
             Link
           );
