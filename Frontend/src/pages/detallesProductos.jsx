@@ -86,9 +86,10 @@ const handleProductPics = (setProductPics, id) => {
 const DetallesProductos = () => {
 
     const [items, setItems] = React.useState()
+    const [mainPic, setMainPic] = React.useState()
     const [sellerPic, setSellerPic] = React.useState()
-    const [productPics, setProductPics] = React.useState()
     const [sellerName, setSellerName] = React.useState()
+    const [productPics, setProductPics] = React.useState()
     const [sellerLastName, setSellerLastName] = React.useState()
     
     useEffect(()=> {
@@ -101,7 +102,13 @@ const DetallesProductos = () => {
             handleSellerName(setSellerName, setSellerLastName, item.id_usuario)
             handleProductPics(setProductPics, 'item_prueba')
         }
-    )}, [items])
+        )}, [items])
+    
+        
+    useEffect(() => {
+        productPics && setMainPic(productPics[0].imagen)
+        productPics && console.log('--->', productPics[0].imagen)
+    }, [productPics])
 
     return (
         <React.Fragment>
@@ -139,13 +146,16 @@ const DetallesProductos = () => {
                                         {/* <!-- Nombre de producto --> */}
                                         <h1 key={index}>{item.nombre}</h1>
                                     </div>
-                                    <div className="image-grid">
+                                    <div className="imagenesProducto">
                                         {/* <!-- Imágen de producto --> */}
-                                        {productPics && productPics.map((pic) => {
-                                            return (
-                                                <img className="Pic" scr={pic.imagen}/>
-                                            )
-                                        })}
+                                        <img className="mainPic" src={mainPic}/> 
+                                        <div className="all-pictures">
+                                            {productPics && productPics.map((pic) => {
+                                                return (
+                                                    <img className="Pic" src={pic.imagen}/>
+                                                )
+                                            })}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="product-footer">
