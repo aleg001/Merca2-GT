@@ -9,53 +9,70 @@ import setDocTitle from "../util/docTitle.js";
 import login from "../styles/login.css";
 import signin from "../styles/SignIn.css";
 
-const handleRegister = (
-  name,
-  description,
-  productName,
-  email,
-  contra,
-  gender,
-  date,
-  setIsRegis
-) => {
-  fetch("http://127.0.0.1:8000/register", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-    body: JSON.stringify({
-      name,
-      description,
-      productName,
-      email,
-      password: MD5(contra).toString(),
-      gender: "2",
-      date: "04-18-2022: 00:00:00",
-      admin: "false",
-    }),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      alert("Se añadió el producto con exito!!");
-      setTimeout(setIsRegis, 500, false);
-    })
-    .catch((error) => {
-      setTimeout(setIsRegis, 500, false);
-    });
-};
+//const handleRegister = (
+//name,
+// description,
+// productName,
+// email,
+// contra,
+// gender,
+// date,
+// setIsRegis
+//) => {
+// fetch("http://127.0.0.1:8000/register", {
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   method: "POST",
+//  body: JSON.stringify({
+//    name,
+//    description,
+//    productName,
+//    email,
+//    password: MD5(contra).toString(),
+//    gender: "2",
+//   date: "04-18-2022: 00:00:00",
+//   admin: "false",
+// }),
+//})
+// .then((response) => response.json())
+// .then((result) => {
+//   alert("Se añadió el producto con exito!!");
+//   setTimeout(setIsRegis, 500, false);
+// })
+//  .catch((error) => {
+//   setTimeout(setIsRegis, 500, false);
+//  });
+//};
 
 const AddProduct = ({ setIsRegis }) => {
   setDocTitle("Agregar producto");
+  // Estructura de tabla:
+  // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
+
+  // random item id
+  const randomID = () => {
+    return Date.now();
+  };
+
+  // posting time
+  const postTime = () => {
+    const d = new Date();
+    return d.toLocaleString();
+  };
+
+  // star rating
+  const rating = () => {
+    const starRating = (Math.random() * (5 - 1) + 1).toFixed(2);
+    return parseFloat(starRating);
+  };
 
   const [productName, setproductName] = React.useState("");
-  const [password, setPassword] = React.useState("");
   const [description, setdescription] = React.useState("");
-  const [name, setName] = React.useState("");
-  const [pass2, setRepeatPass] = React.useState("");
-
-  const [email, setEmail] = React.useState("");
-  const [admin, setAdmin] = React.useState(false);
+  const [price, setprice] = React.useState("");
+  const [ubication, setubication] = React.useState("");
+  const [Link, setLink] = React.useState("");
+  const [Cat, setCat] = React.useState("");
 
   return (
     <div className="content">
@@ -71,10 +88,17 @@ const AddProduct = ({ setIsRegis }) => {
             />
 
             <TextInput
-              set={setName}
+              set={setprice}
               title="Ingrese su precio (en quetzales)"
               className="userInput"
               placeholderText="Precio"
+            />
+
+            <TextInput
+              set={setCat}
+              title="Categoría del artículo"
+              className="userInput"
+              placeholderText="Categoría"
             />
 
             <TextInput
@@ -85,26 +109,17 @@ const AddProduct = ({ setIsRegis }) => {
             />
 
             <TextInput
-              set={setEmail}
-              title="Ingrese su correo"
+              set={setubication}
+              title="Ubicación del artículo"
               className="userInput"
-              placeholderText="Correo"
+              placeholderText="Ubicación"
             />
 
             <TextInput
-              set={setPassword}
-              title="Ingrese su contraseña"
+              set={setLink}
+              title="Link de la imagen del artículo"
               className="userInput"
-              password={true}
-              placeholderText="Contraseña"
-            />
-
-            <TextInput
-              set={setRepeatPass}
-              title="Ingrese contraseña nuevamente"
-              className="userInput"
-              password={true}
-              placeholderText="Contraseña"
+              placeholderText="Link"
             />
           </div>
         </form>
@@ -113,18 +128,27 @@ const AddProduct = ({ setIsRegis }) => {
         type="button"
         className="btnLogin"
         onClick={() => {
-          if (productName == "" || email == "" || password == "") {
+          if (
+            productName == "" ||
+            Cat == "" ||
+            description == "" ||
+            price == "" ||
+            ubication == "" ||
+            Link == ""
+          ) {
             return alert("Llene los campos para ingresar su producto");
           }
           handleRegister(
-            name,
-            description,
+            randomID(),
             productName,
-            email,
-            password,
-            gender,
-            date,
-            setIsRegis
+            Cat,
+            description,
+            price,
+            id_user,
+            ubication,
+            postTime(),
+            rating(),
+            Link
           );
         }}
       >
