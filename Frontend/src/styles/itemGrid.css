@@ -77,7 +77,10 @@ a {
 }
 
 .container_item:hover {
-  border: 5px solid #03a5ad;
+  /* border: 5px solid #03a5ad; */
+  transform: scale(1.02);
+  border-radius: 15px;
+  cursor: pointer;
 }
 
 .container_item > *:hover {
@@ -88,6 +91,7 @@ a {
   width: auto;
   height: auto;
   text-decoration: none;
+  border-radius: 15px;
 
   display: flex;
   flex-direction: column;
@@ -97,6 +101,15 @@ a {
 
 .fotositem_portada {
   text-align: center;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.productImage{
+  width:200px;
+  height:200px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .contenidositem_ubicacionprecio:hover {
@@ -151,3 +164,4 @@ footer {
 
   background-color: var(--gris-merca2);
 }
+
