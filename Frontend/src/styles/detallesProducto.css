@@ -134,32 +134,31 @@
 
   .product-name {
     font-size: 120%;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
   }
   
   .imagenesProducto {
+    height: 100%;
+    /* margin-top: -40px; */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin:0;
   }
 
   .all-pictures {
     display:flex;
     flex-direction: column;
-    width:20%;
-    height: 70%;
   }
 
   .all-pictures > img {
-    width:60%;
-    height:40%;
     margin:0;
     margin-top:10px;
     margin-left:6px;
     object-fit: cover;
     border-radius: 5px;
+    height: 90px;
+    width: 90px;
   }
 
   .all-pictures > :first-child {
@@ -167,9 +166,12 @@
   }
 
   .mainPic {
-    width:80%;
-    height: 70%;
     object-fit: cover;
+    border-radius: 5px;
+    height: 610px;
+    width: 500px;
+    margin:0;
+    padding:0;
   }
   .all-pictures {
     display:flex;

@@ -180,7 +180,7 @@ const DetallesProductos = () => {
                 })}
             </div>
             
-            <Footer/>
+            {/* <Footer/> */}
         </React.Fragment>
     )
 };
