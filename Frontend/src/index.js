@@ -17,16 +17,17 @@ const App = () => {
   const [username, setUsername] = React.useState("");
   const [isAdmin, setIsAdmin] = React.useState(false);
 
+  console.log(isRegis)
   if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
   if (isLogedIn) return <Homepage />;
   return (
-    <DetallesProductos id_item={"item_prueba"} />
-    //   <Login
-    //     setIsRegis={setIsRegis}
-    //     setIsLogedIn={setIsLogedIn}
-    //     setUsername={setUsername}
-    //     setIsAdmin={setIsAdmin}
-    //   />
+    // <DetallesProductos id_item={"item_prueba"} />
+    <Login
+      setIsRegis={setIsRegis}
+      setIsLogedIn={setIsLogedIn}
+      setUsername={setUsername}
+      setIsAdmin={setIsAdmin}
+    />
   );
 };
 
