@@ -18,6 +18,8 @@ const handleItemsHomepage = (setItems) => {
 
 const Homepage = () => {
   const [items, setItems] = React.useState();
+  const [idSelectedProduct, setIdSelectedProduct] = React.useState();
+
   useEffect(() => {
     handleItemsHomepage(setItems)
   }, [])
