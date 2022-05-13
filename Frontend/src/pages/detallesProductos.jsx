@@ -76,7 +76,6 @@ const handleProductPics = (setProductPics, id) => {
     })
     .then(response => response.json())
     .then(result => {
-        console.log('pics: ', result.pictures)
         setProductPics(result.pictures)
     })
     .catch(error => console.log('error', error));
@@ -107,78 +106,78 @@ const DetallesProductos = () => {
         
     useEffect(() => {
         productPics && setMainPic(productPics[0].imagen)
-        productPics && console.log('--->', productPics[0].imagen)
+
     }, [productPics])
 
     return (
         <React.Fragment>
             <Header title="Producto"/>
             <div className="content">
-                {items && items.map((item,index) => {
-                    return(
-                        <React.Fragment>
-                        <div className="wrapper">
-                            <div className="main-grid">
-                                <div className="seller-info">
-                                    <div className="profile-pic">
-                                        <img id="img_profile" src={sellerPic}/>
-                                    </div>
-                                    <div className="seller-data">
-                                        <div className="seller-name" >
-                                            <h1 key={index}>{sellerName} {sellerLastName}</h1>
-                                            
-                                        </div>
-                                        <div className="publication-time"  >
-                                            {/* <!-- Hora de publicación --> */}
-                                            <h3 key={index}>Publicado a las {item.post_time} </h3>
-                                        </div>
-                                        <div className="stars">
-                                            {/* <!-- Calificación con estrellas --> */}
-                                            <button className="star">&#9733;</button>
-                                            <button className="star">&#9733;</button>
-                                            <button className="star">&#9733;</button>
-                                            <button className="star">&#9733;</button>
-                                            <button className="star">&#9734;</button>
-                                        </div>
-                                    </div>
+                {items && items.map((item,index) => (
+                    <div className="wrapper">
+                        <div className="main-grid">
+                            <div className="seller-info">
+                                <div className="profile-pic">
+                                    <img id="img_profile" src={sellerPic}/>
                                 </div>
-                                <div className="product-info" >
-                                    <div className="product-name">
-                                        {/* <!-- Nombre de producto --> */}
-                                        <h1 key={index}>{item.nombre}</h1>
+                                <div className="seller-data">
+                                    <div className="seller-name" >
+                                        <h1 key={index}>{sellerName} {sellerLastName}</h1>
+                                        
                                     </div>
-                                    <div className="imagenesProducto">
-                                        {/* <!-- Imágen de producto --> */}
-                                        <img className="mainPic" src={mainPic}/> 
-                                        <div className="all-pictures">
-                                            {productPics && productPics.map((pic) => {
-                                                return (
-                                                    <img className="Pic" src={pic.imagen}/>
-                                                )
-                                            })}
-                                        </div>
+                                    <div className="publication-time"  >
+                                        {/* <!-- Hora de publicación --> */}
+                                        <h3 key={index + 1}>Publicado a las {item.post_time} </h3>
                                     </div>
-                                </div>
-                                <div className="product-footer">
-                                    <div className="product-details">
-                                        <div className="price" >
-                                            {/* <!-- Precio --> */}
-                                            <h3 key={index} >Q. {item.precio}</h3>
-                                        </div>
-                                        <div className="description">
-                                            <p key={index}>{item.descripcion}</p>
-                                        </div>
+                                    <div className="stars">
+                                        {/* <!-- Calificación con estrellas --> */}
+                                        <button className="star">&#9733;</button>
+                                        <button className="star">&#9733;</button>
+                                        <button className="star">&#9733;</button>
+                                        <button className="star">&#9733;</button>
+                                        <button className="star">&#9734;</button>
                                     </div>
-                                </div>
-                                <div className="contact">
-                                    {/* <!-- Contacto --> */}
-                                    <a href="#" className="myButton">Contactar</a>
                                 </div>
                             </div>
+                            <div className="product-info" >
+                                <div className="product-name">
+                                    {/* <!-- Nombre de producto --> */}
+                                    <h1 key={index + 2}>{item.nombre}</h1>
+                                </div>
+                                <div className="imagenesProducto">
+                                    {/* <!-- Imágen de producto --> */}
+                                    <img className="mainPic" src={mainPic}/> 
+                                    <div className="all-pictures">
+                                        {productPics && productPics.map((pic, index2) => (
+                                            <img 
+                                                key={index2}
+                                                className="Pic"
+                                                src={pic.imagen}
+                                                alt="Product pictures"
+                                                onClick={ () => setMainPic(pic.imagen) }
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="product-footer">
+                                <div className="product-details">
+                                    <div className="price" >
+                                        {/* <!-- Precio --> */}
+                                        <h3 key={index + 3} >Q. {item.precio}</h3>
+                                    </div>
+                                    <div className="description">
+                                        <p key={index + 4}>{item.descripcion}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="contact">
+                                {/* <!-- Contacto --> */}
+                                <a href="#" className="myButton">Contactar</a>
+                            </div>
                         </div>
-                        </React.Fragment>
-                    )
-                })}
+                    </div>
+                ))}
             </div>
             {/* <Footer/> */}
             
