@@ -39,20 +39,19 @@ const getItems = (req, res) => {
       
       client.end()
       res.json({ 
-        succes: true,
+        succes:true,
         items: result.rows
       })
     })
   })
 }
 
-const addImageItem = (req, res) => {
-  console.log('\n> Post request /addImageItem with body:\n', req.body)
+const getSelectedItem = (req, res) => {
+  console.log('\n> POST request /getSelectedItem with body: ', req.body)
   const sql = `
-  INSERT INTO item_partes VALUES (
-    '${req.body.id}',
-    '${req.body.image}'
-  )`
+    SELECT * , to_char(post_time,'HH24:MI') as HOUR FROM item i
+    LEFT JOIN denunciado d ON i.id = d.item_id
+    WHERE d.item_id IS NULL AND i.id = '${req.body.id}'`
   
   const client = new pg.Client(conString)
 
@@ -67,7 +66,88 @@ const addImageItem = (req, res) => {
       }
       
       client.end()
-      res.json({ succes: true })
+      res.json({ 
+        succes:true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
+const getSellerName = (req, res) => {
+  console.log('\n> POST request /getSellerName with body: ', req.body)
+  const sql = `
+    SELECT name, lastname FROM users WHERE username = '${req.body.id}'`
+  
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+    
+    client.query(sql, (err, result) => {
+      if(err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+      
+      client.end()
+      res.json({ 
+        succes:true,
+        user: result.rows,
+      })
+    })
+  })
+}
+
+const getProductPics = (req, res) => {
+  console.log('\n> POST request /getProductPics with body: ', req.body)
+  const sql = `
+    SELECT imagen FROM item_partes WHERE id_item = '${req.body.id}'`
+  
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+    
+    client.query(sql, (err, result) => {
+      if(err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+      
+      client.end()
+      res.json({ 
+        succes:true,
+        pictures: result.rows,
+      })
+    })
+  })
+}
+
+const getSellerPic = (req, res) => {
+  console.log('\n> POST request /getSellerPic with body: ', req.body)
+  const sql = `
+    SELECT profile_pic FROM users WHERE username = '${req.body.id}'`
+  
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+    
+    client.query(sql, (err, result) => {
+      if(err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+      
+      client.end()
+      res.json({ 
+        succes:true,
+        user: result.rows,
+      })
     })
   })
 }
@@ -84,8 +164,7 @@ const addItem = (req, res) => {
     '${req.body.username}',
     '${req.body.ubicacion}',
     CURRENT_TIMESTAMP,
-    ${req.body.rating},
-    '${req.body.image}'
+    '${req.body.rating}'
   )`
   
   const client = new pg.Client(conString)
@@ -164,6 +243,9 @@ module.exports = {
   getItems,
   addItem,
   deleteItem,
+  getSellerPic,
+  getSellerName,
+  getProductPics,
   filterItemsCat,
-  addImageItem
+  getSelectedItem
 }

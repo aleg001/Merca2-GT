@@ -1,47 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TextInput from "../components/TextInput.jsx";
 import setDocTitle from "../util/docTitle.js";
-import Navbar from "../components/Navbar.jsx";
-import itemInGrid from "../components/itemInGrid.jsx";
+import Header from "../components/Header.jsx";
+import ItemInGrid from "../components/ItemInGrid.jsx";
+
+const handleItemsHomepage = (setItems) => {
+    const requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/getItems", requestOptions)
+    .then(response => response.json())
+    .then(result => setItems(result.items))
+    .catch(error => console.log('error', error));
+}
 
 const Homepage = () => {
-  // PENDIENTE:
-  // Hacer llamada a API para renderizarlo
+    const [items, setItems] = React.useState();
+    useEffect(() => {
+        handleItemsHomepage(setItems)
+    }, [])
 
-  setDocTitle("Homepage");
-  // Hacer llamado a backend para llenar de los items de la bd
-  var items = [];
-  // Array temporal con elementos
-  var itemsInDB = [];
-  // Se itera sobre los productos existentes
-  for (var i = 0; i < items.length; i++) {
-    // Se itera sobre parametros por item
-    for (var j = 0; j < i.length; j++) {
-      itemsInDB.push(
-        <itemInGrid
-          value={items[j.value]}
-          itemName={items[j.itemName]}
-          itemLocation={items[j.itemLocation]}
-          itemPrice={items[j.itemPrice]}
-          itemPublishDate={items[j.itemPublishDate]}
-          itemRating={items[j.itemRating]}
-          itemImage={items[j.itemImage]}
-          itemDetail={items[j.itemDetail]}
-        />
-      );
-    }
-  }
+    items && console.log(items)
+
 
   return (
     <div className="content">
-      <Navbar></Navbar>
-      <div className="main-content-login"></div>
-      <div class="container">
-        <div> {itemsInDB}</div>
-      </div>
-      <footer>
-        Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
-      </footer>
+        <Header title="Homepage"/>
+        <div className="main-content-login"></div>
+        <div className="container">
+            <div>
+                {items && items.map((item, index) => (
+                    <ItemInGrid
+                        itemName = {item.nombre}
+                        itemLocation = {item.ubicacion}
+                        itemPrice = {item.precio}
+                        itemPublishDate = {item.post_time}
+                        itemImage = {item.image}
+                        key={index}
+                    />
+                ))}
+            </div>
+        </div>
+        <footer>
+            Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
+        </footer>
     </div>
   );
 };
