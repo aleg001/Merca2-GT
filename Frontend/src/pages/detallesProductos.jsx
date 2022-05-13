@@ -82,7 +82,7 @@ const handleProductPics = (setProductPics, id) => {
 
 }
 
-const DetallesProductos = () => {
+const DetallesProductos = ({id_item}) => {
 
     const [items, setItems] = React.useState()
     const [mainPic, setMainPic] = React.useState()
@@ -92,14 +92,14 @@ const DetallesProductos = () => {
     const [sellerLastName, setSellerLastName] = React.useState()
     
     useEffect(()=> {
-        handleItems(setItems, 'item_prueba')
+        handleItems(setItems, id_item)
     },[])
 
     useEffect(() => {
         items && items.map((item) => {
             handleSellerPic(setSellerPic, item.id_usuario)
             handleSellerName(setSellerName, setSellerLastName, item.id_usuario)
-            handleProductPics(setProductPics, 'item_prueba')
+            handleProductPics(setProductPics, id_item)
         }
         )}, [items])
     

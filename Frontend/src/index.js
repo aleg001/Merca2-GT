@@ -20,7 +20,7 @@ const App = () => {
   // if (isLogedIn) return <DirectUser username={username} isAdmin={isAdmin}/>
   // if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
   return (
-    <DetallesProductos/>
+    <DetallesProductos id_item={'item_prueba'}/>
   //   <Login
   //     setIsRegis={setIsRegis}
   //     setIsLogedIn={setIsLogedIn}
