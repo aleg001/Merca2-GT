@@ -116,6 +116,7 @@ const DetallesProductos = () => {
             <div className="content">
                 {items && items.map((item,index) => {
                     return(
+                        <React.Fragment>
                         <div className="wrapper">
                             <div className="main-grid">
                                 <div className="seller-info">
@@ -124,7 +125,7 @@ const DetallesProductos = () => {
                                     </div>
                                     <div className="seller-data">
                                         <div className="seller-name" >
-                                            <h1 key={index}>Publicado por: {sellerName} {sellerLastName}</h1>
+                                            <h1 key={index}>{sellerName} {sellerLastName}</h1>
                                             
                                         </div>
                                         <div className="publication-time"  >
@@ -175,12 +176,12 @@ const DetallesProductos = () => {
                                 </div>
                             </div>
                         </div>
-
+                        </React.Fragment>
                     )
                 })}
             </div>
-            
             {/* <Footer/> */}
+            
         </React.Fragment>
     )
 };
