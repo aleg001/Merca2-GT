@@ -15,10 +15,12 @@ class Footer extends Component {
                 <li>Tel: +502 XXXX - XXXX</li>
                 <li>Correo: administracion@merca2gt.com</li>
               </ul>
+              <br/>
             </div>
           </div>
           <hr />
           <div className="row">
+            <br/>
             <p className="col-sm">
               &copy;{new Date().getFullYear()} Merca2-GT | Todos los derechos reservados
             </p>
