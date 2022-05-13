@@ -4,7 +4,9 @@
     --oscuro: #03a5ad;
     --width-grey: 800px;
     --height-grey: 700px;
+    --width-grey2: 750px;
   }
+  
   /* Inicio página general */
   * {
     margin: 0;
@@ -43,7 +45,7 @@
     height: var(--height-grey);
     display: grid;
     grid-template-rows: 1fr 4fr 1fr 1fr;
-    grid-template-areas: "info-seller" "info-product" "footer";
+    grid-template-areas: "info-seller" "info-product" "footer" "contact";
     grid-gap: 1em;
   }
   /* Fin contenido general */
@@ -109,13 +111,12 @@
   
   /* Inicio contenido main de producto */
   .product-info {
-    /* width: var(--width-grey); */
-    /* height: 100%; */
+    width: var(--width-grey2);
+    height: 100%;
     grid-area: info-product;
     display:flex;
     flex-direction: column;
-    padding-left: 2em;
-    padding-right: 2em;
+    margin-left: 2em;
   }
 
   .product-name {
@@ -171,39 +172,26 @@
     width: 150px;
     object-fit: cover;
   }
-  
-  .image-grid > img:hover {
-    filter: grayscale(0);
-    transform: scale(1.05);
-  }
-  
-  .image-grid-col-2 {
-    grid-column: span 2;
-  }
-  
-  .image-grid-row-2 {
-    grid-row: span 2;
-  }
+
   /* Fin contenido main de producto */
   
   /* Inicio footer */
   .product-footer {
     grid-area: footer;
-    /* display: grid;
-    grid-template-columns: repeat(1, 1fr); */
-    justify-self: end;
-    margin-left: 20em;
-    width: 25em;
-    
+    height: 100%;
+    width: var(--width-grey2);
+    margin-left: 2em;
   }
   
   .product-details {
-    padding-right: 3em;
+    width: var(--width-grey2);
+    margin-right: 3em;
   }
   
   .price {
     display: flex;
     font-size: 20px;
+    margin-right: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
     justify-content: flex-end;
@@ -217,6 +205,14 @@
     text-align: justify;
     text-justify: inter-word;
     font-size: 15px;
+    margin-right: 30px;
+  }
+
+  .contact {
+    grid-area: contact;
+    height: 100%;
+    width: var(--width-grey);
+    margin-right: 30px;
   }
   
   .myButton {
@@ -242,11 +238,7 @@
   
   /* Cuando la pantalla sea menor a 1024 px */
   @media screen and (max-width: 850px) {
-    .image-grid {
-      --num-cols: 2;
-      --row-height: 100px;
-    }
-  
+    
     .profile-pic {
       padding: 3em;
     }
@@ -254,6 +246,7 @@
     .wrapper {
       --height-grey: 1300px;
       --width-grey: 500px;
+      --width-grey2: 450px;
     }
   
     .seller-info {
@@ -268,7 +261,7 @@
 
     .product-footer {
       display: flex;
-      padding-left: 2em;
+      /* margin-left: 2em; */
     }
   }
   
