@@ -1,11 +1,10 @@
 {
-    "name": "Backend Merca2",
+    "name": "backend-merca2",
     "version": "1.0.0",
     "description": "backend del proyecto",
     "main": "backend.js",
     "scripts": {
-        "start": "node backend.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node backend.js"
     },
     "author": "Merca 2Gt",
     "license": "ISC",

@@ -1,5 +1,4 @@
 import React from "react";
-
 import Header from "../components/Header.jsx";
 import TextInput from "../components/TextInput.jsx";
 
@@ -14,6 +13,7 @@ const handleLogin = (
   setUsername,
   setIsAdmin
 ) => {
+  console.log("llego");
   fetch("http://127.0.0.1:8000/login", {
     headers: {
       "Content-Type": "application/json",
@@ -26,37 +26,34 @@ const handleLogin = (
   })
     .then((response) => response.json())
     .then((result) => {
-      if (result.userExist) {
-        const user = result.username[0].username.toString();
-        const admin = result.username[0].administrador;
-        setIsRegis(false);
-        setIsLogedIn(true);
-        setUsername(user);
-        setIsAdmin(admin);
-      } else {
-        fetch("http://127.0.0.1:8000/checkLogin", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify({
-            username,
-            password: MD5(password).toString(),
-          }),
+      if (!result.userExist) return alert("Creedenciales no validos");
+
+      const user = result.username[0].username.toString();
+      const admin = result.username[0].administrador;
+      setIsRegis(false);
+      setIsLogedIn(true);
+      setUsername(user);
+      setIsAdmin(admin);
+      fetch("http://127.0.0.1:8000/checkLogin", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          username,
+          password: MD5(password).toString(),
+        }),
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (!result.success) return alert("Usuario no encontrado");
+          alert("Credenciales correctas!!");
         })
-          .then((response) => response.json())
-          .then((result) => {
-            if (!result.success) return alert("Usuario no encontrado");
-            console.log(result.success);
-          })
-          .catch((error) => {
-            console.error("Error al intentar loggear", error);
-            alert("Error de conexion: intente más tarde");
-          });
-      }
+        .catch((error) => {
+          alert("Error de conexion: intente más tarde");
+        });
     })
     .catch((error) => {
-      console.error("Error al intentar loggear", error);
       alert("Error de conexion: intente más tarde");
     });
 };
@@ -94,6 +91,7 @@ const Login = ({ setIsRegis, setIsLogedIn, setUsername, setIsAdmin }) => {
               if (usernameL == "" || passwordL == "") {
                 return alert("Llene los campos para continuar");
               }
+
               handleLogin(
                 usernameL,
                 passwordL,
