@@ -90,7 +90,7 @@ const DetallesProductos = ({id_item}) => {
     const [sellerName, setSellerName] = React.useState()
     const [productPics, setProductPics] = React.useState()
     const [sellerLastName, setSellerLastName] = React.useState()
-    
+
     useEffect(()=> {
         handleItems(setItems, id_item)
     },[])

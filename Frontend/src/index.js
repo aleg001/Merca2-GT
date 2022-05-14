@@ -18,15 +18,14 @@ const App = () => {
   const [isAdmin, setIsAdmin] = React.useState(false);
 
   if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
-  if (isLogedIn) return <Homepage />;
+  if (isLogedIn) return <Homepage/>;
   return (
-    <DetallesProductos id_item={"item_prueba"} />
-    //   <Login
-    //     setIsRegis={setIsRegis}
-    //     setIsLogedIn={setIsLogedIn}
-    //     setUsername={setUsername}
-    //     setIsAdmin={setIsAdmin}
-    //   />
+    <Login
+      setIsRegis={setIsRegis}
+      setIsLogedIn={setIsLogedIn}
+      setUsername={setUsername}
+      setIsAdmin={setIsAdmin}
+    />
   );
 };
 

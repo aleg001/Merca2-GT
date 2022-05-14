@@ -3,6 +3,7 @@ import TextInput from "../components/TextInput.jsx";
 import setDocTitle from "../util/docTitle.js";
 import Header from "../components/Header.jsx";
 import ItemInGrid from "../components/ItemInGrid.jsx";
+import DetallesProductos from "./detallesProductos.jsx";
 
 const handleItemsHomepage = (setItems) => {
   const requestOptions = {
@@ -19,14 +20,15 @@ const handleItemsHomepage = (setItems) => {
 const Homepage = () => {
   const [items, setItems] = React.useState();
   const [idSelectedProduct, setIdSelectedProduct] = React.useState();
+  const [selectedProduct, setSelectedProduct] = React.useState(false);
 
   useEffect(() => {
     handleItemsHomepage(setItems)
   }, [])
+  
+  console.log("dsfds", idSelectedProduct)
 
-  items && console.log(items)
-
-
+  if (selectedProduct) return <DetallesProductos id_item={idSelectedProduct}/>;
   return (
   <div className="content">
     <Header title="Homepage"/>
@@ -40,6 +42,9 @@ const Homepage = () => {
           itemPublishDate = {item.post_time}
           itemImage = {item.image}
           key={index}
+          itemId={item.id}
+          setIdSelectedProduct={setIdSelectedProduct}
+          setSelectedProduct={setSelectedProduct}
         />
       ))}
     </div>
