@@ -17,8 +17,9 @@ const App = () => {
   const [username, setUsername] = React.useState("");
   const [isAdmin, setIsAdmin] = React.useState(false);
 
+  console.log('regis', isRegis)
   if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
-  if (isLogedIn) return <Homepage/>;
+  if (isLogedIn) return <Homepage userName={username}/>;
   return (
     <Login
       setIsRegis={setIsRegis}
