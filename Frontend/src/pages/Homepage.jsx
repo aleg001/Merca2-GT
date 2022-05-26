@@ -4,11 +4,12 @@ import setDocTitle from "../util/docTitle.js";
 import Header from "../components/Header.jsx";
 import ItemInGrid from "../components/ItemInGrid.jsx";
 import DetallesProductos from "./detallesProductos.jsx";
+import Navbar from "../Components/navbar.jsx";
 
 const handleItemsHomepage = (setItems) => {
   const requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
+    method: 'GET',
+    redirect: 'follow'
   };
 
   fetch("http://127.0.0.1:8000/getItems", requestOptions)
@@ -17,7 +18,7 @@ const handleItemsHomepage = (setItems) => {
     .catch(error => console.log('error', error));
 }
 
-const Homepage = () => {
+const Homepage = ({ userName, setOnShow }) => {
   const [items, setItems] = React.useState();
   const [idSelectedProduct, setIdSelectedProduct] = React.useState();
   const [selectedProduct, setSelectedProduct] = React.useState(false);
@@ -26,12 +27,16 @@ const Homepage = () => {
     handleItemsHomepage(setItems)
   }, [])
   
-  console.log("dsfds", idSelectedProduct)
+  //console.log("dsfds", idSelectedProduct)
 
   if (selectedProduct) return <DetallesProductos id_item={idSelectedProduct}/>;
   return (
   <div className="content">
-    <Header title="Homepage"/>
+    <Header 
+      title="Homepage"
+      user={userName}
+    />
+    <Navbar setOnShow={setOnShow} />
     <div className="main-content-login"></div>
     <div className="container">
       {items && items.map((item, index) => (
@@ -49,7 +54,7 @@ const Homepage = () => {
       ))}
     </div>
     <footer>
-        Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
+      Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
     </footer>
   </div>
   );
