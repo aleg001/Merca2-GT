@@ -122,12 +122,12 @@ input {
 }
 
 .btnSignup {
+  color: white;
   padding: 15px 20px;
   font-size: 15px;
   width: 170px;
   justify-content: center;
   align-items: center;
-  color: var(--white);
   background-color: var(--dark);
   border: none;
   font-family: 'Roboto', sans-serif;
