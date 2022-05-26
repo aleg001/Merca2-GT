@@ -18,11 +18,10 @@ const handleItemsHomepage = (setItems) => {
     .catch(error => console.log('error', error));
 }
 
-const Homepage = ({ userName }) => {
+const Homepage = ({ userName, setOnShow }) => {
   const [items, setItems] = React.useState();
   const [idSelectedProduct, setIdSelectedProduct] = React.useState();
   const [selectedProduct, setSelectedProduct] = React.useState(false);
-  const [onShow, setOnShow] = React.useState(0)
 
   useEffect(() => {
     handleItemsHomepage(setItems)

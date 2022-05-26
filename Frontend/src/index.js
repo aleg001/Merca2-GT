@@ -16,10 +16,22 @@ const App = () => {
   const [isLogedIn, setIsLogedIn] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [isAdmin, setIsAdmin] = React.useState(false);
+  const [onShow, setOnShow] = React.useState('home')
+
 
   console.log('regis', isRegis)
   if (isRegis) return <SignIn setIsRegis={setIsRegis} />;
-  if (isLogedIn) return <Homepage userName={username}/>;
+  if (isLogedIn) {
+    if (onShow === 'home') return (
+      <Homepage 
+        userName={username}
+        setOnShow={setOnShow}
+      />
+    )
+
+    // TODO Articulos
+    /// TODO Perfil
+  }
   return (
     <Login
       setIsRegis={setIsRegis}
