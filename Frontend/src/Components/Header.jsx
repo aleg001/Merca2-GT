@@ -1,18 +1,22 @@
-import React from "react";
-import logo from "../images/logo.png";
+import React from 'react'
+import logo from '../images/logo.png'
 
-import "../styles/header.css";
+import '../styles/header.css'
 
 const Header = ({ title, user }) => {
-  user === null ? (user = " ") : "";
+  if (user === undefined) {
+    user = ' '
+  } else {
+    user = 'Bienvenido, ' + user
+  }
 
   return (
     <header>
-      <img src={logo} alt="" />
+      <img src={logo} alt='' />
       <h2>{title}</h2>
-      <h3>{user}</h3>
+      <h3 className='benvenute'>{user}</h3>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
