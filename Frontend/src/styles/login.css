@@ -73,10 +73,10 @@ input {
   padding: 15px;
   margin-top: 26px;
   margin-left: 25px;
-  color: black;
 }
 
 .userInput {
+  color: white;
   font-family: 'Roboto', sans-serif;
   margin-top: 20%;
   display: block;

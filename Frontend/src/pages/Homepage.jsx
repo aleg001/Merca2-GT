@@ -34,7 +34,7 @@ const Homepage = ({ userName, setOnShow }) => {
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} />
-      <AddItemButton></AddItemButton>
+      <AddItemButton setOnShow={setOnShow} />
       <Navbar setOnShow={setOnShow} />
 
       <div className='main-content-login'></div>

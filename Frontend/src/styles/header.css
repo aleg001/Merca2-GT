@@ -7,17 +7,18 @@
 * {
   margin: 0;
   padding: 0;
-  color: white;
 }
 
 body {
-  color: white;
   font-family: Helvetica, Arial, sans-serif;
 
   /* width: 100vw;
   height: 100vh; */
 }
 
+.benvenute {
+  margin-right: 40px;
+}
 /* ------ Barra de Navegacion ------ */
 header {
   width: 100%;
@@ -26,6 +27,7 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
+  color: white;
 }
 
 .Header-logo {
