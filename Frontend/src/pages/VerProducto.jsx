@@ -4,19 +4,20 @@ import Header from '../components/Header.jsx'
 import Navbar from '../Components/navbar.jsx'
 import ItemVerProductos from '../Components/itemVerProductos.jsx'
 
-const handleItemsHomepage = (setItems, id_user, setIdUser1) => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-    }
-  
-    fetch('http://127.0.0.1:8000/getItemsUser', requestOptions, id_user)
-      .then((response) => response.json())
-      .then((result) => {setItems(result.items)
-        setIdUser1(result.id_user)
-        console.log(result)
-    })
-      .catch((error) => console.log('error', error))
+const handleItemsUser = (setItems, id_usuario) => {
+
+  var requestOptions = {
+    method: 'POST',
+    body: JSON.stringify({
+      id_usuario,
+    }),
+    redirect: 'follow'
+  };
+
+  fetch("http://127.0.0.1:8000/getItemsUser", requestOptions)
+    .then(response => response.json())
+    .then(result => setItems(result.items))
+    .catch(error => console.log('Error en handleItemsUser', error));
   }
 
 const VerProducto = ({ userName,setIsRegis, idUser,setOnShow }) => {
@@ -26,7 +27,7 @@ const VerProducto = ({ userName,setIsRegis, idUser,setOnShow }) => {
     const [idUser1, setIdUser1] = React.useState('')
 
    React.useEffect(() => {
-        handleItemsHomepage(setItems, idUser1)
+        handleItemsUser(setItems, idUser1)
       }, [])
     
     return(<>
