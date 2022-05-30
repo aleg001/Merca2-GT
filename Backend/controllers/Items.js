@@ -155,8 +155,7 @@ const getProductPics = (req, res) => {
 
 const getSellerPic = (req, res) => {
   console.log('\n> POST request /getSellerPic with body: ', req.body)
-  const sql = `
-    SELECT profile_pic FROM users WHERE username = '${req.body.id}'`
+  const sql = `SELECT profile_pic FROM users WHERE username = '${req.body.username}'`
 
   const client = new pg.Client(conString)
 
