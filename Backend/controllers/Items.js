@@ -155,14 +155,14 @@ const getProductPics = (req, res) => {
 
 const getSellerPic = (req, res) => {
   console.log('\n> POST request /getSellerPic with body: ', req.body)
-  const sql = `SELECT profile_pic FROM users WHERE username = '${req.body.username}'`
+  const sql2 = `SELECT profile_pic FROM users WHERE username = '${req.body.username}'`
 
   const client = new pg.Client(conString)
 
   client.connect((err) => {
     if (err) return console.error('could not connect to postgres', err)
 
-    client.query(sql, (err, result) => {
+    client.query(sql2, (err, result) => {
       if (err) {
         client.end()
         res.json({ succes: false })
@@ -172,7 +172,7 @@ const getSellerPic = (req, res) => {
       client.end()
       res.json({
         succes: true,
-        user: result.rows,
+        pictures: result.rows,
       })
     })
   })
