@@ -32,6 +32,7 @@ const {
   addItem,
   deleteItem,
   filterItemsCat,
+  getItemsUser,
 } = require("./controllers/Items");
 
 // Server para API

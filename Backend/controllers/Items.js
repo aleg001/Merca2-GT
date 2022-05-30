@@ -48,12 +48,10 @@ const getItems = (req, res) => {
 
 
 const getItemsUser = (req, res, user_id) => {
-  console.log('\n> GET request /getItemsuser')
+  console.log('\n> GET request /getItemsUser')
   const sql = `
     SELECT * FROM item i
-    LEFT JOIN denunciado d ON i.id = d.item_id
-    WHERE d.item_id IS NULL
-    AND i.id_usuario like '${req.body.user_id}'`
+    WHERE i.id_usuario = '${req.body.id_usuario}'`
 
   const client = new pg.Client(conString)
   client.connect((err) => {
@@ -106,7 +104,7 @@ const getSelectedItem = (req, res) => {
 const getSellerName = (req, res) => {
   console.log('\n> POST request /getSellerName with body: ', req.body)
   const sql = `
-    SELECT name, lastname FROM users WHERE username = '${req.body.id}'`
+    SELECT name, lastname FROM users u WHERE u.username = '${req.body.id}'`
 
   const client = new pg.Client(conString)
 
