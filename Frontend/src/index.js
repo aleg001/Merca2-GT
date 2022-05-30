@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn.jsx'
 import DetallesProductos from './pages/detallesProductos.jsx'
 import Login from './pages/Login.jsx'
 import AddProduct from './pages/AddProduct.jsx'
+import VerProducto from './pages/VerProducto.jsx'
 
 import './styles/master.css'
 
@@ -27,6 +28,9 @@ const App = () => {
 
     if (onShow === 'addItem')
       return <AddProduct userName={username} setOnShow={setOnShow} />
+    
+    if (onShow === 'Articulos')
+      return <VerProducto userName={username} setOnShow={setOnShow} />
 
     // TODO Articulos
     /// TODO Perfil

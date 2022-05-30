@@ -15,7 +15,6 @@ const ItemVerProductos = ({
 
   const handleDelete = () => {
     
-
   }
 
   return (
@@ -35,7 +34,7 @@ const ItemVerProductos = ({
         <h6 className="hora_publicacion">{itemPublishDate} </h6>
         {/* <h3 className="hora_publicacion">Publicado el {itemPublishDate[8]}{itemPublishDate[9]}/{itemPublishDate[5]}{itemPublishDate[6]}/{itemPublishDate[0]}{itemPublishDate[1]}{itemPublishDate[2]}{itemPublishDate[3]}</h3> */}
       </div>
-      <button className="btn_delete" onClick={handleDetele()}>x</button>
+      <button className="btn_delete" onClick={() => handleDetele()}>x</button>
     </div>
   );
 };

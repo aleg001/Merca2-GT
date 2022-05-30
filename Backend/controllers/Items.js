@@ -46,6 +46,35 @@ const getItems = (req, res) => {
   })
 }
 
+
+const getItemsUser = (req, res, user_id) => {
+  console.log('\n> GET request /getItemsuser')
+  const sql = `
+    SELECT * FROM item i
+    LEFT JOIN denunciado d ON i.id = d.item_id
+    WHERE d.item_id IS NULL
+    AND i.id_usuario like '${req.body.user_id}'`
+
+  const client = new pg.Client(conString)
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
 const getSelectedItem = (req, res) => {
   console.log('\n> POST request /getSelectedItem with body: ', req.body)
   const sql = `
@@ -186,7 +215,9 @@ const addItem = (req, res) => {
   })
 }
 
-const deleteItem = (req, res) => {
+
+//cambios realizados. Verificar.
+const deleteItem = (req, res, itemId) => {
   console.log('\n> Post request /deleteItem with body:\n', req.body)
   const sql = `
   DELETE FROM item i
@@ -249,4 +280,5 @@ module.exports = {
   getProductPics,
   filterItemsCat,
   getSelectedItem,
+  getItemsUser,
 }

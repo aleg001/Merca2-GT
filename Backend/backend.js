@@ -60,3 +60,4 @@ app.post("/getSellerName", getSellerName);
 app.post("/getProductPics", getProductPics);
 app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
+app.post("/getSelectedItem", getItemsUser);
