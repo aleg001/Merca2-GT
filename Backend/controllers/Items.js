@@ -47,8 +47,8 @@ const getItems = (req, res) => {
 }
 
 
-const getItemsUser = (req, res, user_id) => {
-  console.log('\n> GET request /getItemsUser')
+const getItemsUser = (req, res) => {
+  console.log('\n> POST request /getItemsUser with body: ', req.body)
   const sql = `
     SELECT * FROM item i
     WHERE i.id_usuario = '${req.body.id_usuario}'`
