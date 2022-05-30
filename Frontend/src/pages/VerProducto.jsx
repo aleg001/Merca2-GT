@@ -20,7 +20,7 @@ const handleItemsUser = (setItems, id_usuario) => {
     .catch(error => console.log('Error en handleItemsUser', error));
   }
 
-const handleDeleteItem = (itemId) => {
+const handleDeleteItem = (itemId, setItems) => {
   var requestOptions = {
     method: 'POST',
     body: JSON.stringify({
@@ -31,7 +31,10 @@ const handleDeleteItem = (itemId) => {
 
   fetch("http://127.0.0.1:8000/deleteItem", requestOptions)
     .then(response => response.json())
-    .then(result => console.log(result.succes))
+    .then(result => {
+      console.log(result.succes),
+      setItems([])
+    })
     .catch(error => console.log('Error en handleItemsUser', error));
 }
 
@@ -41,9 +44,7 @@ const VerProducto = ({ userName,setIsRegis, idUser,setOnShow }) => {
     const [selectedProduct, setSelectedProduct] = React.useState(false)
     const [idUser1, setIdUser1] = React.useState('')
 
-   React.useEffect(() => {
-        handleItemsUser(setItems, idUser1)
-      }, [])
+    items.length > 0 && handleItemsUser(setItems, idUser1)
     
     return(<>
        <div className='content'>
