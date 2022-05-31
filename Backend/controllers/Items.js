@@ -51,7 +51,7 @@ const getItemsUser = (req, res) => {
   console.log('\n> POST request /getItemsUser with body: ', req.body)
   const sql = `
     SELECT * FROM item i
-    WHERE i.id_usuario = '${req.body.id_usuario}'`
+    WHERE i.id_usuario LIKE '${req.body.id_usuario}'`
 
   const client = new pg.Client(conString)
   client.connect((err) => {
@@ -71,7 +71,6 @@ const getItemsUser = (req, res) => {
       })
     })
   })
-  console.log(items)
 }
 
 const getSelectedItem = (req, res) => {
@@ -191,7 +190,7 @@ const addItem = (req, res) => {
     '${req.body.categoryId}',
     '${req.body.description}',
     ${req.body.price},
-    '${req.body.username}',
+    '${req.body.id_usuario}',
     '${req.body.ubicacion}',
     CURRENT_TIMESTAMP,
     '${req.body.rating}',

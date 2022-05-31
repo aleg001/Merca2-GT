@@ -7,25 +7,26 @@ import ItemVerProductos from '../Components/itemVerProductos.jsx'
 const handleItemsUser = (setItems, id_usuario) => {
 
   var requestOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
     method: 'POST',
     body: JSON.stringify({
       id_usuario,
     }),
     redirect: 'follow'
   };
+ 
   fetch("http://127.0.0.1:8000/getItemsUser", requestOptions)
     .then(response => response.json())
-    .then (result => {setItems(result.items)
-      console.log(result.items[0].id_usuario)
-      console.log(id_usuario,'aquiii');
-      console.log(id_usuario)
+    .then (result => {
+      setItems(result.items)
     })
   }
 
 
 const VerProducto = ({ userName,setOnShow}) => {
     const [items, setItems] = React.useState()
-  
     React.useEffect(()=>{
       handleItemsUser(setItems,userName)
       },[])

@@ -14,7 +14,7 @@ const handleAddItem = (
   categoryId,
   description,
   price,
-  username,
+  id_usuario,
   ubicacion,
   rating,
   image
@@ -30,7 +30,7 @@ const handleAddItem = (
       categoryId,
       description,
       price,
-      username,
+      id_usuario,
       ubicacion,
       rating,
       image,
@@ -50,7 +50,7 @@ const handleAddItem = (
     })
 }
 
-const AddProduct = ({ setIsRegis, idUser }) => {
+const AddProduct = ({ setIsRegis, userName }) => {
   setDocTitle('Agregar producto')
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
@@ -149,7 +149,7 @@ const AddProduct = ({ setIsRegis, idUser }) => {
             Cat,
             description,
             price,
-            idUser,
+            userName,
             ubication,
             rating(),
             Link
