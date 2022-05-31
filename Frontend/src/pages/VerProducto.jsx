@@ -13,38 +13,22 @@ const handleItemsUser = (setItems, id_usuario) => {
     }),
     redirect: 'follow'
   };
-
   fetch("http://127.0.0.1:8000/getItemsUser", requestOptions)
     .then(response => response.json())
-    .then(result => setItems(result.items))
-    .catch(error => console.log('Error en handleItemsUser', error));
+    .then (result => {setItems(result.items)
+      console.log(result.items[0].id_usuario)
+      console.log(id_usuario,'aquiii');
+      console.log(id_usuario)
+    })
   }
 
-const handleDeleteItem = (itemId, setItems) => {
-  var requestOptions = {
-    method: 'POST',
-    body: JSON.stringify({
-      itemId,
-    }),
-    redirect: 'follow'
-  };
 
-  fetch("http://127.0.0.1:8000/deleteItem", requestOptions)
-    .then(response => response.json())
-    .then(result => {
-      console.log(result.succes),
-      setItems([])
-    })
-    .catch(error => console.log('Error en handleItemsUser', error));
-}
-
-const VerProducto = ({ userName,setIsRegis, idUser,setOnShow }) => {
+const VerProducto = ({ userName,setOnShow}) => {
     const [items, setItems] = React.useState()
-    const [idSelectedProduct, setIdSelectedProduct] = React.useState()
-    const [selectedProduct, setSelectedProduct] = React.useState(false)
-    const [idUser1, setIdUser1] = React.useState('')
-
-    items.length > 0 && handleItemsUser(setItems, idUser1)
+  
+    React.useEffect(()=>{
+      handleItemsUser(setItems,userName)
+      },[])
     
     return(<>
        <div className='content'>
@@ -61,8 +45,7 @@ const VerProducto = ({ userName,setIsRegis, idUser,setOnShow }) => {
               itemImage={item.image}
               key={index}
               itemId={item.id}
-              setIdSelectedProduct={setIdSelectedProduct}
-              setSelectedProduct={setSelectedProduct}
+
             />
           ))}
       </div>

@@ -71,6 +71,7 @@ const getItemsUser = (req, res) => {
       })
     })
   })
+  console.log(items)
 }
 
 const getSelectedItem = (req, res) => {
