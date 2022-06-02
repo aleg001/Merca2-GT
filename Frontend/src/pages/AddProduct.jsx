@@ -14,7 +14,7 @@ const handleAddItem = (
   categoryId,
   description,
   price,
-  username,
+  id_usuario,
   ubicacion,
   rating,
   image
@@ -30,7 +30,7 @@ const handleAddItem = (
       categoryId,
       description,
       price,
-      username,
+      id_usuario,
       ubicacion,
       rating,
       image,

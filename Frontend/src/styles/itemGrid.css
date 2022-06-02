@@ -187,3 +187,11 @@ footer {
 
   background-color: var(--gris-merca2);
 }
+
+.btn_delete{
+  background-color: red;
+  color: white;
+  font-weight: 600;
+  position: absolute;
+  
+}
