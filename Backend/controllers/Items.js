@@ -46,6 +46,33 @@ const getItems = (req, res) => {
   })
 }
 
+
+const getItemsUser = (req, res) => {
+  console.log('\n> POST request /getItemsUser with body: ', req.body)
+  const sql = `
+    SELECT * FROM item i
+    WHERE i.id_usuario LIKE '${req.body.id_usuario}'`
+
+  const client = new pg.Client(conString)
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
 const getSelectedItem = (req, res) => {
   console.log('\n> POST request /getSelectedItem with body: ', req.body)
   const sql = `
@@ -77,7 +104,7 @@ const getSelectedItem = (req, res) => {
 const getSellerName = (req, res) => {
   console.log('\n> POST request /getSellerName with body: ', req.body)
   const sql = `
-    SELECT name, lastname FROM users WHERE username = '${req.body.id}'`
+    SELECT name, lastname FROM users u WHERE u.username = '${req.body.id}'`
 
   const client = new pg.Client(conString)
 
@@ -128,15 +155,17 @@ const getProductPics = (req, res) => {
 
 const getSellerPic = (req, res) => {
   console.log('\n> POST request /getSellerPic with body: ', req.body)
-  const sql = `
-    SELECT profile_pic FROM users WHERE username = '${req.body.id}'`
+  const sql2 = `
+  SELECT profile_pic 
+  FROM users 
+  WHERE username = '${req.body.id_usuario}'`
 
   const client = new pg.Client(conString)
 
   client.connect((err) => {
     if (err) return console.error('could not connect to postgres', err)
 
-    client.query(sql, (err, result) => {
+    client.query(sql2, (err, result) => {
       if (err) {
         client.end()
         res.json({ succes: false })
@@ -146,7 +175,7 @@ const getSellerPic = (req, res) => {
       client.end()
       res.json({
         succes: true,
-        user: result.rows,
+        pictures: result.rows,
       })
     })
   })
@@ -161,7 +190,7 @@ const addItem = (req, res) => {
     '${req.body.categoryId}',
     '${req.body.description}',
     ${req.body.price},
-    '${req.body.username}',
+    '${req.body.id_usuario}',
     '${req.body.ubicacion}',
     CURRENT_TIMESTAMP,
     '${req.body.rating}',
@@ -186,7 +215,9 @@ const addItem = (req, res) => {
   })
 }
 
-const deleteItem = (req, res) => {
+
+//cambios realizados. Verificar.
+const deleteItem = (req, res, itemId) => {
   console.log('\n> Post request /deleteItem with body:\n', req.body)
   const sql = `
   DELETE FROM item i
@@ -249,4 +280,5 @@ module.exports = {
   getProductPics,
   filterItemsCat,
   getSelectedItem,
+  getItemsUser,
 }
