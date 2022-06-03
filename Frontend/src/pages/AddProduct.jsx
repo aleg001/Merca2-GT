@@ -7,6 +7,7 @@ import setDocTitle from '../util/docTitle.js'
 
 import '../styles/login.css'
 import '../styles/SignIn.css'
+import '../styles/categoryInput.css'
 
 const handleAddItem = (
   id,
@@ -78,6 +79,7 @@ const AddProduct = ({ setIsRegis, idUser }) => {
   const [ubication, setubication] = React.useState('')
   const [Link, setLink] = React.useState('')
   const [Cat, setCat] = React.useState('')
+  console.log(Cat)
 
   return (
     <div className='content'>
@@ -99,12 +101,32 @@ const AddProduct = ({ setIsRegis, idUser }) => {
               placeholderText='Precio'
             />
 
-            <TextInput
-              set={setCat}
-              title='Categoría del artículo'
-              className='userInput'
-              placeholderText='Categoría'
-            />
+            <label className="category-label">Ingrese una categoria:</label>
+              <select 
+                onChange={(event) => setCat(event.target.value)}
+                className='category-input'
+              >
+                <option value="1">Vehiculos</option>
+                <option value="2">Alquiler de Propiedades</option>
+                <option value="3">Artiuclos Deportivos</option>
+                <option value="4">Articulos Gratis</option>
+                <option value="5">Articulos para el hogar</option>
+                <option value="6">Clasificados</option>
+                <option value="7">Electrónica</option>
+                <option value="8">Entretenimiento</option>
+                <option value="9">Familia</option>
+                <option value="10">Indumentaria</option>
+                <option value="11">Instrumentos Musicales</option>
+                <option value="12">Jardín y aire libre</option>
+                <option value="13">Juguetes y juegos</option>
+                <option value="14">Materiales para reformas del hogar</option>
+                <option value="15">Pasatiempos</option>
+                <option value="16">Productos para mascotas</option>
+                <option value="17">Suministros de Oficina</option>
+                <option value="18">Viviendas en venta</option>
+                <option value="19">Artículos para intercambio</option>
+                <option value="20">Joyería</option>
+              </select>
 
             <TextInput
               set={setdescription}
