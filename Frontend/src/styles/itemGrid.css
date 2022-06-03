@@ -5,7 +5,7 @@
 }
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: normal;
 }
 
@@ -92,7 +92,7 @@ a {
   height: auto;
   text-decoration: none;
   border-radius: 15px;
-  color:black;
+  color: black;
 
   display: flex;
   flex-direction: column;
@@ -106,9 +106,9 @@ a {
   border-radius: 15px;
 }
 
-.productImage{
-  width:300px;
-  height:400px;
+.productImage {
+  width: 300px;
+  height: 400px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -122,18 +122,24 @@ a {
   gap: 10%;
   text-align: center;
   text-decoration: none;
+  color: black;
 }
 
 .ubicacion {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
+}
+.hora_publicacion {
+  color: black;
 }
 
 .product_price {
   display: flex;
-  justify-content:end;
+  justify-content: end;
   align-items: center;
+  color: black;
 }
 
 .contenidositem_tiemporating {
@@ -142,13 +148,15 @@ a {
   gap: 10%;
   text-align: center;
   text-decoration: none;
+  color: black;
 }
 
 .product_name {
   text-align: center;
   text-decoration: none;
   font-weight: 500;
-  font-size:x-large;
+  font-size: x-large;
+  color: black;
 }
 footer {
   width: 100%;
@@ -180,3 +188,10 @@ footer {
   background-color: var(--gris-merca2);
 }
 
+.btn_delete{
+  background-color: red;
+  color: white;
+  font-weight: 600;
+  position: absolute;
+  
+}

@@ -1,23 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import "../styles/navbar.css";
 
-const Navbar = () => {
+import Perfil from './Perfil.jsx'
+
+const Navbar = ({ setOnShow }) => {
   return (
     <div className="navbar">
-      <ul>
-        <li>
-          <a href="">Home</a>
-        </li>
-        <li>
-          <a href="">Tus Artículos</a>
-        </li>
-        <li>
-          <a href="">Historial</a>
-        </li>
-        <li>
-          <a href="">Perfil</a>
-        </li>
-      </ul>
+      <div>
+        <button 
+          onClick={() => setOnShow('home')}
+        >
+          Comprar
+        </button>
+
+        <button 
+          onClick={() => setOnShow('Articulos')}
+        >
+          Tus Artículos
+        </button>
+        {Perfil &&
+        <button 
+          onClick={() => setOnShow('Perfil')}
+        >
+          Perfil
+        </button>}
+      </div>
     </div>
   );
 };

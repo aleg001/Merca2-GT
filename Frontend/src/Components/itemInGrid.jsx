@@ -6,10 +6,16 @@ const ItemInGrid = ({
   itemLocation,
   itemPrice,
   itemPublishDate,
-  itemImage
+  itemImage,
+  itemId,
+  setIdSelectedProduct,
+  setSelectedProduct
 }) => {
   return (
-    <div className="container_item">
+    <div className="container_item" onClick={()=> {
+      setIdSelectedProduct(itemId),
+      setTimeout(setSelectedProduct(true), 100)
+    }}>
       <figure className="fotositem_portada">
         <img className="productImage" src={itemImage}/>
       </figure>
