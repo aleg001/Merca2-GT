@@ -1,13 +1,13 @@
-# Merca2-GT
+# Merca2-GT 2.0
 Repo del proyecto para Ing. en Software
 
 ## Tecnologias utilizadas
-- React ⚛
-- webpack ⚒
-- nodeJs ⚙ 
-- Express 📡
-- npm 💾
-- Postgres SQL 🐘
+- ⚛ React
+- ⚒ webpack
+- ⚙ nodeJs  
+- 📡 Express
+- 💾 npm
+- 🐘 Postgres SQL
 
 ## Miembros
 - Alejandro Gómez

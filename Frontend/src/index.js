@@ -42,8 +42,8 @@ const App = () => {
       setUsername={setUsername}
       setIsAdmin={setIsAdmin}
     />
-  )
-}
+  );
+};
 
 // Render
 const getRoot = () => document.getElementById('root')
