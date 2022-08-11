@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
-import TextInput from '../components/TextInput.jsx'
-import setDocTitle from '../util/docTitle.js'
-import Header from '../components/Header.jsx'
-import ItemInGrid from '../components/ItemInGrid.jsx'
+import Header from '../Components/Header.jsx'
+import ItemInGrid from '../Components/itemInGrid.jsx'
 import DetallesProductos from './detallesProductos.jsx'
 import Navbar from '../Components/navbar.jsx'
-import AddItemButton from '../components/AddItemButton.jsx'
+import AddItemButton from '../Components/AddItemButton.jsx'
 
 const handleItemsHomepage = (setItems) => {
   const requestOptions = {

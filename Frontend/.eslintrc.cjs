@@ -24,10 +24,10 @@ module.exports = {
     'linebreak-style': 0,
     'import/extensions': [2, {
       jsx: 'always',
+      js: 'always',
     }],
     'react/function-component-definition': [2, {
       namedComponents: 'arrow-function',
-      namedComponents: 'function',
     }],
     'import/no-extraneous-dependencies': [0, {
       devDependencies: ['**/*.prop-types.*'],
@@ -38,5 +38,7 @@ module.exports = {
     'no-console': [1, {
       allow: ['warn', 'error'],
     }],
+    'jsx-quotes': 0,
+    'react/no-array-index-key': 0,
   },
-};
+}
