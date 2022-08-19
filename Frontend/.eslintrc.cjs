@@ -40,5 +40,7 @@ module.exports = {
     }],
     'jsx-quotes': 0,
     'react/no-array-index-key': 0,
+    'react/jsx-boolean-value': 0,
+    'consistent-return': 0,
   },
 }

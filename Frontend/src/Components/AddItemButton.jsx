@@ -1,5 +1,7 @@
 import React from 'react'
-import { BiPlusCircle } from 'react-icons/bi.js'
+import PropTypes from 'prop-types'
+// eslint-disable-next-line import/no-unresolved
+import { BiPlusCircle } from 'react-icons/bi'
 
 export const AddItemButton = ({ setOnShow }) => (
   <div>
@@ -9,5 +11,9 @@ export const AddItemButton = ({ setOnShow }) => (
     />
   </div>
 )
+
+AddItemButton.propTypes = {
+  setOnShow: PropTypes.func.isRequired,
+}
 
 export default AddItemButton

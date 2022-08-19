@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Header from '../Components/Header.jsx'
 import ItemInGrid from '../Components/itemInGrid.jsx'
 import DetallesProductos from './detallesProductos.jsx'
 import Navbar from '../Components/navbar.jsx'
-import AddItemButton from '../Components/AddItemButton.jsx'
+import { AddItemButton } from '../Components/AddItemButton.jsx'
 
 const handleItemsHomepage = (setItems) => {
   const requestOptions = {
@@ -26,8 +27,6 @@ const Homepage = ({ userName, setOnShow }) => {
     handleItemsHomepage(setItems)
   }, [])
 
-  //console.log("dsfds", idSelectedProduct)
-
   if (selectedProduct) return <DetallesProductos id_item={idSelectedProduct} />
   return (
     <div className='content'>
@@ -35,10 +34,11 @@ const Homepage = ({ userName, setOnShow }) => {
       <AddItemButton setOnShow={setOnShow} />
       <Navbar setOnShow={setOnShow} />
 
-      <div className='main-content-login'></div>
+      <div className='main-content-login' />
       <div className='container'>
-        {items &&
-          items.map((item, index) => (
+        {
+          items
+          && items.map((item, index) => (
             <ItemInGrid
               itemName={item.nombre}
               itemLocation={item.ubicacion}
@@ -50,13 +50,19 @@ const Homepage = ({ userName, setOnShow }) => {
               setIdSelectedProduct={setIdSelectedProduct}
               setSelectedProduct={setSelectedProduct}
             />
-          ))}
+          ))
+        }
       </div>
       <footer>
         Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
       </footer>
     </div>
   )
+}
+
+Homepage.propTypes = {
+  userName: PropTypes.string.isRequired,
+  setOnShow: PropTypes.func.isRequired,
 }
 
 export default Homepage
