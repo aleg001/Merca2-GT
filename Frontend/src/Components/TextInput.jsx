@@ -15,7 +15,7 @@ const TextInput = ({
     <h4 className='tituloInput'>{title}</h4>
     <input
       onChange={(event) => set(event.target.value)}
-      type={password ? 'password' : 'text'}
+      type={!password ? 'text' : 'password'}
       value={initValue}
       placeholder={placeholderText}
     />
@@ -34,8 +34,8 @@ TextInput.propTypes = {
 }
 
 TextInput.defaultProps = {
-  initValue: 0,
-  password: 'False',
+  initValue: undefined,
+  password: false,
 }
 
 export default TextInput

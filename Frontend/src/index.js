@@ -18,10 +18,13 @@ const App = () => {
   const [isRegis, setIsRegis] = React.useState(false)
   const [isLogedIn, setIsLogedIn] = React.useState(false)
   const [username, setUsername] = React.useState('')
+  // eslint-disable-next-line no-unused-vars
   const [isAdmin, setIsAdmin] = React.useState(false)
   const [onShow, setOnShow] = React.useState('home')
 
-  console.log('regis', isRegis)
+  console.table('regis', isRegis)
+  console.table('log', isLogedIn)
+  console.table('regis', isRegis)
   if (isRegis) return <SignIn setIsRegis={setIsRegis} />
   if (isLogedIn) {
     if (onShow === 'home') return <Homepage userName={username} setOnShow={setOnShow} />
