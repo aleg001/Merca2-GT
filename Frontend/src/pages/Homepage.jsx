@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
-import TextInput from '../components/TextInput.jsx'
-import setDocTitle from '../util/docTitle.js'
-import Header from '../components/Header.jsx'
-import ItemInGrid from '../components/ItemInGrid.jsx'
+import PropTypes from 'prop-types'
+import Header from '../Components/Header.jsx'
+import ItemInGrid from '../Components/itemInGrid.jsx'
 import DetallesProductos from './detallesProductos.jsx'
 import Navbar from '../Components/navbar.jsx'
-import AddItemButton from '../components/AddItemButton.jsx'
+import { AddItemButton } from '../Components/AddItemButton.jsx'
 
 const handleItemsHomepage = (setItems) => {
   const requestOptions = {
@@ -28,19 +27,21 @@ const Homepage = ({ userName, setOnShow }) => {
     handleItemsHomepage(setItems)
   }, [])
 
-  //console.log("dsfds", idSelectedProduct)
-
-  if (selectedProduct) return <DetallesProductos id_item={idSelectedProduct} />
+  if (selectedProduct) {
+    console.log(idSelectedProduct)
+    return <DetallesProductos idItem={idSelectedProduct} />
+  }
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} />
       <AddItemButton setOnShow={setOnShow} />
       <Navbar setOnShow={setOnShow} />
 
-      <div className='main-content-login'></div>
+      <div className='main-content-login' />
       <div className='container'>
-        {items &&
-          items.map((item, index) => (
+        {
+          items
+          && items.map((item, index) => (
             <ItemInGrid
               itemName={item.nombre}
               itemLocation={item.ubicacion}
@@ -52,13 +53,19 @@ const Homepage = ({ userName, setOnShow }) => {
               setIdSelectedProduct={setIdSelectedProduct}
               setSelectedProduct={setSelectedProduct}
             />
-          ))}
+          ))
+        }
       </div>
       <footer>
         Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
       </footer>
     </div>
   )
+}
+
+Homepage.propTypes = {
+  userName: PropTypes.string.isRequired,
+  setOnShow: PropTypes.func.isRequired,
 }
 
 export default Homepage

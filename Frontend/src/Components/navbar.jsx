@@ -1,32 +1,40 @@
-import React from "react";
-import "../styles/navbar.css";
+import React from 'react'
+import PropTypes from 'prop-types'
+import '../styles/navbar.css'
 
 import Perfil from './Perfil.jsx'
 
-const Navbar = ({ setOnShow }) => {
-  return (
-    <div className="navbar">
-      <div>
-        <button 
-          onClick={() => setOnShow('home')}
-        >
-          Comprar
-        </button>
+const Navbar = ({ setOnShow }) => (
+  <div className='navbar'>
+    <div>
+      <button
+        onClick={() => setOnShow('home')}
+        type='button'
+      >
+        Comprar
+      </button>
 
-        <button 
-          onClick={() => setOnShow('Articulos')}
-        >
-          Tus Artículos
-        </button>
-        {Perfil &&
-        <button 
-          onClick={() => setOnShow('Perfil')}
-        >
-          Perfil
-        </button>}
-      </div>
+      <button
+        onClick={() => setOnShow('Articulos')}
+        type='button'
+      >
+        Tus Artículos
+      </button>
+      {Perfil
+        && (
+          <button
+            onClick={() => setOnShow('Perfil')}
+            type='button'
+          >
+            Perfil
+          </button>
+        )}
     </div>
-  );
-};
+  </div>
+)
 
-export default Navbar;
+Navbar.propTypes = {
+  setOnShow: PropTypes.func.isRequired,
+}
+
+export default Navbar
