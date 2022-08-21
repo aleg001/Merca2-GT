@@ -1,9 +1,13 @@
-import React from "react";
-import Header from "../components/Header.jsx";
-import TextInput from "../components/TextInput.jsx";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react'
+import MD5 from 'crypto-js/md5.js'
+import PropTypes from 'prop-types'
+import Header from '../Components/Header.jsx'
+import TextInput from '../Components/TextInput.jsx'
 
-import MD5 from "../../node_modules/crypto-js/md5.js";
-import setDocTitle from "../util/docTitle.js";
+import setDocTitle from '../util/docTitle.js'
 
 const handleLogin = (
   username,
@@ -11,14 +15,14 @@ const handleLogin = (
   setIsRegis,
   setIsLogedIn,
   setUsername,
-  setIsAdmin
+  setIsAdmin,
 ) => {
-  console.log("llego");
-  fetch("http://127.0.0.1:8000/login", {
+  console.log('llego')
+  fetch('http://127.0.0.1:8000/login', {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify({
       username,
       password: MD5(password).toString(),
@@ -26,93 +30,106 @@ const handleLogin = (
   })
     .then((response) => response.json())
     .then((result) => {
-      if (!result.userExist) return alert("Creedenciales no validos");
+      if (!result.userExist) return alert('Creedenciales no validos')
 
-      const user = result.username[0].username.toString();
-      const admin = result.username[0].administrador;
-      setIsRegis(false);
-      setIsLogedIn(true);
-      setUsername(user);
-      setIsAdmin(admin);
-      fetch("http://127.0.0.1:8000/checkLogin", {
+      const user = result.username[0].username.toString()
+      const admin = result.username[0].administrador
+      setIsRegis(false)
+      setIsLogedIn(true)
+      setUsername(user)
+      setIsAdmin(admin)
+      fetch('http://127.0.0.1:8000/checkLogin', {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           username,
           password: MD5(password).toString(),
         }),
       })
         .then((response) => response.json())
-        .then((result) => {
-          if (!result.success) return alert("Usuario no encontrado");
-          alert("Credenciales correctas!!");
+        .then((result2) => {
+          if (!result2.success) return alert('Usuario no encontrado')
+          return alert('Credenciales correctas!!')
         })
         .catch((error) => {
-          alert("Error de conexion: intente más tarde");
-        });
+          alert('Error de conexion: intente más tarde')
+          console.error(error)
+        })
     })
     .catch((error) => {
-      alert("Error de conexion: intente más tarde");
-    });
-};
+      alert('Error de conexion: intente más tarde')
+      console.error(error)
+    })
+}
 
-const Login = ({ setIsRegis, setIsLogedIn, setUsername, setIsAdmin }) => {
-  setDocTitle("Login");
-  const [usernameL, setUsernameL] = React.useState("");
-  const [passwordL, setPasswordL] = React.useState("");
-  const [isRegistering, setRegistering] = React.useState(false);
+const Login = ({
+  setIsRegis,
+  setIsLogedIn,
+  setUsername,
+  setIsAdmin,
+}) => {
+  setDocTitle('Login')
+  const [usernameL, setUsernameL] = React.useState('')
+  const [passwordL, setPasswordL] = React.useState('')
 
   return (
-    <div className="content">
-      <Header title="Login" />
-      <div className="main-content-login">
+    <div className='content'>
+      <Header title='Login' />
+      <div className='main-content-login'>
         <form>
-          <div className="inputsLogin">
+          <div className='inputsLogin'>
             <TextInput
               set={setUsernameL}
-              title="Ingrese su nombre de Usuario"
-              className="userInput"
-              placeholderText="Usuario"
+              title='Ingrese su nombre de Usuario'
+              className='userInput'
+              placeholderText='Usuario'
             />
             <TextInput
-              placeholderText="Contraseña"
+              placeholderText='Contraseña'
               set={setPasswordL}
-              title="Ingrese su contraseña"
-              className="userInput"
+              title='Ingrese su contraseña'
+              className='userInput'
               password={true}
             />
           </div>
           <button
-            type="button"
-            className="btnLogin"
+            type='button'
+            className='btnLogin'
             onClick={() => {
-              if (usernameL == "" || passwordL == "") {
-                return alert("Llene los campos para continuar");
+              if (usernameL === '' || passwordL === '') {
+                return alert('Llene los campos para continuar')
               }
 
-              handleLogin(
+              return handleLogin(
                 usernameL,
                 passwordL,
                 setIsRegis,
                 setIsLogedIn,
                 setUsername,
-                setIsAdmin
-              );
+                setIsAdmin,
+              )
             }}
           >
             Login
           </button>
           <br />
           <br />
-          <button className="btnSignup">
-            {!isRegistering && <a onClick={() => setIsRegis(true)}>Sign Up</a>}
+          <button className='btnSignup' type='button'>
+            <a onClick={() => setIsRegis(true)}>Sign Up</a>
           </button>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+Login.propTypes = {
+  setIsRegis: PropTypes.func.isRequired,
+  setIsLogedIn: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  setIsAdmin: PropTypes.func.isRequired,
+}
+
+export default Login

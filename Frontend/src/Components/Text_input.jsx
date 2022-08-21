@@ -1,12 +1,10 @@
-import React from 'react';
-import './textin.css';
+import React from 'react'
+import '../styles/textin.css'
 
-const Text =() => {
-  return (
-    <div className="App">
-        <input placeholder="Texto"></input>
-    </div>
-  );
-}
+const Text = () => (
+  <div className="App">
+    <input placeholder="Texto" />
+  </div>
+)
 
-export default Text;
+export default Text
