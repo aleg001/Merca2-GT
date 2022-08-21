@@ -27,7 +27,10 @@ const Homepage = ({ userName, setOnShow }) => {
     handleItemsHomepage(setItems)
   }, [])
 
-  if (selectedProduct) return <DetallesProductos id_item={idSelectedProduct} />
+  if (selectedProduct) {
+    console.log(idSelectedProduct)
+    return <DetallesProductos idItem={idSelectedProduct} />
+  }
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} />

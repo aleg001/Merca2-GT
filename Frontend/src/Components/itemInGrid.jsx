@@ -19,6 +19,7 @@ const ItemInGrid = ({
   <div
     className='container_item'
     onClick={() => {
+      console.log('Click item:', itemId)
       setIdSelectedProduct(itemId)
       setSelectedProduct(true)
     }}
@@ -49,7 +50,7 @@ const ItemInGrid = ({
 ItemInGrid.propTypes = {
   itemName: PropTypes.string.isRequired,
   itemLocation: PropTypes.string.isRequired,
-  itemPrice: PropTypes.string.isRequired,
+  itemPrice: PropTypes.number.isRequired,
   itemPublishDate: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   itemImage: PropTypes.any.isRequired,
