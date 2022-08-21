@@ -33,6 +33,9 @@ const {
   deleteItem,
   filterItemsCat,
   getItemsUser,
+  disableItem,
+  reportItem,
+  getCategoryItems,
 } = require("./controllers/Items");
 
 // Server para API
@@ -62,3 +65,10 @@ app.post("/getProductPics", getProductPics);
 app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
+
+app.post("/disableItem", disableItem);
+app.post("/reportItem", reportItem);
+app.post("/getCategoryItems", getCategoryItems);
+
+
+

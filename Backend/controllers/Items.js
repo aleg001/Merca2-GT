@@ -270,6 +270,84 @@ const filterItemsCat = (req, res) => {
   })
 }
 
+const getCategoryItems = (req, res) => {
+  console.log('\n> POST request /getCatgItems with body: ', req.body)
+  const sql = `
+    SELECT * FROM item i
+    LEFT JOIN denunciado d ON i.id = d.item_id
+    WHERE d.item_id IS null
+    and i.id_cat like '${req.body.id_categoria}'`
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
+const reportItem = (req, res) => {
+  console.log('\n> post request /report item with body:\n', req.body)
+  const sql = `
+  INSERT INTO denuncias 
+  VALUES(
+    '${req.body.denuncianteID}', 
+    '${req.body.denunciadoID}', 
+    '${req.body.itemID}'
+  )`
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if(err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      client.end()
+      if(err){
+        console.error('error running query', err)
+        res.json({ success: false })
+      }
+      res.json({ success: true })
+    })
+  })
+}
+
+const disableItem = (req, res) => {
+  console.log('\n> post request /disable item with body:\n', req.body)
+    const sql = `
+    UPDATE item 
+    SET habilitado = false 
+    WHERE item.id like '${req.body.itemID}'`
+
+    const client = new pg.Client(conString)
+
+    client.connect((err) => {
+      if(err) return console.error('could not connect to postgres', err)
+
+      client.query(sql, (err, result) => {
+        client.end()
+        if(err){
+          console.error('error running query', err)
+          res.json({ success: false })
+        }
+        res.json({ success: true })
+      })
+    })
+  }
+
 // Exports
 module.exports = {
   getItems,
@@ -281,4 +359,7 @@ module.exports = {
   filterItemsCat,
   getSelectedItem,
   getItemsUser,
+  disableItem,
+  reportItem,
+  getCategoryItems,
 }
