@@ -17,12 +17,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 const {
   checkNewUser,
   register,
   login,
   checkLogin,
+  getSellerId,
 } = require("./controllers/Users");
+
 const {
   getItems,
   getSelectedItem,
@@ -39,6 +42,9 @@ const {
   getCategoryItems,
   getCategory,
 } = require("./controllers/Items");
+const {
+  dataVendedor,
+} = require("./controllers/contacto");
 
 // Server para API
 const app = express();
@@ -70,9 +76,13 @@ app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
 app.post("/getCategory", getCategory);
 
+app.post("/getSellerId", getSellerId);
+
 app.post("/disableItem", disableItem);
 app.post("/reportItem", reportItem);
 app.post("/getCategoryItems", getCategoryItems);
 
+// Contacto con vendedor
+app.post("/dataVendedor", dataVendedor);
 
 

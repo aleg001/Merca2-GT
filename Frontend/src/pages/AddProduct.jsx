@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react'
 
@@ -93,7 +94,8 @@ const handleCategory = (setCat) => {
     })
 }
 
-const AddProduct = ({ userName }) => {
+const AddProduct = ({ userName, , setOnShow}) => {
+
   setDocTitle('Agregar producto')
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
@@ -121,7 +123,7 @@ const AddProduct = ({ userName }) => {
 
   return (
     <div className="content">
-      <Header title="Agregar nuevo producto" />
+      <Header title="Agregar nuevo producto" setOnShow={setOnShow} />
       <div className="main-content1">
         <form id="form-singin">
           <div className="formSignIn">

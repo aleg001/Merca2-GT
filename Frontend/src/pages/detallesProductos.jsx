@@ -1,3 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react'
@@ -6,6 +10,16 @@ import PropTypes from 'prop-types'
 import Header from '../Components/Header.jsx'
 
 import '../styles/detallesProducto.css'
+
+const openInNewTab = (name, product) => {
+  // eslint-disable-next-line no-param-reassign
+  const number = '58747112'
+  window.open(
+    `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
+    '_blank',
+    'noopener,noreferrer'
+  )
+}
 
 const handleItems = (setItems, id) => {
   fetch('http://127.0.0.1:8000/getSelectedItem', {
@@ -76,13 +90,52 @@ const handleProductPics = (setProductPics, id) => {
     .catch((error) => console.log('error', error))
 }
 
-const DetallesProductos = ({ idItem }) => {
+const handleReportProduct = (denunciadoID, itemID) => {
+  fetch('http://127.0.0.1:8000/reportItem', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      denunciadoID,
+      itemID,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {})
+    .catch((error) => console.log('error', error))
+}
+
+const handleGetSellerID = (setSellerID, idItem) => {
+  const info = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      idItem,
+    }),
+  }
+
+  // console.log('idItem', idItem)
+  // console.log('sellerID', info)
+
+  fetch('http://127.0.0.1:8000/getSellerId', info)
+    .then((response) => response.json())
+    .then((result) => {
+      handleReportProduct(result.items[0].id_usuario, idItem)
+    })
+    .catch((error) => console.log('error', error))
+}
+
+const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
   const [sellerPic, setSellerPic] = React.useState()
   const [sellerName, setSellerName] = React.useState()
   const [productPics, setProductPics] = React.useState()
   const [sellerLastName, setSellerLastName] = React.useState()
+  const [sellerId, setSellerId] = React.useState()
 
   useEffect(() => {
     handleItems(setItems, idItem)
@@ -105,7 +158,13 @@ const DetallesProductos = ({ idItem }) => {
 
   return (
     <>
-      <Header title='Producto' />
+      <Header
+        title='Producto'
+        setOnShow={(home) => {
+          setSelectedProduct(false)
+          setOnShow(home)
+        }}
+      />
       <div className='content'>
         {items
           && items.map((item, index) => (
@@ -119,6 +178,7 @@ const DetallesProductos = ({ idItem }) => {
                     <div className='seller-name '>
                       <h1 key={index}>
                         {sellerName}
+                        &nbsp;
                         {sellerLastName}
                       </h1>
                     </div>
@@ -127,12 +187,8 @@ const DetallesProductos = ({ idItem }) => {
                       <h3 key={index + 1}>
                         Publicado el
                         {item.post_time[8]}
-                        {item.post_time[9]}
-                        /
-                        {item.post_time[5]}
-                        {item.post_time[6]}
-                        /
-                        {item.post_time[0]}
+                        {item.post_time[9]}/{item.post_time[5]}
+                        {item.post_time[6]}/{item.post_time[0]}
                         {item.post_time[1]}
                         {item.post_time[2]}
                         {item.post_time[3]}
@@ -140,12 +196,33 @@ const DetallesProductos = ({ idItem }) => {
                     </div>
                     <div className='stars'>
                       {/* <!-- Calificación con estrellas --> */}
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9734;</button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9734;
+                      </button>
                     </div>
+                  </div>
+                  <div className='report-functions'>
+                    <button
+                      key={index + 2}
+                      onClick={() => {
+                        alert('Gracias por tu reporte, verificaremos la publicación')
+                        handleGetSellerID(setSellerId, idItem)
+                      }}
+                      className='btnReport'
+                      type='button'
+                    />
                   </div>
                 </div>
                 <div className='product-info'>
@@ -185,10 +262,14 @@ const DetallesProductos = ({ idItem }) => {
                   </div>
                 </div>
                 <div className='contact'>
-                  {/* <!-- Contacto --> */}
-                  <a href='./' className='myButton'>
+                  <button
+                    key={index + 2}
+                    className='myButton1'
+                    onClick={() => openInNewTab(sellerName, item.nombre)}
+                    type='button'
+                  >
                     Contactar
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -202,6 +283,8 @@ const DetallesProductos = ({ idItem }) => {
 // Props Validation
 DetallesProductos.propTypes = {
   idItem: PropTypes.string.isRequired,
+  setOnShow: PropTypes.func.isRequired,
+  setSelectedProduct: PropTypes.func.isRequired,
 }
 
 export default DetallesProductos

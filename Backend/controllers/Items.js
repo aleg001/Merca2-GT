@@ -22,8 +22,7 @@ const getItems = (req, res) => {
   console.log('\n> GET request /getItems')
   const sql = `
     SELECT * FROM item i
-    LEFT JOIN denunciado d ON i.id = d.item_id
-    WHERE d.item_id IS NULL`
+    where habilitado = true`
 
   const client = new pg.Client(conString)
 
@@ -356,7 +355,6 @@ const reportItem = (req, res) => {
   const sql = `
   INSERT INTO denuncias 
   VALUES(
-    '${req.body.denuncianteID}', 
     '${req.body.denunciadoID}', 
     '${req.body.itemID}'
   )`

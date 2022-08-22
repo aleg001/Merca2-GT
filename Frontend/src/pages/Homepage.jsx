@@ -76,11 +76,20 @@ const Homepage = ({ userName, setOnShow }) => {
       handleItemsHomepage(setItems)
     }
   }, [Cat1])
-
-  if (selectedProduct) return <DetallesProductos idItem={idSelectedProduct} />
+  
+  if (selectedProduct) {
+    return (
+      <DetallesProductos
+        idItem={idSelectedProduct}
+        setOnShow={setOnShow}
+        setSelectedProduct={setSelectedProduct}
+      />
+    )
+  }
+  
   return (
     <div className='content'>
-      <Header title='Homepage' user={userName} />
+      <Header title='Homepage' user={userName} setOnShow={setOnShow} />
       <AddItemButton setOnShow={setOnShow} />
       <Navbar setOnShow={setOnShow} Cat={Cat} cat1={setCat1}/>
 
