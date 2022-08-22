@@ -72,6 +72,7 @@ const Homepage = ({ userName, setOnShow }) => {
       handleCategoryItems(setItems, Cat1)
       console.log(Cat1, ' cat1')
     }
+
     if (Cat1 === 'cat_prueba') {
       handleItemsHomepage(setItems)
     }
@@ -90,6 +91,7 @@ const Homepage = ({ userName, setOnShow }) => {
     <div className='content'>
       <Header title='Homepage' user={userName} setOnShow={setOnShow} />
       <AddItemButton setOnShow={setOnShow} />
+
       <Navbar setOnShow={setOnShow} Cat={Cat} cat1={setCat1} />
 
       <div className='main-content-login' />

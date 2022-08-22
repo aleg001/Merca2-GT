@@ -91,7 +91,9 @@ const handleCategory = (setCat) => {
     })
 }
 
+
 const AddProduct = ({ userName }) => {
+
   setDocTitle('Agregar producto')
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
@@ -177,7 +179,7 @@ const AddProduct = ({ userName }) => {
           if (
             [productName, Cat, description, price, ubication, Link].includes('')
           ) return alert('Llene los campos para ingresar su producto')
-
+          
           return handleAddItem(
             randomID(),
             productName,
@@ -188,7 +190,8 @@ const AddProduct = ({ userName }) => {
             ubication,
             rating(),
             Link,
-          )
+          ) 
+          
         }}
       >
         Agregar producto
