@@ -17,15 +17,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 const {
   checkNewUser,
   register,
   login,
   checkLogin,
+  getSellerId,
 } = require("./controllers/Users");
+
 const {
   getItems,
   getSelectedItem,
+  addItemPartes,
   getSellerName,
   getProductPics,
   getSellerPic,
@@ -33,7 +37,14 @@ const {
   deleteItem,
   filterItemsCat,
   getItemsUser,
+  disableItem,
+  reportItem,
+  getCategoryItems,
+  getCategory,
 } = require("./controllers/Items");
+const {
+  dataVendedor,
+} = require("./controllers/contacto");
 
 // Server para API
 const app = express();
@@ -55,6 +66,7 @@ app.post("/checkLogin", checkLogin);
 // Manejo de items
 app.post("/addItem", addItem);
 app.get("/getItems", getItems);
+app.post("/addItemPartes", addItemPartes);
 app.post("/deleteItem", deleteItem);
 app.post("/getSellerPic", getSellerPic);
 app.post("/getSellerName", getSellerName);
@@ -62,3 +74,15 @@ app.post("/getProductPics", getProductPics);
 app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
+app.post("/getCategory", getCategory);
+
+app.post("/getSellerId", getSellerId);
+
+app.post("/disableItem", disableItem);
+app.post("/reportItem", reportItem);
+app.post("/getCategoryItems", getCategoryItems);
+
+// Contacto con vendedor
+app.post("/dataVendedor", dataVendedor);
+
+

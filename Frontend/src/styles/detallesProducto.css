@@ -70,7 +70,7 @@ body {
   display: grid;
   grid-area: info-seller;
   align-items: center;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 2fr 1fr;
   font-size: 11px;
   color: black;
 }
@@ -81,10 +81,26 @@ body {
   color: black;
 }
 
+.btnReport {
+  height: 30px;
+  width: 30px;
+  margin-left: 115px;
+  margin-bottom: 55px;
+  background: url(http://cdn.onlinewebfonts.com/svg/img_331995.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+}
+
 .seller-info > .profile-pic {
   display: flex;
   justify-content: center;
   color: black;
+}
+
+.seller-info > .report-function {
+  display: flex;
+  justify-content: center;
 }
 
 .seller-name a {
@@ -262,7 +278,25 @@ body {
 .myButton:hover {
   background-color: #03a5ad;
 }
-
+.myButton1 {
+  background-color: #00c2cb;
+  border-radius: 20px;
+  display: flex;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 3em;
+  justify-content: center;
+  text-decoration: none;
+  text-shadow: 0px 0px 0px #018b92;
+}
+.myButton1:hover {
+  background-color: #03a5ad;
+}
 /* Fin footer producto*/
 
 /* Cuando la pantalla sea menor a 1024 px */

@@ -32,6 +32,15 @@
   background-color: rgb(191, 191, 191);
 }
 
+.navbar select {
+  background-color: var(--gris-merca2);
+  border:none;
+}
+
+.navbar select:hover {
+  background-color: rgb(191, 191, 191);
+}
+
 /* ----------------------- colors and styles -------------------------*/
 .btn--light--solid {
   background-color: var(--light);
