@@ -193,7 +193,8 @@ const addItem = (req, res) => {
     '${req.body.ubicacion}',
     CURRENT_TIMESTAMP,
     '${req.body.rating}',
-    '${req.body.image}'
+    '${req.body.image}',
+    true
   )`
 
   const client = new pg.Client(conString)

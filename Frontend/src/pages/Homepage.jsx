@@ -43,7 +43,7 @@ const handleCategoryItems = (setItems, id_cat) => {
     },
     method: 'POST',
     body: JSON.stringify({
-      id_cat
+      id_cat,
     }),
     redirect: 'follow',
   }
@@ -71,12 +71,13 @@ const Homepage = ({ userName, setOnShow }) => {
     if (Cat1 != '') {
       handleCategoryItems(setItems, Cat1)
       console.log(Cat1, ' cat1')
-    } 
+    }
+
     if (Cat1 === 'cat_prueba') {
       handleItemsHomepage(setItems)
     }
   }, [Cat1])
-  
+
   if (selectedProduct) {
     return (
       <DetallesProductos
@@ -86,12 +87,12 @@ const Homepage = ({ userName, setOnShow }) => {
       />
     )
   }
-  
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} setOnShow={setOnShow} />
       <AddItemButton setOnShow={setOnShow} />
-      <Navbar setOnShow={setOnShow} Cat={Cat} cat1={setCat1}/>
+
+      <Navbar setOnShow={setOnShow} Cat={Cat} cat1={setCat1} />
 
       <div className='main-content-login' />
       <div className='container'>

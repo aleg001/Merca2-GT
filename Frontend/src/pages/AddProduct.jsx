@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react'
@@ -86,15 +87,12 @@ const handleCategory = (setCat) => {
     .then(response => response.json())
     .then(result => {
       const categories = result.user
-      let allCategories = []
-      categories.map((cat)=>{
-        allCategories.push(cat.nombre_cat)
-      })
       setCat(categories)
     })
 }
 
-const AddProduct = ({ userName, , setOnShow}) => {
+
+const AddProduct = ({ userName }) => {
 
   setDocTitle('Agregar producto')
   // Estructura de tabla:
