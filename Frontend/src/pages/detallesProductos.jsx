@@ -14,7 +14,7 @@ const openInNewTab = (name, product) => {
   window.open(
     `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
     '_blank',
-    'noopener,noreferrer',
+    'noopener,noreferrer'
   )
 }
 
@@ -130,7 +130,7 @@ const DetallesProductos = ({ idItem }) => {
                     <div className='seller-name '>
                       <h1 key={index}>
                         {sellerName}
-                        ‎
+                        &nbsp;
                         {sellerLastName}
                       </h1>
                     </div>
