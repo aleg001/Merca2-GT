@@ -114,9 +114,7 @@ const SignIn = ({ setIsRegis }) => {
                 setGender(event.target.value)
               }}
             >
-              <option value='' disabled>
-                Género
-              </option>
+              <option value='' selected> Género </option>
               <option value='1'>Masculino</option>
               <option value='2'>Femenino</option>
               <option value='3'>Otro</option>
@@ -128,7 +126,7 @@ const SignIn = ({ setIsRegis }) => {
         type='button'
         className='btnLogin'
         onClick={() => {
-          if ([username, email, password].includes('')) {
+          if ([username, email, password, gender].includes('')) {
             return alert('Llene los campos para continuar')
           }
 
