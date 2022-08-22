@@ -130,6 +130,7 @@ const DetallesProductos = ({ idItem }) => {
                     <div className='seller-name '>
                       <h1 key={index}>
                         {sellerName}
+                        ‎
                         {sellerLastName}
                       </h1>
                     </div>
