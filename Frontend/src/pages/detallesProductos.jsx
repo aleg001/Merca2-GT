@@ -1,8 +1,22 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react'
-import Header from '../components/Header.jsx'
-import Footer from '../components/footer.jsx'
+import PropTypes from 'prop-types'
+
+import Header from '../Components/Header.jsx'
 
 import '../styles/detallesProducto.css'
+
+const openInNewTab = (name, product) => {
+  // eslint-disable-next-line no-param-reassign
+  const number = '58747112'
+  window.open(
+    `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
+    '_blank',
+    'noopener,noreferrer',
+  )
+}
 
 const handleItems = (setItems, id) => {
   fetch('http://127.0.0.1:8000/getSelectedItem', {
@@ -73,6 +87,7 @@ const handleProductPics = (setProductPics, id) => {
     .catch((error) => console.log('error', error))
 }
 
+
 const handleGetSellerID = (setSellerID, id_item) => {
   const info = {
     headers: {
@@ -95,7 +110,10 @@ const handleGetSellerID = (setSellerID, id_item) => {
     .catch((error) => console.log('error', error))
 }
 
-const DetallesProductos = ({ id_item }) => {
+
+
+const DetallesProductos = ({ idItem }) => {
+
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
   const [sellerPic, setSellerPic] = React.useState()
@@ -105,24 +123,26 @@ const DetallesProductos = ({ id_item }) => {
   const [sellerId, setSellerId] = React.useState()
 
   useEffect(() => {
-    handleItems(setItems, id_item)
+    handleItems(setItems, idItem)
   }, [])
 
   useEffect(() => {
-    items &&
-      items.map((item) => {
-        handleSellerPic(setSellerPic, item.id_usuario)
-        handleSellerName(setSellerName, setSellerLastName, item.id_usuario)
-        handleProductPics(setProductPics, id_item)
-      })
+    if (!items) return
+    // eslint-disable-next-line array-callback-return
+    items.map((item) => {
+      handleSellerPic(setSellerPic, item.id_usuario)
+      handleSellerName(setSellerName, setSellerLastName, item.id_usuario)
+      handleProductPics(setProductPics, idItem)
+    })
   }, [items])
 
   useEffect(() => {
-    productPics && setMainPic(productPics[0].imagen)
+    if (!productPics) return
+    setMainPic(productPics[0].imagen)
   }, [productPics])
 
   return (
-    <React.Fragment>
+    <>
       <Header title='Producto' />
       <div className='content'>
         {items &&
@@ -131,18 +151,20 @@ const DetallesProductos = ({ id_item }) => {
               <div className='main-grid'>
                 <div className='seller-info'>
                   <div className='profile-pic'>
-                    <img id='img_profile' src={sellerPic} />
+                    <img id='img_profile' src={sellerPic} alt='' />
                   </div>
                   <div className='seller-data'>
                     <div className='seller-name '>
                       <h1 key={index}>
-                        {sellerName} {sellerLastName}
+                        {sellerName}
+                        {sellerLastName}
                       </h1>
                     </div>
                     <div className='publication-time'>
                       {/* <!-- Hora de publicación --> */}
                       <h3 key={index + 1}>
-                        Publicado el {item.post_time[8]}
+                        Publicado el
+                        {item.post_time[8]}
                         {item.post_time[9]}/{item.post_time[5]}
                         {item.post_time[6]}/{item.post_time[0]}
                         {item.post_time[1]}
@@ -152,11 +174,21 @@ const DetallesProductos = ({ id_item }) => {
                     </div>
                     <div className='stars'>
                       {/* <!-- Calificación con estrellas --> */}
-                      <button className='star'>&#9733;</button>
-                      <button className='star'>&#9733;</button>
-                      <button className='star'>&#9733;</button>
-                      <button className='star'>&#9733;</button>
-                      <button className='star'>&#9734;</button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9734;
+                      </button>
                     </div>
                   </div>
                   <div className='report-functions'>
@@ -173,7 +205,7 @@ const DetallesProductos = ({ id_item }) => {
                   </div>
                   <div className='imagenesProducto'>
                     {/* <!-- Imágen de producto --> */}
-                    <img className='mainPic' src={mainPic} />
+                    <img className='mainPic' src={mainPic} alt='' />
                     <div className='all-pictures'>
                       {productPics &&
                         productPics.map((pic, index2) => (
@@ -192,7 +224,10 @@ const DetallesProductos = ({ id_item }) => {
                   <div className='product-details'>
                     <div className='price'>
                       {/* <!-- Precio --> */}
-                      <h3 key={index + 3}>Q. {item.precio}</h3>
+                      <h3 key={index + 3}>
+                        Q.
+                        {item.precio}
+                      </h3>
                     </div>
                     <div className='description'>
                       <p key={index + 4}>{item.descripcion}</p>
@@ -200,18 +235,26 @@ const DetallesProductos = ({ id_item }) => {
                   </div>
                 </div>
                 <div className='contact'>
-                  {/* <!-- Contacto --> */}
-                  <a href='#' className='myButton'>
+                  <button
+                    key={index + 2}
+                    className='myButton1'
+                    onClick={() => openInNewTab(sellerName, item.nombre)}
+                  >
                     Contactar
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
           ))}
       </div>
       {/* <Footer/> */}
-    </React.Fragment>
+    </>
   )
+}
+
+// Props Validation
+DetallesProductos.propTypes = {
+  idItem: PropTypes.string.isRequired,
 }
 
 export default DetallesProductos

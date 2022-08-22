@@ -36,7 +36,13 @@ const {
   deleteItem,
   filterItemsCat,
   getItemsUser,
+  disableItem,
+  reportItem,
+  getCategoryItems,
 } = require("./controllers/Items");
+const {
+  dataVendedor,
+} = require("./controllers/contacto");
 
 // Server para API
 const app = express();
@@ -65,4 +71,14 @@ app.post("/getProductPics", getProductPics);
 app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
+
 app.post("/getSellerId", getSellerId);
+
+app.post("/disableItem", disableItem);
+app.post("/reportItem", reportItem);
+app.post("/getCategoryItems", getCategoryItems);
+
+// Contacto con vendedor
+app.post("/dataVendedor", dataVendedor);
+
+

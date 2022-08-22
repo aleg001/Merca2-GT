@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import "../styles/login.css";
+import '../styles/login.css'
 
 const TextInput = ({
   className,
@@ -9,22 +10,32 @@ const TextInput = ({
   password,
   set,
   placeholderText,
-}) => {
-  password == null || password === false
-    ? (password = "text")
-    : (password = "password");
+}) => (
+  <div className={className}>
+    <h4 className='tituloInput'>{title}</h4>
+    <input
+      onChange={(event) => set(event.target.value)}
+      type={!password ? 'text' : 'password'}
+      value={initValue}
+      placeholder={placeholderText}
+    />
+  </div>
+)
 
-  return (
-    <div className={className}>
-      <h4 className="tituloInput">{title}</h4>
-      <input
-        onChange={(event) => set(event.target.value)}
-        type={password}
-        value={initValue}
-        placeholder={placeholderText}
-      />
-    </div>
-  );
-};
+TextInput.propTypes = {
+  className: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  initValue: PropTypes.any,
+  title: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  password: PropTypes.any,
+  set: PropTypes.func.isRequired,
+  placeholderText: PropTypes.string.isRequired,
+}
 
-export default TextInput;
+TextInput.defaultProps = {
+  initValue: undefined,
+  password: false,
+}
+
+export default TextInput
