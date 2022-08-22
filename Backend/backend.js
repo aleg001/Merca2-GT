@@ -29,6 +29,7 @@ const {
 const {
   getItems,
   getSelectedItem,
+  addItemPartes,
   getSellerName,
   getProductPics,
   getSellerPic,
@@ -39,6 +40,7 @@ const {
   disableItem,
   reportItem,
   getCategoryItems,
+  getCategory,
 } = require("./controllers/Items");
 const {
   dataVendedor,
@@ -64,6 +66,7 @@ app.post("/checkLogin", checkLogin);
 // Manejo de items
 app.post("/addItem", addItem);
 app.get("/getItems", getItems);
+app.post("/addItemPartes", addItemPartes);
 app.post("/deleteItem", deleteItem);
 app.post("/getSellerPic", getSellerPic);
 app.post("/getSellerName", getSellerName);
@@ -71,6 +74,7 @@ app.post("/getProductPics", getProductPics);
 app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
+app.post("/getCategory", getCategory);
 
 app.post("/getSellerId", getSellerId);
 
