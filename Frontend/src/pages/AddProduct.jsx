@@ -61,7 +61,12 @@ const handleCategory = (setCat) => {
   fetch('http://127.0.0.1:8000/getCategory', requestOptions)
     .then(response => response.json())
     .then(result => {
-      setCat(result.user)
+      const categories = result.user
+      let allCategories = []
+      categories.map((cat)=>{
+        allCategories.push(cat.nombre_cat)
+      })
+      setCat(categories)
     })
 }
 
@@ -84,7 +89,8 @@ const AddProduct = ({ userName }) => {
   const [price, setprice] = React.useState('')
   const [ubication, setubication] = React.useState('')
   const [Link, setLink] = React.useState('')
-  const [Cat, setCat] = React.useState('')
+  const [Cat, setCat] = React.useState([])
+  const [Cat1, setCat1] = React.useState('')
 
   useEffect(() => {
     handleCategory(setCat)
@@ -112,7 +118,7 @@ const AddProduct = ({ userName }) => {
 
             <label className="category-label">Ingrese una categoria:</label>
             <select
-              onChange={(event) => setCat(event.target.value)}
+              onChange={(event) => setCat1(event.target.value)}
               className="category-input"
             >
               {Cat && Cat.map((option, index) => (
@@ -154,7 +160,7 @@ const AddProduct = ({ userName }) => {
           return handleAddItem(
             randomID(),
             productName,
-            Cat,
+            Cat1,
             description,
             price,
             userName,
