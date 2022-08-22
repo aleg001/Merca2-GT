@@ -121,10 +121,42 @@ const checkLogin =  (req, res) => {
   })
 }
 
+
+const getSellerId = (req, res) => {
+  console.log('\n> POST request /getSellerId with body: ', req.body)
+  const sql = `
+      SELECT id_usuario FROM item i
+      WHERE i.id like '${req.body.id_item}'
+      LIMIT 1`
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
+
+
 // Exports
 module.exports = {
   checkNewUser,
   register,
   login,
-  checkLogin
+  checkLogin,
+  getSellerId,
 }

@@ -30,7 +30,10 @@ const Homepage = ({ userName, setOnShow }) => {
 
   //console.log("dsfds", idSelectedProduct)
 
-  if (selectedProduct) return <DetallesProductos id_item={idSelectedProduct} />
+  if (selectedProduct) {
+    console.log('from homepage', idSelectedProduct)
+    return <DetallesProductos id_item={idSelectedProduct} />
+  }
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} />

@@ -73,6 +73,28 @@ const handleProductPics = (setProductPics, id) => {
     .catch((error) => console.log('error', error))
 }
 
+const handleGetSellerID = (setSellerID, id_item) => {
+  const info = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      id_item,
+    }),
+  }
+
+  console.log('id_item', id_item)
+  console.log('sellerID', info)
+
+  fetch('http://127.0.0.1:8000/getSellerId', info)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result)
+    })
+    .catch((error) => console.log('error', error))
+}
+
 const DetallesProductos = ({ id_item }) => {
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
@@ -80,6 +102,7 @@ const DetallesProductos = ({ id_item }) => {
   const [sellerName, setSellerName] = React.useState()
   const [productPics, setProductPics] = React.useState()
   const [sellerLastName, setSellerLastName] = React.useState()
+  const [sellerId, setSellerId] = React.useState()
 
   useEffect(() => {
     handleItems(setItems, id_item)
@@ -135,6 +158,12 @@ const DetallesProductos = ({ id_item }) => {
                       <button className='star'>&#9733;</button>
                       <button className='star'>&#9734;</button>
                     </div>
+                  </div>
+                  <div className='report-functions'>
+                    <button key={index + 2} onClick={() => {
+                      alert('Gracias por tu reporte, verificaremos la publicación')
+                      handleGetSellerID(setSellerId, id_item)
+                    }} className='btnReport'/>
                   </div>
                 </div>
                 <div className='product-info'>
