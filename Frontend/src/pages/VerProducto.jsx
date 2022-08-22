@@ -32,7 +32,7 @@ const VerProducto = ({ userName, setOnShow }) => {
 
   return (
     <div className='content'>
-      <Header title='Mis productos' user={userName} />
+      <Header title='Mis productos' user={userName} setOnShow={setOnShow} />
       <Navbar setOnShow={setOnShow} />
       <div className='container'>
         {items

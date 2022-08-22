@@ -70,7 +70,7 @@ body {
   display: grid;
   grid-area: info-seller;
   align-items: center;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 2fr 1fr;
   font-size: 11px;
   color: black;
 }
@@ -81,10 +81,26 @@ body {
   color: black;
 }
 
+.btnReport {
+  height: 30px;
+  width: 30px;
+  margin-left: 115px;
+  margin-bottom: 55px;
+  background: url(http://cdn.onlinewebfonts.com/svg/img_331995.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+}
+
 .seller-info > .profile-pic {
   display: flex;
   justify-content: center;
   color: black;
+}
+
+.seller-info > .report-function {
+  display: flex;
+  justify-content: center;
 }
 
 .seller-name a {

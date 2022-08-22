@@ -27,13 +27,15 @@ const Homepage = ({ userName, setOnShow }) => {
     handleItemsHomepage(setItems)
   }, [])
 
+  // console.log("dsfds", idSelectedProduct)
+
   if (selectedProduct) {
     console.log(idSelectedProduct)
-    return <DetallesProductos idItem={idSelectedProduct} />
+    return <DetallesProductos idItem={idSelectedProduct} setOnShow={setOnShow} />
   }
   return (
     <div className='content'>
-      <Header title='Homepage' user={userName} />
+      <Header title='Homepage' user={userName} setOnShow={setOnShow} />
       <AddItemButton setOnShow={setOnShow} />
       <Navbar setOnShow={setOnShow} />
 
