@@ -1,6 +1,7 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 import Header from '../Components/Header.jsx'
@@ -42,13 +43,55 @@ const handleAddItem = (
   })
     .then((response) => response.json())
     .then((result) => {
+      if (result.succes) handleAddItemPartes(id, image)
       if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
 
       return alert('Se añadió el producto con exito!!')
     })
 }
 
-const AddProduct = ({ userName, setOnShow }) => {
+const handleAddItemPartes = (
+  id_item,
+  imagen,
+) => {
+  fetch('http://127.0.0.1:8000/addItemPartes', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      id_item,
+      imagen,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
+
+      return alert('Se añadió el producto con exito!!')
+    })
+}
+
+const handleCategory = (setCat) => {
+  const requestOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+    }),
+    redirect: 'follow',
+  }
+
+  fetch('http://127.0.0.1:8000/getCategory', requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      const categories = result.user
+      setCat(categories)
+    })
+}
+
+const AddProduct = ({ userName }) => {
   setDocTitle('Agregar producto')
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
@@ -67,8 +110,12 @@ const AddProduct = ({ userName, setOnShow }) => {
   const [price, setprice] = React.useState('')
   const [ubication, setubication] = React.useState('')
   const [Link, setLink] = React.useState('')
-  const [Cat, setCat] = React.useState('')
-  console.log(Cat)
+  const [Cat, setCat] = React.useState([])
+  const [Cat1, setCat1] = React.useState('')
+
+  useEffect(() => {
+    handleCategory(setCat)
+  }, [])
 
   return (
     <div className="content">
@@ -92,29 +139,12 @@ const AddProduct = ({ userName, setOnShow }) => {
 
             <label className="category-label">Ingrese una categoria:</label>
             <select
-              onChange={(event) => setCat(event.target.value)}
+              onChange={(event) => setCat1(event.target.value)}
               className="category-input"
             >
-              <option value="1">Vehiculos</option>
-              <option value="2">Alquiler de Propiedades</option>
-              <option value="3">Artiuclos Deportivos</option>
-              <option value="4">Articulos Gratis</option>
-              <option value="5">Articulos para el hogar</option>
-              <option value="6">Clasificados</option>
-              <option value="7">Electrónica</option>
-              <option value="8">Entretenimiento</option>
-              <option value="9">Familia</option>
-              <option value="10">Indumentaria</option>
-              <option value="11">Instrumentos Musicales</option>
-              <option value="12">Jardín y aire libre</option>
-              <option value="13">Juguetes y juegos</option>
-              <option value="14">Materiales para reformas del hogar</option>
-              <option value="15">Pasatiempos</option>
-              <option value="16">Productos para mascotas</option>
-              <option value="17">Suministros de Oficina</option>
-              <option value="18">Viviendas en venta</option>
-              <option value="19">Artículos para intercambio</option>
-              <option value="20">Joyería</option>
+              {Cat && Cat.map((option, index) => (
+                <option key={index} value={option.id}>{option.nombre_cat}</option>
+              ))}
             </select>
 
             <TextInput
@@ -151,7 +181,7 @@ const AddProduct = ({ userName, setOnShow }) => {
           return handleAddItem(
             randomID(),
             productName,
-            Cat,
+            Cat1,
             description,
             price,
             userName,
