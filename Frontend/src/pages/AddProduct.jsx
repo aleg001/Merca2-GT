@@ -47,6 +47,28 @@ const handleAddItem = (
     })
 }
 
+const handleAddItemPartes = (
+  id_item,
+  imagen,
+) => {
+  fetch('http://127.0.0.1:8000/addItemPartes', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      id_item,
+      imagen,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
+
+      return alert('Se añadió el producto con exito!!')
+    })
+}
+
 const handleCategory = (setCat) => {
   const requestOptions = {
     headers: {
@@ -156,7 +178,9 @@ const AddProduct = ({ userName }) => {
           if (
             [productName, Cat, description, price, ubication, Link].includes('')
           ) return alert('Llene los campos para ingresar su producto')
-
+          
+          handleAddItemPartes(randomID(),Link)
+          
           return handleAddItem(
             randomID(),
             productName,
@@ -167,7 +191,8 @@ const AddProduct = ({ userName }) => {
             ubication,
             rating(),
             Link,
-          )
+          ) 
+          
         }}
       >
         Agregar producto

@@ -26,6 +26,7 @@ const {
 const {
   getItems,
   getSelectedItem,
+  addItemPartes,
   getSellerName,
   getProductPics,
   getSellerPic,
@@ -59,6 +60,7 @@ app.post("/checkLogin", checkLogin);
 // Manejo de items
 app.post("/addItem", addItem);
 app.get("/getItems", getItems);
+app.post("/addItemPartes", addItemPartes);
 app.post("/deleteItem", deleteItem);
 app.post("/getSellerPic", getSellerPic);
 app.post("/getSellerName", getSellerName);

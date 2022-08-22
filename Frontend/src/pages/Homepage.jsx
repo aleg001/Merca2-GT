@@ -36,9 +36,29 @@ const handleCategory = (setCat) => {
     })
 }
 
+const handleCategoryItems = (setItems, id_cat) => {
+  const requestOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      id_cat
+    }),
+    redirect: 'follow',
+  }
+
+  fetch('http://127.0.0.1:8000/getCategoryItems', requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      setItems(result.items)
+    })
+}
+
 const Homepage = ({ userName, setOnShow }) => {
   const [items, setItems] = React.useState()
-  const [Cat, setCat] = React.useState('')
+  const [Cat, setCat] = React.useState([])
+  const [Cat1, setCat1] = React.useState('')
   const [idSelectedProduct, setIdSelectedProduct] = React.useState()
   const [selectedProduct, setSelectedProduct] = React.useState(false)
 
@@ -47,15 +67,21 @@ const Homepage = ({ userName, setOnShow }) => {
     handleCategory(setCat)
   }, [])
 
-  if (selectedProduct) {
-    console.log(idSelectedProduct)
-    return <DetallesProductos idItem={idSelectedProduct} />
-  }
+  useEffect(() => {
+    if (Cat1 != '') {
+      handleCategoryItems(setItems, Cat1)
+    } if (Cat1 == 'Seleccione una categoria') {
+      handleItemsHomepage(setItems)
+      handleCategory(setCat)
+    }
+  }, [Cat1])
+
+  if (selectedProduct) return <DetallesProductos idItem={idSelectedProduct} />
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} />
       <AddItemButton setOnShow={setOnShow} />
-      <Navbar setOnShow={setOnShow} Cat={Cat} />
+      <Navbar setOnShow={setOnShow} Cat={Cat} cat1={setCat1}/>
 
       <div className='main-content-login' />
       <div className='container'>

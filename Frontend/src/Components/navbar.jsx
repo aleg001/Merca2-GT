@@ -5,7 +5,7 @@ import '../styles/navbar.css'
 
 import Perfil from './Perfil.jsx'
 
-const Navbar = ({ setOnShow, Cat }) => (
+const Navbar = ({ setOnShow, Cat, cat1 }) => (
   <div className='navbar'>
     <div>
       <button
@@ -31,7 +31,7 @@ const Navbar = ({ setOnShow, Cat }) => (
           </button>
         )}
       <select
-        onChange={(event) => Cat(event.target.value)}
+        onChange={(event) => cat1(event.target.value)}
       >
         {Cat && Cat.map((option, index) => (
           <option key={index} value={option.id}>{option.nombre_cat}</option>

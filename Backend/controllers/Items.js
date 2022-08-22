@@ -215,6 +215,31 @@ const addItem = (req, res) => {
   })
 }
 
+const addItemPartes = (req, res) => {
+  console.log('\n> Post request /addItempartes with body:\n', req.body)
+  const sql = `
+  INSERT INTO item_partes VALUES (
+    '${req.body.id_item}',
+    '${req.body.imagen}'
+  )`
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({ succes: true })
+    })
+  })
+}
 
 //cambios realizados. Verificar.
 const deleteItem = (req, res, itemId) => {
@@ -271,12 +296,12 @@ const filterItemsCat = (req, res) => {
 }
 
 const getCategoryItems = (req, res) => {
-  console.log('\n> POST request /getCatgItems with body: ', req.body)
+  console.log('\n> POST request /getCategoryItems with body: ', req.body)
   const sql = `
     SELECT * FROM item i
     LEFT JOIN denunciado d ON i.id = d.item_id
     WHERE d.item_id IS null
-    and i.id_cat like '${req.body.id_categoria}'`
+    and i.id_cat = '${req.body.id_cat}'`
 
   const client = new pg.Client(conString)
 
@@ -379,6 +404,7 @@ const disableItem = (req, res) => {
 module.exports = {
   getItems,
   addItem,
+  addItemPartes,
   deleteItem,
   getSellerPic,
   getSellerName,
@@ -389,5 +415,5 @@ module.exports = {
   getCategory,
   disableItem,
   reportItem,
-  getCategoryItems,
+  getCategoryItems
 }
