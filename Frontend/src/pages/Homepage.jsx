@@ -70,9 +70,10 @@ const Homepage = ({ userName, setOnShow }) => {
   useEffect(() => {
     if (Cat1 != '') {
       handleCategoryItems(setItems, Cat1)
-    } if (Cat1 == 'Seleccione una categoria') {
+      console.log(Cat1, ' cat1')
+    } 
+    if (Cat1 === 'cat_prueba') {
       handleItemsHomepage(setItems)
-      handleCategory(setCat)
     }
   }, [Cat1])
 

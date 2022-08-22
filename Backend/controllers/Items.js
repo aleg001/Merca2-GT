@@ -51,7 +51,7 @@ const getItemsUser = (req, res) => {
   console.log('\n> POST request /getItemsUser with body: ', req.body)
   const sql = `
     SELECT * FROM item i
-    WHERE i.id_usuario LIKE '${req.body.id_usuario}'`
+    WHERE i.id_usuario = '${req.body.idUsuario}'`
 
   const client = new pg.Client(conString)
   client.connect((err) => {

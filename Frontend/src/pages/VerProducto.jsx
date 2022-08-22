@@ -5,7 +5,7 @@ import Header from '../Components/Header.jsx'
 import Navbar from '../Components/navbar.jsx'
 import ItemVerProductos from '../Components/itemVerProductos.jsx'
 
-const handleItemsUser = ({ setItems, idUsuario }) => {
+const handleItemsUser = ( setItems, idUsuario ) => {
   const requestOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -20,6 +20,8 @@ const handleItemsUser = ({ setItems, idUsuario }) => {
   fetch('http://127.0.0.1:8000/getItemsUser', requestOptions)
     .then(response => response.json())
     .then(result => {
+      console.log(idUsuario, "iddd")
+      console.log(result.items)
       setItems(result.items)
     })
 }
