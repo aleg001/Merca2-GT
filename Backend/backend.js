@@ -37,6 +37,9 @@ const {
   reportItem,
   getCategoryItems,
 } = require("./controllers/Items");
+const {
+  dataVendedor,
+} = require("./controllers/contacto");
 
 // Server para API
 const app = express();
@@ -70,5 +73,6 @@ app.post("/disableItem", disableItem);
 app.post("/reportItem", reportItem);
 app.post("/getCategoryItems", getCategoryItems);
 
-
+// Contacto con vendedor
+app.post("/dataVendedor", dataVendedor);
 
