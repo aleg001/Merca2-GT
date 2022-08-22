@@ -41,6 +41,7 @@ const handleAddItem = (
   })
     .then((response) => response.json())
     .then((result) => {
+      if (result.succes) handleAddItemPartes(id, image)
       if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
 
       return alert('Se añadió el producto con exito!!')
@@ -178,8 +179,6 @@ const AddProduct = ({ userName }) => {
           if (
             [productName, Cat, description, price, ubication, Link].includes('')
           ) return alert('Llene los campos para ingresar su producto')
-          
-          handleAddItemPartes(randomID(),Link)
           
           return handleAddItem(
             randomID(),

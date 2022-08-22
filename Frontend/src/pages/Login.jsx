@@ -51,7 +51,6 @@ const handleLogin = (
         .then((response) => response.json())
         .then((result2) => {
           if (!result2.success) return alert('Usuario no encontrado')
-          return alert('Credenciales correctas!!')
         })
         .catch((error) => {
           alert('Error de conexion: intente más tarde')
