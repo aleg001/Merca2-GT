@@ -126,9 +126,10 @@ const getSellerId = (req, res) => {
   console.log('\n> POST request /getSellerId with body: ', req.body)
   const sql = `
       SELECT id_usuario FROM item i
-      WHERE i.id like '${req.body.id_item}'
+      WHERE i.id like '${req.body.idItem}'
       LIMIT 1`
 
+  console.log(sql)
   const client = new pg.Client(conString)
 
   client.connect((err) => {

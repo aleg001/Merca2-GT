@@ -1,3 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -87,33 +91,45 @@ const handleProductPics = (setProductPics, id) => {
     .catch((error) => console.log('error', error))
 }
 
+const handleReportProduct = (denunciadoID, itemID) => {
+  fetch('http://127.0.0.1:8000/reportItem', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      denunciadoID,
+      itemID,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {})
+    .catch((error) => console.log('error', error))
+}
 
-const handleGetSellerID = (setSellerID, id_item) => {
+const handleGetSellerID = (setSellerID, idItem) => {
   const info = {
     headers: {
       'Content-Type': 'application/json',
     },
     method: 'POST',
     body: JSON.stringify({
-      id_item,
+      idItem,
     }),
   }
 
-  console.log('id_item', id_item)
+  console.log('idItem', idItem)
   console.log('sellerID', info)
 
   fetch('http://127.0.0.1:8000/getSellerId', info)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result)
+      handleReportProduct(result.items[0].id_usuario, idItem)
     })
     .catch((error) => console.log('error', error))
 }
 
-
-
-const DetallesProductos = ({ idItem }) => {
-
+const DetallesProductos = ({ idItem, setOnShow }) => {
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
   const [sellerPic, setSellerPic] = React.useState()
@@ -143,10 +159,10 @@ const DetallesProductos = ({ idItem }) => {
 
   return (
     <>
-      <Header title='Producto' />
+      <Header title='Producto' setOnShow={setOnShow} />
       <div className='content'>
-        {items &&
-          items.map((item, index) => (
+        {items
+          && items.map((item, index) => (
             <div className='wrapper'>
               <div className='main-grid'>
                 <div className='seller-info'>
@@ -192,10 +208,14 @@ const DetallesProductos = ({ idItem }) => {
                     </div>
                   </div>
                   <div className='report-functions'>
-                    <button key={index + 2} onClick={() => {
-                      alert('Gracias por tu reporte, verificaremos la publicación')
-                      handleGetSellerID(setSellerId, id_item)
-                    }} className='btnReport'/>
+                    <button
+                      key={index + 2}
+                      onClick={() => {
+                        alert('Gracias por tu reporte, verificaremos la publicación')
+                        handleGetSellerID(setSellerId, idItem)
+                      }}
+                      className='btnReport'
+                    />
                   </div>
                 </div>
                 <div className='product-info'>
@@ -207,8 +227,8 @@ const DetallesProductos = ({ idItem }) => {
                     {/* <!-- Imágen de producto --> */}
                     <img className='mainPic' src={mainPic} alt='' />
                     <div className='all-pictures'>
-                      {productPics &&
-                        productPics.map((pic, index2) => (
+                      {productPics
+                        && productPics.map((pic, index2) => (
                           <img
                             key={index2}
                             className='Pic'

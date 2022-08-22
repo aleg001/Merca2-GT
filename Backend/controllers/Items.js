@@ -303,7 +303,6 @@ const reportItem = (req, res) => {
   const sql = `
   INSERT INTO denuncias 
   VALUES(
-    '${req.body.denuncianteID}', 
     '${req.body.denunciadoID}', 
     '${req.body.itemID}'
   )`
