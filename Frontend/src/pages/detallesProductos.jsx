@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react'
@@ -118,8 +117,8 @@ const handleGetSellerID = (setSellerID, idItem) => {
     }),
   }
 
-  console.log('idItem', idItem)
-  console.log('sellerID', info)
+  // console.log('idItem', idItem)
+  // console.log('sellerID', info)
 
   fetch('http://127.0.0.1:8000/getSellerId', info)
     .then((response) => response.json())
@@ -129,7 +128,7 @@ const handleGetSellerID = (setSellerID, idItem) => {
     .catch((error) => console.log('error', error))
 }
 
-const DetallesProductos = ({ idItem, setOnShow }) => {
+const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
   const [sellerPic, setSellerPic] = React.useState()
@@ -159,7 +158,13 @@ const DetallesProductos = ({ idItem, setOnShow }) => {
 
   return (
     <>
-      <Header title='Producto' setOnShow={setOnShow} />
+      <Header
+        title='Producto'
+        setOnShow={(home) => {
+          setSelectedProduct(false)
+          setOnShow(home)
+        }}
+      />
       <div className='content'>
         {items
           && items.map((item, index) => (
@@ -216,6 +221,7 @@ const DetallesProductos = ({ idItem, setOnShow }) => {
                         handleGetSellerID(setSellerId, idItem)
                       }}
                       className='btnReport'
+                      type='button'
                     />
                   </div>
                 </div>
@@ -260,6 +266,7 @@ const DetallesProductos = ({ idItem, setOnShow }) => {
                     key={index + 2}
                     className='myButton1'
                     onClick={() => openInNewTab(sellerName, item.nombre)}
+                    type='button'
                   >
                     Contactar
                   </button>
@@ -276,6 +283,8 @@ const DetallesProductos = ({ idItem, setOnShow }) => {
 // Props Validation
 DetallesProductos.propTypes = {
   idItem: PropTypes.string.isRequired,
+  setOnShow: PropTypes.func.isRequired,
+  setSelectedProduct: PropTypes.func.isRequired,
 }
 
 export default DetallesProductos
