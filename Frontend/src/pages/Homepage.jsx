@@ -18,13 +18,33 @@ const handleItemsHomepage = (setItems) => {
     .catch((error) => console.log('error', error))
 }
 
+const handleCategory = (setCat) => {
+  const requestOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+    }),
+    redirect: 'follow',
+  }
+
+  fetch('http://127.0.0.1:8000/getCategory', requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      setCat(result.user)
+    })
+}
+
 const Homepage = ({ userName, setOnShow }) => {
   const [items, setItems] = React.useState()
+  const [Cat, setCat] = React.useState('')
   const [idSelectedProduct, setIdSelectedProduct] = React.useState()
   const [selectedProduct, setSelectedProduct] = React.useState(false)
 
   useEffect(() => {
     handleItemsHomepage(setItems)
+    handleCategory(setCat)
   }, [])
 
   if (selectedProduct) {
@@ -35,7 +55,7 @@ const Homepage = ({ userName, setOnShow }) => {
     <div className='content'>
       <Header title='Homepage' user={userName} />
       <AddItemButton setOnShow={setOnShow} />
-      <Navbar setOnShow={setOnShow} />
+      <Navbar setOnShow={setOnShow} Cat={Cat} />
 
       <div className='main-content-login' />
       <div className='container'>

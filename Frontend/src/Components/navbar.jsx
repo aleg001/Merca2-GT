@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../styles/navbar.css'
 
 import Perfil from './Perfil.jsx'
 
-const Navbar = ({ setOnShow }) => (
+const Navbar = ({ setOnShow, Cat }) => (
   <div className='navbar'>
     <div>
       <button
@@ -29,6 +30,13 @@ const Navbar = ({ setOnShow }) => (
             Perfil
           </button>
         )}
+      <select
+        onChange={(event) => Cat(event.target.value)}
+      >
+        {Cat && Cat.map((option, index) => (
+          <option key={index} value={option.id}>{option.nombre_cat}</option>
+        ))}
+      </select>
     </div>
   </div>
 )

@@ -36,6 +36,7 @@ const {
   disableItem,
   reportItem,
   getCategoryItems,
+  getCategory,
 } = require("./controllers/Items");
 
 // Server para API
@@ -65,6 +66,7 @@ app.post("/getProductPics", getProductPics);
 app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
+app.post("/getCategory", getCategory);
 
 app.post("/disableItem", disableItem);
 app.post("/reportItem", reportItem);

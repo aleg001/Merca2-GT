@@ -299,6 +299,33 @@ const getCategoryItems = (req, res) => {
   })
 }
 
+
+const getCategory = (req, res) => {
+  console.log('\n> POST request /getCategory with body: ', req.body)
+  const sql = `
+    SELECT * FROM categorias`
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+        user: result.rows,
+      })
+    })
+  })
+}
+
 const reportItem = (req, res) => {
   console.log('\n> post request /report item with body:\n', req.body)
   const sql = `
@@ -359,6 +386,7 @@ module.exports = {
   filterItemsCat,
   getSelectedItem,
   getItemsUser,
+  getCategory,
   disableItem,
   reportItem,
   getCategoryItems,
