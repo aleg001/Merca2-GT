@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react'
@@ -6,6 +7,16 @@ import PropTypes from 'prop-types'
 import Header from '../Components/Header.jsx'
 
 import '../styles/detallesProducto.css'
+
+const openInNewTab = (name, product) => {
+  // eslint-disable-next-line no-param-reassign
+  const number = '58747112'
+  window.open(
+    `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
+    '_blank',
+    'noopener,noreferrer',
+  )
+}
 
 const handleItems = (setItems, id) => {
   fetch('http://127.0.0.1:8000/getSelectedItem', {
@@ -107,8 +118,8 @@ const DetallesProductos = ({ idItem }) => {
     <>
       <Header title='Producto' />
       <div className='content'>
-        {items
-          && items.map((item, index) => (
+        {items &&
+          items.map((item, index) => (
             <div className='wrapper'>
               <div className='main-grid'>
                 <div className='seller-info'>
@@ -127,12 +138,8 @@ const DetallesProductos = ({ idItem }) => {
                       <h3 key={index + 1}>
                         Publicado el
                         {item.post_time[8]}
-                        {item.post_time[9]}
-                        /
-                        {item.post_time[5]}
-                        {item.post_time[6]}
-                        /
-                        {item.post_time[0]}
+                        {item.post_time[9]}/{item.post_time[5]}
+                        {item.post_time[6]}/{item.post_time[0]}
                         {item.post_time[1]}
                         {item.post_time[2]}
                         {item.post_time[3]}
@@ -140,11 +147,21 @@ const DetallesProductos = ({ idItem }) => {
                     </div>
                     <div className='stars'>
                       {/* <!-- Calificación con estrellas --> */}
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9733;</button>
-                      <button type='button' className='star'>&#9734;</button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9733;
+                      </button>
+                      <button type='button' className='star'>
+                        &#9734;
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -157,8 +174,8 @@ const DetallesProductos = ({ idItem }) => {
                     {/* <!-- Imágen de producto --> */}
                     <img className='mainPic' src={mainPic} alt='' />
                     <div className='all-pictures'>
-                      {productPics
-                        && productPics.map((pic, index2) => (
+                      {productPics &&
+                        productPics.map((pic, index2) => (
                           <img
                             key={index2}
                             className='Pic'
@@ -185,10 +202,13 @@ const DetallesProductos = ({ idItem }) => {
                   </div>
                 </div>
                 <div className='contact'>
-                  {/* <!-- Contacto --> */}
-                  <a href='./' className='myButton'>
+                  <button
+                    key={index + 2}
+                    className='myButton1'
+                    onClick={() => openInNewTab(sellerName, item.nombre)}
+                  >
                     Contactar
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
