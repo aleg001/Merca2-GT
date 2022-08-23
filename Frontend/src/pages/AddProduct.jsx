@@ -22,7 +22,7 @@ const handleAddItem = (
   idUsuario,
   ubicacion,
   rating,
-  image,
+  image
 ) => {
   fetch('http://127.0.0.1:8000/addItem', {
     headers: {
@@ -44,16 +44,16 @@ const handleAddItem = (
     .then((response) => response.json())
     .then((result) => {
       if (result.succes) handleAddItemPartes(id, image)
-      if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
+      if (!result.succes)
+        return alert(
+          'No se pudo agregar el producto\nPor favor intente mas tarde'
+        )
 
       return alert('Se añadió el producto con exito!!')
     })
 }
 
-const handleAddItemPartes = (
-  id_item,
-  imagen,
-) => {
+const handleAddItemPartes = (id_item, imagen) => {
   fetch('http://127.0.0.1:8000/addItemPartes', {
     headers: {
       'Content-Type': 'application/json',
@@ -66,7 +66,10 @@ const handleAddItemPartes = (
   })
     .then((response) => response.json())
     .then((result) => {
-      if (!result.succes) return alert('No se pudo agregar el producto\nPor favor intente mas tarde')
+      if (!result.succes)
+        return alert(
+          'No se pudo agregar el producto\nPor favor intente mas tarde'
+        )
 
       return alert('Se añadió el producto con exito!!')
     })
@@ -78,22 +81,19 @@ const handleCategory = (setCat) => {
       'Content-Type': 'application/json',
     },
     method: 'POST',
-    body: JSON.stringify({
-    }),
+    body: JSON.stringify({}),
     redirect: 'follow',
   }
 
   fetch('http://127.0.0.1:8000/getCategory', requestOptions)
-    .then(response => response.json())
-    .then(result => {
+    .then((response) => response.json())
+    .then((result) => {
       const categories = result.user
       setCat(categories)
     })
 }
 
-
-const AddProduct = ({ userName }) => {
-
+const AddProduct = ({ userName, setOnShow }) => {
   setDocTitle('Agregar producto')
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
@@ -120,33 +120,36 @@ const AddProduct = ({ userName }) => {
   }, [])
 
   return (
-    <div className="content">
-      <Header title="Agregar nuevo producto" setOnShow={setOnShow} />
-      <div className="main-content1">
-        <form id="form-singin">
-          <div className="formSignIn">
+    <div className='content'>
+      <Header title='Agregar nuevo producto' setOnShow={setOnShow} />
+      <div className='main-content1'>
+        <form id='form-singin'>
+          <div className='formSignIn'>
             <TextInput
               set={setproductName}
-              title="Ingrese nombre del producto"
-              className="userInput"
-              placeholderText="Producto"
+              title='Ingrese nombre del producto'
+              className='userInput'
+              placeholderText='Producto'
             />
 
             <TextInput
               set={setprice}
-              title="Ingrese su precio (en quetzales)"
-              className="userInput"
-              placeholderText="Precio"
+              title='Ingrese su precio (en quetzales)'
+              className='userInput'
+              placeholderText='Precio'
             />
 
-            <label className="category-label">Ingrese una categoria:</label>
+            <label className='category-label'>Ingrese una categoria:</label>
             <select
               onChange={(event) => setCat1(event.target.value)}
-              className="category-input"
+              className='category-input'
             >
-              {Cat && Cat.map((option, index) => (
-                <option key={index} value={option.id}>{option.nombre_cat}</option>
-              ))}
+              {Cat &&
+                Cat.map((option, index) => (
+                  <option key={index} value={option.id}>
+                    {option.nombre_cat}
+                  </option>
+                ))}
             </select>
 
             <TextInput
@@ -178,8 +181,9 @@ const AddProduct = ({ userName }) => {
         onClick={() => {
           if (
             [productName, Cat, description, price, ubication, Link].includes('')
-          ) return alert('Llene los campos para ingresar su producto')
-          
+          )
+            return alert('Llene los campos para ingresar su producto')
+
           return handleAddItem(
             randomID(),
             productName,
@@ -189,9 +193,8 @@ const AddProduct = ({ userName }) => {
             userName,
             ubication,
             rating(),
-            Link,
-          ) 
-          
+            Link
+          )
         }}
       >
         Agregar producto
