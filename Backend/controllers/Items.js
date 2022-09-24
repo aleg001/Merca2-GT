@@ -397,28 +397,6 @@ const disableItem = (req, res) => {
   })
 }
 
-const totalUsersStat = () => {
-  console.log('\n> post request total users\n')
-  const sql = `
-  SELECT COUNT(*) FROM "public"."users" 
-      `
-
-  const client = new pg.Client(conString)
-
-  client.connect((err) => {
-    if (err) return console.error('could not connect to postgres', err)
-
-    client.query(sql, (err, result) => {
-      client.end()
-      if (err) {
-        console.error('error running query', err)
-        res.json({ success: false })
-      }
-      res.json({ success: true })
-    })
-  })
-}
-
 // Exports
 module.exports = {
   getItems,
