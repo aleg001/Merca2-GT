@@ -400,6 +400,7 @@ const disableItem = (req, res) => {
 const totalUsersStat = () => {
   console.log('\n> post request total users\n')
   const sql = `
+  SELECT COUNT(*) FROM "public"."users" 
       `
 
   const client = new pg.Client(conString)
