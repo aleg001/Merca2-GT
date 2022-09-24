@@ -21,6 +21,11 @@ const openInNewTab = (name, product) => {
   )
 }
 
+const whatsappOfer = (name, product, offerPrice) => {
+  // eslint-disable-next-line no-param-reassign
+  const number = '58747112'
+}
+
 const handleItems = (setItems, id) => {
   fetch('http://127.0.0.1:8000/getSelectedItem', {
     headers: {
@@ -166,8 +171,8 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
         }}
       />
       <div className='content'>
-        {items
-          && items.map((item, index) => (
+        {items &&
+          items.map((item, index) => (
             <div className='wrapper'>
               <div className='main-grid'>
                 <div className='seller-info'>
@@ -217,7 +222,9 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     <button
                       key={index + 2}
                       onClick={() => {
-                        alert('Gracias por tu reporte, verificaremos la publicación')
+                        alert(
+                          'Gracias por tu reporte, verificaremos la publicación'
+                        )
                         handleGetSellerID(setSellerId, idItem)
                       }}
                       className='btnReport'
@@ -234,8 +241,8 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     {/* <!-- Imágen de producto --> */}
                     <img className='mainPic' src={mainPic} alt='' />
                     <div className='all-pictures'>
-                      {productPics
-                        && productPics.map((pic, index2) => (
+                      {productPics &&
+                        productPics.map((pic, index2) => (
                           <img
                             key={index2}
                             className='Pic'
@@ -269,6 +276,17 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     type='button'
                   >
                     Contactar
+                  </button>
+                </div>
+
+                <div className='contact'>
+                  <button
+                    key={index + 2}
+                    className='myButton1'
+                    onClick={() => openInNewTab(sellerName, item.nombre)}
+                    type='button'
+                  >
+                    Realizar oferta
                   </button>
                 </div>
               </div>
