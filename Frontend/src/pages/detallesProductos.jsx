@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -15,17 +16,17 @@ const openInNewTab = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
-    `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
+    `https://wa.me/502${number}?text=¡Hola+${name}!+Estoy+interesado+en+comprar+${product}`,
     '_blank',
     'noopener,noreferrer'
   )
 }
 
-const whatsappOfer = (name, product, offerPrice) => {
+const whatsappOfer = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
-    `https://wa.me/502${number}?text=Hola,+${name}!+Me+gustaría+realizar+una+oferta+en+${product}+.+Te+ofrezco+Q+${offerPrice}`,
+    `https://wa.me/502${number}?text=¡Hola+${name}!+Me+gustaría+realizar+una+oferta+en+${product}.+¿A+cuanto+me+lo+dejas?`,
     '_blank',
     'noopener,noreferrer'
   )
@@ -282,13 +283,11 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                   >
                     Contactar
                   </button>
-                </div>
 
-                <div className='contact'>
                   <button
                     key={index + 2}
-                    className='myButton1'
-                    onClick={() => openInNewTab(sellerName, item.nombre)}
+                    className='myButton2'
+                    onClick={() => whatsappOfer(sellerName, item.nombre)}
                     type='button'
                   >
                     Realizar oferta
