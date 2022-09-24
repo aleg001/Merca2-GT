@@ -45,7 +45,6 @@ const getItems = (req, res) => {
   })
 }
 
-
 const getItemsUser = (req, res) => {
   console.log('\n> POST request /getItemsUser with body: ', req.body)
   const sql = `
@@ -324,7 +323,6 @@ const getCategoryItems = (req, res) => {
   })
 }
 
-
 const getCategory = (req, res) => {
   console.log('\n> POST request /getCategory with body: ', req.body)
   const sql = `
@@ -363,11 +361,11 @@ const reportItem = (req, res) => {
   const client = new pg.Client(conString)
 
   client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
+    if (err) return console.error('could not connect to postgres', err)
 
     client.query(sql, (err, result) => {
       client.end()
-      if(err){
+      if (err) {
         console.error('error running query', err)
         res.json({ success: false })
       }
@@ -378,26 +376,48 @@ const reportItem = (req, res) => {
 
 const disableItem = (req, res) => {
   console.log('\n> post request /disable item with body:\n', req.body)
-    const sql = `
+  const sql = `
     UPDATE item 
     SET habilitado = false 
     WHERE item.id like '${req.body.itemID}'`
 
-    const client = new pg.Client(conString)
+  const client = new pg.Client(conString)
 
-    client.connect((err) => {
-      if(err) return console.error('could not connect to postgres', err)
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
 
-      client.query(sql, (err, result) => {
-        client.end()
-        if(err){
-          console.error('error running query', err)
-          res.json({ success: false })
-        }
-        res.json({ success: true })
-      })
+    client.query(sql, (err, result) => {
+      client.end()
+      if (err) {
+        console.error('error running query', err)
+        res.json({ success: false })
+      }
+      res.json({ success: true })
     })
-  }
+  })
+}
+
+const totalUsersStat = () => {
+  console.log('\n> post request total users\n')
+  const sql = `
+  SELECT COUNT(*) FROM "public"."users" 
+      `
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      client.end()
+      if (err) {
+        console.error('error running query', err)
+        res.json({ success: false })
+      }
+      res.json({ success: true })
+    })
+  })
+}
 
 // Exports
 module.exports = {
@@ -414,5 +434,5 @@ module.exports = {
   getCategory,
   disableItem,
   reportItem,
-  getCategoryItems
+  getCategoryItems,
 }
