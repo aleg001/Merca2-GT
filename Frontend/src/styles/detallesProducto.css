@@ -82,8 +82,8 @@ body {
 }
 
 .btnReport {
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   margin-left: 115px;
   margin-bottom: 55px;
   background: url(http://cdn.onlinewebfonts.com/svg/img_331995.png) no-repeat;
@@ -293,8 +293,6 @@ body {
   margin-left: 25%;
   margin-right: 3em;
   justify-content: center;
-  text-decoration: none;
-  text-shadow: 0px 0px 0px #018b92;
 }
 .myButton1:hover {
   background-color: #03a5ad;
@@ -313,8 +311,6 @@ body {
   margin-left: 25%;
   margin-right: 3em;
   justify-content: center;
-  text-decoration: none;
-  text-shadow: 0px 0px 0px #018b92;
 }
 .myButton2:hover {
   background-color: #03a5ad;
