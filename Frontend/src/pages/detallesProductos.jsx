@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -285,7 +286,7 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
 
                   <button
                     key={index + 2}
-                    className='myButton1'
+                    className='myButton2'
                     onClick={() => whatsappOfer(sellerName, item.nombre)}
                     type='button'
                   >
