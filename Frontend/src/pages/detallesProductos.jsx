@@ -24,6 +24,11 @@ const openInNewTab = (name, product) => {
 const whatsappOfer = (name, product, offerPrice) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
+  window.open(
+    `https://wa.me/502${number}?text=Hola,+${name}!+Me+gustaría+realizar+una+oferta+en+${product}+.+Te+ofrezco+Q+${offerPrice}`,
+    '_blank',
+    'noopener,noreferrer'
+  )
 }
 
 const handleItems = (setItems, id) => {
