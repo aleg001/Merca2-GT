@@ -15,7 +15,7 @@ const openInNewTab = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
-    `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
+    `https://wa.me/502${number}?text=¡Hola+${name}!+Estoy+interesado+en+comprar+${product}`,
     '_blank',
     'noopener,noreferrer'
   )
@@ -25,7 +25,7 @@ const whatsappOfer = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
-    `https://wa.me/502${number}?text=Hola,+${name}!+Me+gustaría+realizar+una+oferta+en+${product}.+¿A+cuanto+me+lo+dejas?`,
+    `https://wa.me/502${number}?text=¡Hola+${name}!+Me+gustaría+realizar+una+oferta+en+${product}.+¿A+cuanto+me+lo+dejas?`,
     '_blank',
     'noopener,noreferrer'
   )
