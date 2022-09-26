@@ -26,6 +26,10 @@ const handleDeleteItem = (itemId, setItems) => {
     .catch(error => console.log('Error en handleItemsUser', error))
 }
 
+const handleVistas = () => {
+  return 100
+}
+
 const ItemVerProductos = ({
   itemName,
   itemLocation,
@@ -35,6 +39,7 @@ const ItemVerProductos = ({
   itemImage,
 }) => {
   const [items, setItems] = React.useState()
+  const numVistas = handleVistas() < 999 ? handleVistas() : '999+'
 
   return (
     <div className='container_item'>
@@ -65,6 +70,13 @@ const ItemVerProductos = ({
       >
         x
       </button>
+
+      <section
+        className='vistas-div'
+      >
+        <img src="https://cdn-icons-png.flaticon.com/512/73/73512.png" alt="" />
+        <h3>{numVistas}</h3>
+      </section>
     </div>
   )
 }
