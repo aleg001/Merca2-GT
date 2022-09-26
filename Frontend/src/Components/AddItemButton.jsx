@@ -6,7 +6,7 @@ import '../styles/addItem.css'
 
 export const AddItemButton = ({ setOnShow }) => (
   <div
-    role='addbutton'
+    data-testid="botonagregartesting"
   >
     <BiPlusCircle
       alt='agregarP'
