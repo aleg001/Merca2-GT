@@ -22,7 +22,7 @@ const handleAddItem = (
   idUsuario,
   ubicacion,
   rating,
-  image
+  image,
 ) => {
   fetch('http://127.0.0.1:8000/addItem', {
     headers: {
@@ -44,10 +44,11 @@ const handleAddItem = (
     .then((response) => response.json())
     .then((result) => {
       if (result.succes) handleAddItemPartes(id, image)
-      if (!result.succes)
+      if (!result.succes) {
         return alert(
-          'No se pudo agregar el producto\nPor favor intente mas tarde'
+          'No se pudo agregar el producto\nPor favor intente mas tarde',
         )
+      }
 
       return alert('Se añadió el producto con exito!!')
     })
@@ -66,10 +67,11 @@ const handleAddItemPartes = (id_item, imagen) => {
   })
     .then((response) => response.json())
     .then((result) => {
-      if (!result.succes)
+      if (!result.succes) {
         return alert(
-          'No se pudo agregar el producto\nPor favor intente mas tarde'
+          'No se pudo agregar el producto\nPor favor intente mas tarde',
         )
+      }
 
       return alert('Se añadió el producto con exito!!')
     })
@@ -147,8 +149,8 @@ const AddProduct = ({ userName, setOnShow }) => {
               onChange={(event) => setCat1(event.target.value)}
               className='category-input'
             >
-              {Cat &&
-                Cat.map((option, index) => (
+              {Cat
+                && Cat.map((option, index) => (
                   <option key={index} value={option.id}>
                     {option.nombre_cat}
                   </option>
@@ -184,8 +186,7 @@ const AddProduct = ({ userName, setOnShow }) => {
         onClick={() => {
           if (
             [productName, Cat, description, price, ubication, Link].includes('')
-          )
-            return alert('Llene los campos para ingresar su producto')
+          ) { return alert('Llene los campos para ingresar su producto') }
 
           return handleAddItem(
             randomID(),
@@ -196,7 +197,7 @@ const AddProduct = ({ userName, setOnShow }) => {
             userName,
             ubication,
             rating(),
-            Link
+            Link,
           )
         }}
       >
