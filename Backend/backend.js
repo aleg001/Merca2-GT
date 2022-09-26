@@ -43,6 +43,7 @@ const {
   getCategoryItems,
   getCategory,
   recordVisitItem,
+  getCantItems,
 } = require("./controllers/Items");
 const {
   dataVendedor,
@@ -77,6 +78,7 @@ app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
 app.post("/getCategory", getCategory);
+app.post("/getCantItems", getCantItems);
 
 app.post("/getSellerId", getSellerId);
 app.post("/registerVisit", registerVisit);
