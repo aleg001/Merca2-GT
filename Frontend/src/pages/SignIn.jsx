@@ -45,7 +45,10 @@ const handleRegister = (
 }
 
 const SignIn = ({ setIsRegis }) => {
-  setDocTitle('Registro')
+  try {
+    setDocTitle('Registro')
+    // setDocTitle('Login')
+  } catch (error) { console.log(error) }
 
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')

@@ -159,10 +159,10 @@ const registerVisit = (req, res) => {
     VALUES('${req.body.username}', CURRENT_TIMESTAMP);  
   `
   console.log(sql)
+
+
   const client = new pg.Client(conString)
 
-  client.connect((err) => {
-    if (err) return console.error('could not connect to postgres', err)
 
     client.query(sql, (err, result) => {
       if (err) {
@@ -180,12 +180,15 @@ const registerVisit = (req, res) => {
 }
 
 
+   
+
 // Exports
 module.exports = {
   checkNewUser,
   register,
   login,
   checkLogin,
+  countLogIn,
   getSellerId,
   registerVisit,
 }

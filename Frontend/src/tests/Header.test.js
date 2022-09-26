@@ -1,9 +1,19 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render, screen, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import userEvent from '@testing-library/user-event'
 import Header from '../Components/header.jsx'
-import { isTSAnyKeyword } from '@babel/types'
 
 it('Render sin crashear', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<Header />, div)
+  render(<Header title='prueba'/>)
+})
+
+describe('Cuando se pasa un titulo al Header al renderizarlo', () => { 
+  it('Este aparece en el componente', async () => {
+    render(<Header title='prueba'/>)
+
+    expect(
+      await screen.findByText(/prueba/)
+    ).toBeInTheDocument()
+  })
 })

@@ -6,7 +6,10 @@ import Header from '../Components/Header.jsx'
 import setDocTitle from '../util/docTitle.js'
 
 const ErrorPage = () => {
-  setDocTitle('Error 404')
+  try {
+    setDocTitle('Error 404')
+    // setDocTitle('Login')
+  } catch (error) { console.log(error) }
 
   return (
     <div className='content'>

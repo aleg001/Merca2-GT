@@ -43,3 +43,4 @@ const totalUsersStat = () => {
 module.exports = {
   totalUsersStat,
 }
+
