@@ -31,6 +31,7 @@ const Navbar = ({ setOnShow, Cat, cat1 }) => (
           </button>
         )}
       <select
+        data-testid="select-nav"
         onChange={(event) => cat1(event.target.value)}
       >
         {Cat && Cat.map((option, index) => (
