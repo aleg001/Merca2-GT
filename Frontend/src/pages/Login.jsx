@@ -69,7 +69,10 @@ const Login = ({
   setUsername,
   setIsAdmin,
 }) => {
-  setDocTitle('Login')
+  try {
+    document.getElementById('title').textContent = 'Login'
+    // setDocTitle('Login')
+  } catch (error) { console.log(error) }
   const [usernameL, setUsernameL] = React.useState('')
   const [passwordL, setPasswordL] = React.useState('')
 
@@ -124,11 +127,11 @@ const Login = ({
   )
 }
 
-Login.propTypes = {
-  setIsRegis: PropTypes.func.isRequired,
-  setIsLogedIn: PropTypes.func.isRequired,
-  setUsername: PropTypes.func.isRequired,
-  setIsAdmin: PropTypes.func.isRequired,
-}
+// Login.propTypes = {
+//   setIsRegis: PropTypes.func.isRequired,
+//   setIsLogedIn: PropTypes.func.isRequired,
+//   setUsername: PropTypes.func.isRequired,
+//   setIsAdmin: PropTypes.func.isRequired,
+// }
 
 export default Login

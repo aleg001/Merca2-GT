@@ -5,8 +5,17 @@ import { BiPlusCircle } from 'react-icons/bi'
 import '../styles/addItem.css'
 
 export const AddItemButton = ({ setOnShow }) => (
-  <div>
-    <BiPlusCircle onClick={() => setOnShow('addItem')} className='btnSignup1' />
+  <div
+    role='addbutton'
+  >
+    <BiPlusCircle
+      alt='agregarP'
+      onClick={() => setOnShow('addItem')}
+      className='btnSignup1'
+      name='Channels'
+    >
+      add
+    </BiPlusCircle>
   </div>
 )
 
