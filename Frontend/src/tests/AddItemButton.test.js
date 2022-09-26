@@ -8,8 +8,7 @@ import { isTSAnyKeyword } from '@babel/types'
 describe('Cuando se presiona el boton de agregar producto', () => {
   it('se muestra la pagina de ingreso de informacion del nuevo producto', async () => {
     const setter = jest.fn()
-    const setIsRegis = jest.fn()<
-    render(<Homepage userName={'pao'} setOnShow={set} />)
+    render(<Homepage userName={'pao'} setOnShow={setter} />)
     // Elemento del boton
     const botonADD = screen.getByTestId('botonagregartesting')
 
@@ -20,7 +19,22 @@ describe('Cuando se presiona el boton de agregar producto', () => {
     expect(
       await screen.findByText(/Agregar nuevo producto/)
     ).toBeInTheDocument()
+  })
+})
 
-    expect(setIsRegis).toBeCalledWith(true)
+describe('Cuando se presiona el drop down menu de categorias', () => {
+  it('se muestran las categorias disponibles', async () => {
+    const setter = jest.fn()
+    render(<Homepage userName={'pao'} setOnShow={setter} />)
+    // Elemento del drop down menu
+    const DDmenu = screen.findByText(/Seleccione una categoria/)
+
+    // Click al dd menu
+    await userEvent.click(DDmenu)
+
+    // Buscar que las categorias si aparezcan en pantalla
+    expect (
+      await screen.findByText(/Tecnologia/)
+    ).toBeInTheDocument()
   })
 })
