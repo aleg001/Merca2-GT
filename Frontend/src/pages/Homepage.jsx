@@ -101,6 +101,7 @@ const Homepage = ({ userName, setOnShow }) => {
   if (selectedProduct) {
     return (
       <DetallesProductos
+        username={userName}
         idItem={idSelectedProduct}
         setOnShow={setOnShow}
         setSelectedProduct={setSelectedProduct}
