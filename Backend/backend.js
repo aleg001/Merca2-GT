@@ -42,6 +42,7 @@ const {
   reportItem,
   getCategoryItems,
   getCategory,
+  recordVisitItem,
 } = require("./controllers/Items");
 const {
   dataVendedor,
@@ -79,6 +80,7 @@ app.post("/getCategory", getCategory);
 
 app.post("/getSellerId", getSellerId);
 app.post("/registerVisit", registerVisit);
+app.post("/recordVisitItem", recordVisitItem);
 
 app.post("/disableItem", disableItem);
 app.post("/reportItem", reportItem);
