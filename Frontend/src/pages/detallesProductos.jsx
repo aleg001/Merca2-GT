@@ -117,6 +117,22 @@ const handleReportProduct = (denunciadoID, itemID) => {
     .catch((error) => console.log('error', error))
 }
 
+const handleRecordVisitItem = (username, id_item) => {
+  fetch('http://127.0.0.1:8000/recordVisitItem', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      username,
+      id_item,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {})
+    .catch((error) => console.log('error', error))
+}
+
 const handleGetSellerID = (setSellerID, idItem) => {
   const info = {
     headers: {
@@ -139,7 +155,7 @@ const handleGetSellerID = (setSellerID, idItem) => {
     .catch((error) => console.log('error', error))
 }
 
-const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
+const DetallesProductos = ({ username, idItem, setOnShow, setSelectedProduct }) => {
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
   const [sellerPic, setSellerPic] = React.useState()
@@ -150,6 +166,7 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
 
   useEffect(() => {
     handleItems(setItems, idItem)
+    handleRecordVisitItem(username, idItem)
   }, [])
 
   useEffect(() => {
