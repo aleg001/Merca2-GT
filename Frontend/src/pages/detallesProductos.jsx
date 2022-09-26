@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -15,7 +16,17 @@ const openInNewTab = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
-    `https://wa.me/502${number}?text=Hola,+${name}!+Estoy+interesado+en+comprar+${product}`,
+    `https://wa.me/502${number}?text=¡Hola+${name}!+Estoy+interesado+en+comprar+${product}`,
+    '_blank',
+    'noopener,noreferrer'
+  )
+}
+
+const whatsappOfer = (name, product) => {
+  // eslint-disable-next-line no-param-reassign
+  const number = '58747112'
+  window.open(
+    `https://wa.me/502${number}?text=¡Hola+${name}!+Me+gustaría+realizar+una+oferta+en+${product}.+¿A+cuanto+me+lo+dejas?`,
     '_blank',
     'noopener,noreferrer'
   )
@@ -106,6 +117,22 @@ const handleReportProduct = (denunciadoID, itemID) => {
     .catch((error) => console.log('error', error))
 }
 
+const handleRecordVisitItem = (username, id_item) => {
+  fetch('http://127.0.0.1:8000/recordVisitItem', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      username,
+      id_item,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {})
+    .catch((error) => console.log('error', error))
+}
+
 const handleGetSellerID = (setSellerID, idItem) => {
   const info = {
     headers: {
@@ -128,7 +155,7 @@ const handleGetSellerID = (setSellerID, idItem) => {
     .catch((error) => console.log('error', error))
 }
 
-const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
+const DetallesProductos = ({ username, idItem, setOnShow, setSelectedProduct }) => {
   const [items, setItems] = React.useState()
   const [mainPic, setMainPic] = React.useState()
   const [sellerPic, setSellerPic] = React.useState()
@@ -139,6 +166,7 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
 
   useEffect(() => {
     handleItems(setItems, idItem)
+    handleRecordVisitItem(username, idItem)
   }, [])
 
   useEffect(() => {
@@ -166,8 +194,8 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
         }}
       />
       <div className='content'>
-        {items
-          && items.map((item, index) => (
+        {items &&
+          items.map((item, index) => (
             <div className='wrapper'>
               <div className='main-grid'>
                 <div className='seller-info'>
@@ -217,7 +245,9 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     <button
                       key={index + 2}
                       onClick={() => {
-                        alert('Gracias por tu reporte, verificaremos la publicación')
+                        alert(
+                          'Gracias por tu reporte, verificaremos la publicación'
+                        )
                         handleGetSellerID(setSellerId, idItem)
                       }}
                       className='btnReport'
@@ -234,8 +264,8 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     {/* <!-- Imágen de producto --> */}
                     <img className='mainPic' src={mainPic} alt='' />
                     <div className='all-pictures'>
-                      {productPics
-                        && productPics.map((pic, index2) => (
+                      {productPics &&
+                        productPics.map((pic, index2) => (
                           <img
                             key={index2}
                             className='Pic'
@@ -269,6 +299,15 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     type='button'
                   >
                     Contactar
+                  </button>
+
+                  <button
+                    key={index + 2}
+                    className='myButton2'
+                    onClick={() => whatsappOfer(sellerName, item.nombre)}
+                    type='button'
+                  >
+                    Realizar oferta
                   </button>
                 </div>
               </div>
