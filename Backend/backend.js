@@ -24,6 +24,7 @@ const {
   login,
   checkLogin,
   getSellerId,
+  registerVisit,
 } = require("./controllers/Users");
 
 const {
@@ -77,6 +78,7 @@ app.post("/getItemsUser", getItemsUser);
 app.post("/getCategory", getCategory);
 
 app.post("/getSellerId", getSellerId);
+app.post("/registerVisit", registerVisit);
 
 app.post("/disableItem", disableItem);
 app.post("/reportItem", reportItem);
