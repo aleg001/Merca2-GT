@@ -66,9 +66,7 @@ const Homepage = ({ userName, setOnShow }) => {
     try {
       handleItemsHomepage(setItems)
       handleCategory(setCat)
-    } catch (e) {
-      return null
-    }
+    } catch (e) {}
   }, [])
 
   useEffect(() => {
