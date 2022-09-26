@@ -151,6 +151,33 @@ const getSellerId = (req, res) => {
   })
 }
 
+const registerVisit = (req, res) => {
+  console.log('\n> POST request /registerVisit with body: ', req.body)
+  const sql = `
+    INSERT INTO public.visits
+    (username, visiting_time)
+    VALUES('${req.body.username}', CURRENT_TIMESTAMP);  
+  `
+  console.log(sql)
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+      })
+    })
+  })
+}
 
 
 // Exports
@@ -160,4 +187,5 @@ module.exports = {
   login,
   checkLogin,
   getSellerId,
+  registerVisit,
 }
