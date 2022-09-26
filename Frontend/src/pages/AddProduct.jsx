@@ -94,7 +94,10 @@ const handleCategory = (setCat) => {
 }
 
 const AddProduct = ({ userName, setOnShow }) => {
-  setDocTitle('Agregar producto')
+  try {
+    setDocTitle('Agregar producto')
+    // setDocTitle('Login')
+  } catch (error) { console.log(error) }
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
 
