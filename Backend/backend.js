@@ -25,6 +25,7 @@ const {
   checkLogin,
   countLogIn,
   getSellerId,
+  registerVisit,
 } = require("./controllers/Users");
 
 const {
@@ -42,6 +43,8 @@ const {
   reportItem,
   getCategoryItems,
   getCategory,
+  recordVisitItem,
+  getCantItems,
 } = require("./controllers/Items");
 const {
   dataVendedor,
@@ -77,8 +80,12 @@ app.post("/filterItemsCat", filterItemsCat);
 app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
 app.post("/getCategory", getCategory);
+app.post("/getCantItems", getCantItems);
+app.post("/getCantViewsItem", getCantViewsItem);
 
 app.post("/getSellerId", getSellerId);
+app.post("/registerVisit", registerVisit);
+app.post("/recordVisitItem", recordVisitItem);
 
 app.post("/disableItem", disableItem);
 app.post("/reportItem", reportItem);

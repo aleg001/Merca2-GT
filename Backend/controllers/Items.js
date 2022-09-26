@@ -397,6 +397,78 @@ const disableItem = (req, res) => {
   })
 }
 
+const recordVisitItem = (req, res) => {
+  console.log('\n> post request /disable item with body:\n', req.body)
+  const sql = `
+    INSERT INTO public.visits_item
+    (username, id_item, visiting_time)
+    VALUES('${req.body.username}', '${req.body.id_item}', CURRENT_TIMESTAMP);
+    `
+
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      client.end()
+      if (err) {
+        console.error('error running query', err)
+        res.json({ success: false })
+      }
+      res.json({ success: true })
+    })
+  })
+}
+
+const getCantItems = (req, res) => {
+  console.log('\n> post request /getCantItems item with body:\n', req.body)
+  const sql = `
+    SELECT COUNT(*) FROM item WHERE id_usuario='$req.body.username'
+    `
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      client.end()
+      if (err) {
+        console.error('error running query', err)
+        res.json({ success: false })
+      }
+      res.json({ 
+        success: true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
+const getCantViewsItem = (req, res) => {
+  console.log('\n> post request /getCantViewsItem item with body:\n', req.body)
+  const sql = `
+    SELECT COUNT(*) FROM visits_item WHERE id_item='$req.body.id_item'
+    `
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      client.end()
+      if (err) {
+        console.error('error running query', err)
+        res.json({ success: false })
+      }
+      res.json({ 
+        success: true,
+        items: result.rows,
+      })
+    })
+  })
+}
+
 // Exports
 module.exports = {
   getItems,
@@ -413,4 +485,7 @@ module.exports = {
   disableItem,
   reportItem,
   getCategoryItems,
+  recordVisitItem,
+  getCantItems,
+  getCantViewsItem,
 }
