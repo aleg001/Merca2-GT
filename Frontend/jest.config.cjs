@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable quote-props */
 module.exports = {
   moduleNameMapper: {
     '\\.css$': '<rootDir>/mocks/styleMocks.js',
@@ -7,6 +9,6 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [
-    "node_modules/(?!(react-native|react-native-vector-icons|@react-native-community/picker)/)"
+    "node_modules/(?!(react-native|react-native-vector-icons|@react-native-community/picker)/)",
   ],
 }
