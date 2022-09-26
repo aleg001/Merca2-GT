@@ -151,7 +151,33 @@ const getSellerId = (req, res) => {
   })
 }
 
+const countLogIn = (req, res) => {
+  console.log('\n> GET request /getItems')
+  const sql = `
+        SELECT COUNT(*), visiting_time FROM "public"."visits" 
+        WHERE visiting_time = CURRENT_DATE
+        GROUP BY visiting_time`
 
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({
+        succes: true,
+        items: result.rows,
+      })
+    })
+  })
+}
 
 // Exports
 module.exports = {
@@ -159,5 +185,6 @@ module.exports = {
   register,
   login,
   checkLogin,
+  countLogIn,
   getSellerId,
 }
