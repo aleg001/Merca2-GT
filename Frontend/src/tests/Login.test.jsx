@@ -2,46 +2,46 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
-import App from '../AppforTesting'
-import Homepage from '../pages/Homepage'
+import Login from '../pages/Login'
 
 describe('Cuando se presiona el boton de sign up', () => {
   it('se muestra la pagina de registro', async () => {
-    render(<App />)
-    // Codigo viejito xdxd
-    const loginInput = (await screen.findByPlaceholderText(/Usuario/))
-    const passwordInput = (await screen.findByPlaceholderText(/Contraseña/))
-    // await fireEvent.change(loginInput, {target: {value: 'pao'}})
-    // await fireEvent.change(passwordInput, {target: {value: 'pao'}})
-    
-    const Login = (await screen.findAllByText(/Login/))[1]
-    await userEvent.click(Login)
-
+    const setter = jest.fn()
+    const setIsRegis = jest.fn()
+    render(<Login 
+      setIsRegis={setIsRegis}
+      setIsLogedIn={setter}
+      setUsername={setter}
+      setIsAdmin={setter}
+    />)
     // Codigo nuevo
     const SignUp = await screen.findByText(/Sign Up/)
     await userEvent.click(SignUp)
 
-    expect(
-      await screen.findByText(/Registro/)
-    ).toBeInTheDocument()
+    expect(setIsRegis).toBeCalledWith(true)
   })
 })
 
-describe('Cuando se presiona el boton de tus articulos', () => {
-  it('se muestra la pagina de tus articulos', async () => {
-    let actualShow = ''
-    const set = (item) => {
-      actualShow = item
-    }
-    render(<Homepage userName={'pao'} setOnShow={set} />)
-    // Codigo nuevo
-    // const add = await screen.findAllByAltText(/agregarP/)
-    const add = await screen.findByRole('addbutton')
-    await userEvent.click(add.firstChild)
 
+describe('Cuando se ingresan valores en el los inputs', () => {
+  it('Estos se guardan como value en los componentes', async () => {
+    const setter = jest.fn()
+    render(<Login 
+      setIsRegis={setter}
+      setIsLogedIn={setter}
+      setUsername={setter}
+      setIsAdmin={setter}
+    />)
 
-    expect(
-      actualShow
-    ).toBe('addItem')
+    // Elementos de input
+    const loginInput = (await screen.findByPlaceholderText(/Usuario/))
+    const passwordInput = (await screen.findByPlaceholderText(/Contraseña/))
+
+    // Ingreso de datos en los inputs
+    await userEvent.type(loginInput, 'prueba_input')
+    await userEvent.type(passwordInput, 'prueba_input')
+
+    expect(loginInput).toHaveValue('prueba_input')
+    expect(passwordInput).toHaveValue('prueba_input')
   })
 })

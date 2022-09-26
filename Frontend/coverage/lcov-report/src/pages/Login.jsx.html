@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.48% </span>
+                <span class="strong">29.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/31</span>
+                <span class='fraction'>9/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/10</span>
+                <span class='fraction'>2/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.93% </span>
+                <span class="strong">31.03% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/29</span>
+                <span class='fraction'>9/29</span>
             </div>
         
             
@@ -271,16 +271,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -302,8 +300,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -329,7 +329,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -409,9 +409,9 @@ const Login = ({
   setIsAdmin,
 }) =&gt; {
   try {
-    document.getElementById('title').textContent = 'Login'
+    setDocTitle('Login')
     // setDocTitle('Login')
-  } catch (error) { console.log(error) }
+  } catch (error) { }
   const [usernameL, setUsernameL] = React.useState('')
   const [passwordL, setPasswordL] = React.useState('')
 &nbsp;
@@ -438,9 +438,9 @@ const Login = ({
           &lt;button
             type='button'
             className='btnLogin'
-            onClick={() =&gt; {
-              <span class="missing-if-branch" title="else path not taken" >E</span>if (usernameL === '' || <span class="branch-1 cbranch-no" title="branch not covered" >passwordL === '')</span> {
-                return alert('Llene los campos para continuar')
+            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >              if (usernameL === '' || passwordL === '') {</span>
+<span class="cstat-no" title="statement not covered" >                return alert('Llene los campos para continuar')</span>
               }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >              return handleLogin(</span>
@@ -466,12 +466,12 @@ const Login = ({
   )
 }
 &nbsp;
-// Login.propTypes = {
-//   setIsRegis: PropTypes.func.isRequired,
-//   setIsLogedIn: PropTypes.func.isRequired,
-//   setUsername: PropTypes.func.isRequired,
-//   setIsAdmin: PropTypes.func.isRequired,
-// }
+Login.propTypes = {
+  setIsRegis: PropTypes.func.isRequired,
+  setIsLogedIn: PropTypes.func.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  setIsAdmin: PropTypes.func.isRequired,
+}
 &nbsp;
 export default Login
 &nbsp;</pre></td></tr></table></pre>
@@ -481,7 +481,7 @@ export default Login
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-26T06:44:41.593Z
+                at 2022-09-26T19:49:07.781Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
