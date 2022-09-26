@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import AddItemButton from '../Components/AddItemButton.jsx'
+import Homepage from '../pages/Homepage.jsx'
 import { isTSAnyKeyword } from '@babel/types'
 
 describe('Cuando se presiona el boton de agregar producto', () => {
@@ -17,24 +18,18 @@ describe('Cuando se presiona el boton de agregar producto', () => {
 
     // Encontrar nuevo elemento en la nueva página
     expect(
-      await screen.findByText(/Agregar nuevo producto/)
-    ).toBeInTheDocument()
+      setter
+    ).toBeCalledWith('addItem')
   })
 })
 
-describe('Cuando se presiona el drop down menu de categorias', () => {
-  it('se muestran las categorias disponibles', async () => {
+describe('Cuando se carga la pagina de homepage', () => {
+  it('se muestra el nombre de usuario', async () => {
     const setter = jest.fn()
     render(<Homepage userName={'pao'} setOnShow={setter} />)
     // Elemento del drop down menu
-    const DDmenu = screen.findByText(/Seleccione una categoria/)
-
-    // Click al dd menu
-    await userEvent.click(DDmenu)
-
-    // Buscar que las categorias si aparezcan en pantalla
     expect (
-      await screen.findByText(/Tecnologia/)
+      await screen.findByText(/pao/)
     ).toBeInTheDocument()
   })
 })
