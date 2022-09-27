@@ -11,4 +11,8 @@ module.exports = {
   transformIgnorePatterns: [
     "node_modules/(?!(react-native|react-native-vector-icons|@react-native-community/picker)/)",
   ],
+  testPathIgnorePatterns : [
+    "<rootDir>/src/pages/detallesProductos.jsx" 
+  ]
+  
 }

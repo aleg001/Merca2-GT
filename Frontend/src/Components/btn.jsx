@@ -26,6 +26,7 @@ const Button = ({
 
   return (
     <button
+      data-testid="botton"
       className={`btn ${checkButtonStyle} ${checkButtonSize}`}
       onClick={onClick}
       type={type}

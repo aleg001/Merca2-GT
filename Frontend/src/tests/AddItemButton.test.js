@@ -7,9 +7,7 @@ import Homepage from '../pages/Homepage.jsx'
 import { isTSAnyKeyword } from '@babel/types'
 
 
-it('Render sin crashear', () => {
-  render(<AddItemButton setOnShow={(x) => undefined}/>)
- })
+it('Render sin crashear', () => render(<AddItemButton setOnShow={(x) => undefined}/>))
 
 describe('Cuando se presiona el boton de agregar producto', () => {
   it('se muestra la pagina de ingreso de informacion del nuevo producto', async () => {
