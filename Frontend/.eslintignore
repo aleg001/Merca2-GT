@@ -2,3 +2,6 @@ node_modules
 dist/*
 webpack.config.js
 .babelrc
+*.test.js
+*.test.jsx
+*.cjs

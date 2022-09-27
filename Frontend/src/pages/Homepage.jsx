@@ -82,13 +82,16 @@ const Homepage = ({ userName, setOnShow }) => {
   const [selectedProduct, setSelectedProduct] = React.useState(false)
 
   useEffect(() => {
-    handleItemsHomepage(setItems)
-    handleCategory(setCat)
-    handleRegisterVisit(userName)
+
+    try {
+      handleItemsHomepage(setItems)
+      handleCategory(setCat)
+    } catch (e) {}
+
   }, [])
 
   useEffect(() => {
-    if (Cat1 != '') {
+    if (Cat1 !== '') {
       handleCategoryItems(setItems, Cat1)
       console.log(Cat1, ' cat1')
     }

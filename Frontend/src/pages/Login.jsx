@@ -69,7 +69,10 @@ const Login = ({
   setUsername,
   setIsAdmin,
 }) => {
-  setDocTitle('Login')
+  try {
+    setDocTitle('Login')
+    // setDocTitle('Login')
+  } catch (error) { }
   const [usernameL, setUsernameL] = React.useState('')
   const [passwordL, setPasswordL] = React.useState('')
 
