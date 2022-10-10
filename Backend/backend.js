@@ -25,6 +25,7 @@ const {
   checkLogin,
   countLogIn,
   getSellerId,
+  deleteUser,
 } = require("./controllers/Users");
 
 const {
@@ -64,6 +65,7 @@ app.post("/register", register);
 app.post("/login", login);
 app.post("/countlogin", countLogIn);
 app.post("/checkLogin", checkLogin);
+app.post("/deleteUser", deleteUser);
 
 // Manejo de items
 app.post("/addItem", addItem);
