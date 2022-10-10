@@ -1,1 +1,0 @@
-module.exports = 'postgres://cjnkhxhk:0-qiJNzlV-_6cRq97WG1BaoPKmn9Jj0H@isilo.db.elephantsql.com/cjnkhxhk'
