@@ -6,6 +6,7 @@ import DetallesProductos from './detallesProductos.jsx'
 import Navbar from '../Components/navbar.jsx'
 import { AddItemButton } from '../Components/AddItemButton.jsx'
 
+/* istanbul ignore next */
 const handleItemsHomepage = (setItems) => {
   const requestOptions = {
     method: 'GET',
@@ -18,6 +19,7 @@ const handleItemsHomepage = (setItems) => {
     .catch((error) => console.log('error', error))
 }
 
+/* istanbul ignore next */
 const handleCategory = (setCat) => {
   const requestOptions = {
     headers: {
@@ -36,6 +38,7 @@ const handleCategory = (setCat) => {
     })
 }
 
+/* istanbul ignore next */
 const handleCategoryItems = (setItems, id_cat) => {
   const requestOptions = {
     headers: {
@@ -81,26 +84,33 @@ const Homepage = ({ userName, setOnShow }) => {
   const [idSelectedProduct, setIdSelectedProduct] = React.useState()
   const [selectedProduct, setSelectedProduct] = React.useState(false)
 
+  /* istanbul ignore next */
   useEffect(() => {
 
     try {
       handleItemsHomepage(setItems)
       handleCategory(setCat)
-    } catch (e) {}
+
+    } catch (e) {
+      console.log('')
+    }
+
 
   }, [])
 
+  /* istanbul ignore next */
   useEffect(() => {
     if (Cat1 !== '') {
       handleCategoryItems(setItems, Cat1)
       console.log(Cat1, ' cat1')
     }
-
+    /* istanbul ignore next */
     if (Cat1 === 'cat_prueba') {
       handleItemsHomepage(setItems)
     }
   }, [Cat1])
 
+  /* istanbul ignore next */
   if (selectedProduct) {
     return (
       <DetallesProductos
@@ -111,6 +121,8 @@ const Homepage = ({ userName, setOnShow }) => {
       />
     )
   }
+
+  /* istanbul ignore next */
   return (
     <div className='content'>
       <Header title='Homepage' user={userName} setOnShow={setOnShow} />

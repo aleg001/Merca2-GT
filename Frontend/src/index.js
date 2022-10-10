@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn.jsx'
 import Login from './pages/Login.jsx'
 import AddProduct from './pages/AddProduct.jsx'
 import VerProducto from './pages/VerProducto.jsx'
+import Stats from './pages/Stats.jsx'
 
 import './styles/master.css'
 
@@ -27,10 +28,15 @@ const App = () => {
   console.table('regis', isRegis)
   if (isRegis) return <SignIn setIsRegis={setIsRegis} />
   if (isLogedIn) {
-    if (onShow === 'home') return <Homepage userName={username} setOnShow={setOnShow} />
-    if (onShow === 'addItem') return <AddProduct userName={username} setOnShow={setOnShow} />
-    if (onShow === 'Articulos') return <VerProducto userName={username} setOnShow={setOnShow} />
+    if (onShow === 'home')
+      return <Homepage userName={username} setOnShow={setOnShow} />
+    if (onShow === 'addItem')
+      return <AddProduct userName={username} setOnShow={setOnShow} />
+    if (onShow === 'Articulos')
+      return <VerProducto userName={username} setOnShow={setOnShow} />
 
+    if (onShow === 'Stats')
+      return <Stats userName={Stats} setOnShow={setOnShow} />
     // TODO Articulos
     /// TODO Perfil
   }

@@ -1,7 +1,7 @@
 /*********************************************
  * Universidad del Valle de Guatemala
  * Merca2 GT
- * Autores: 
+ * Autores:
  *  Alejandro Gómez
  * 	Marco Jurado
  *  Diego Córdova
@@ -24,21 +24,20 @@ const checkNewUser = (req, res) => {
   const client = new pg.Client(conString)
 
   client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
-    
+    if (err) return console.error('could not connect to postgres', err)
+
     client.query(sql, (err, result) => {
-      if(err) return console.error('error running query', err)
-      
+      if (err) return console.error('error running query', err)
+
       client.end()
-      res.json({ 
-        userExist: result.rows.length > 0
+      res.json({
+        userExist: result.rows.length > 0,
       })
     })
   })
 }
 
 const register = (req, res) => {
-
   console.log('\n> post request /register with body:\n', req.body)
   const sql = `
   INSERT INTO users (name, lastname, username, email, user_password, gender, create_date, administrador, habilitado) 
@@ -57,11 +56,11 @@ const register = (req, res) => {
   const client = new pg.Client(conString)
 
   client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
+    if (err) return console.error('could not connect to postgres', err)
 
     client.query(sql, (err, result) => {
       client.end()
-      if(err){
+      if (err) {
         console.error('error running query', err)
         res.json({ success: false })
       }
@@ -71,7 +70,6 @@ const register = (req, res) => {
 }
 
 const login = (req, res) => {
-
   console.log('\n> post request /login with body:\n', req.body)
   const sql = `
   SELECT * FROM users WHERE username = '${req.body.username}' 
@@ -80,22 +78,21 @@ const login = (req, res) => {
   const client = new pg.Client(conString)
 
   client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
-    
+    if (err) return console.error('could not connect to postgres', err)
+
     client.query(sql, (err, result) => {
-      if(err) return console.error('error running query', err)
-      
+      if (err) return console.error('error running query', err)
+
       client.end()
       res.json({
         userExist: result.rows.length > 0,
-        username: result.rows
+        username: result.rows,
       })
     })
   })
 }
 
-const checkLogin =  (req, res) => {  
-  
+const checkLogin = (req, res) => {
   console.log('\n> post request /checkLogin with body:\n', req.body)
   const sql = `
   INSERT INTO login_fails (username, password, failtime) 
@@ -108,11 +105,11 @@ const checkLogin =  (req, res) => {
   const client = new pg.Client(conString)
 
   client.connect((err) => {
-    if(err) return console.error('could not connect to postgres', err)
-    
+    if (err) return console.error('could not connect to postgres', err)
+
     client.query(sql, (err, result) => {
       client.end()
-      if(err) {
+      if (err) {
         res.json({ success: false })
         return console.error('error running query', err)
       }
@@ -120,7 +117,6 @@ const checkLogin =  (req, res) => {
     })
   })
 }
-
 
 const getSellerId = (req, res) => {
   console.log('\n> POST request /getSellerId with body: ', req.body)
@@ -160,9 +156,31 @@ const registerVisit = (req, res) => {
   `
   console.log(sql)
 
-
   const client = new pg.Client(conString)
 
+  client.query(sql, (err, result) => {
+    if (err) {
+      client.end()
+      res.json({ succes: false })
+      return console.error('error running query', err)
+    }
+
+    client.end()
+    res.json({
+      succes: true,
+    })
+  })
+}
+
+const deleteUser = (req, res) => {
+  console.log('\n> Post request /deleteUser')
+  const sql = `
+    DELETE FROM users u WHERE u.username = '${req.body.username}'
+  `
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
 
     client.query(sql, (err, result) => {
       if (err) {
@@ -172,15 +190,10 @@ const registerVisit = (req, res) => {
       }
 
       client.end()
-      res.json({
-        succes: true,
-      })
+      res.json({ succes: true })
     })
   })
 }
-
-
-   
 
 // Exports
 module.exports = {
@@ -188,7 +201,7 @@ module.exports = {
   register,
   login,
   checkLogin,
-  countLogIn,
+  deleteUser,
   getSellerId,
   registerVisit,
 }

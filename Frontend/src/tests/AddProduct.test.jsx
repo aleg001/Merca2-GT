@@ -5,20 +5,21 @@
 
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import fetchMock from "jest-fetch-mock"
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import AddProduct from '../pages/AddProduct'
+import fetchMock, { enableFetchMocks} from 'jest-fetch-mock'
+enableFetchMocks()
+fetchMock.dontMock()
 
 describe('Cuando se ingresan valores en el los inputs de añadir producto', () => {
   it('Estos se guardan como value en los componentes', async () => {
     const setter = jest.fn()
     render(<AddProduct
-      userName={setter}
+      userName={'pao'}
       setOnShow={setter}
 
     />)
-    require('jest-fetch-mock').enableMocks(); fetchMock.dontMock()
 
     // Elementos de input
     const product = (await screen.findByPlaceholderText(/Producto/))
@@ -36,5 +37,19 @@ describe('Cuando se ingresan valores en el los inputs de añadir producto', () =
     expect(price).toHaveValue('prueba_input')
     expect(description).toHaveValue('prueba_input')
     expect(ubication).toHaveValue('prueba_input')
+  })
+})
+
+describe('Buscar ingreso de categorias', () => {
+  it('Esta en el documento', async () => {
+    const setter = jest.fn()
+    render(<AddProduct
+      userName={'pao'}
+      setOnShow={setter}
+    />)
+      
+    expect(
+      await screen.getByText('Ingrese una categoria:')
+    ).toBeInTheDocument()
   })
 })
