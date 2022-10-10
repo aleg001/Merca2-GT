@@ -63,9 +63,9 @@ const register = (req, res) => {
       client.end()
       if(err){
         console.error('error running query', err)
-        res.json({ succes: false })
+        res.json({ success: false })
       }
-      res.json({ succes: true })
+      res.json({ success: true })
     })
   })
 }
@@ -113,10 +113,10 @@ const checkLogin =  (req, res) => {
     client.query(sql, (err, result) => {
       client.end()
       if(err) {
-        res.json({ succes: false })
+        res.json({ success: false })
         return console.error('error running query', err)
       }
-      res.json({ succes: true })
+      res.json({ success: true })
     })
   })
 }

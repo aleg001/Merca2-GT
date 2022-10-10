@@ -367,9 +367,9 @@ const reportItem = (req, res) => {
       client.end()
       if (err) {
         console.error('error running query', err)
-        res.json({ succes: false })
+        res.json({ success: false })
       }
-      res.json({ succes: true })
+      res.json({ success: true })
     })
   })
 }
@@ -390,9 +390,9 @@ const disableItem = (req, res) => {
       client.end()
       if (err) {
         console.error('error running query', err)
-        res.json({ succes: false })
+        res.json({ success: false })
       }
-      res.json({ succes: true })
+      res.json({ success: true })
     })
   })
 }
