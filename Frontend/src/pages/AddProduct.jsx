@@ -13,6 +13,7 @@ import '../styles/login.css'
 import '../styles/SignIn.css'
 import '../styles/categoryInput.css'
 
+/* istanbul ignore next */
 const handleAddItem = (
   id,
   itemName,
@@ -54,6 +55,7 @@ const handleAddItem = (
     })
 }
 
+/* istanbul ignore next */
 const handleAddItemPartes = (id_item, imagen) => {
   fetch('http://127.0.0.1:8000/addItemPartes', {
     headers: {
@@ -77,6 +79,7 @@ const handleAddItemPartes = (id_item, imagen) => {
     })
 }
 
+/* istanbul ignore next */
 const handleCategory = (setCat) => {
   const requestOptions = {
     headers: {
@@ -99,14 +102,16 @@ const AddProduct = ({ userName, setOnShow }) => {
   try {
     setDocTitle('Agregar producto')
     // setDocTitle('Login')
-  } catch (error) { console.log(error) }
+  } catch (error) { }
   // Estructura de tabla:
   // id, nombre, id_cat, descripcion, precio, id_usuario, ubicacion, post_time, item_rating, image
 
   // random item id
+  /* istanbul ignore next */
   const randomID = () => Date.now()
 
   // star rating
+  /* istanbul ignore next */
   const rating = () => {
     const starRating = (Math.random() * (5 - 1) + 1).toFixed(2)
     return parseFloat(starRating)
@@ -120,10 +125,12 @@ const AddProduct = ({ userName, setOnShow }) => {
   const [Cat, setCat] = React.useState([])
   const [Cat1, setCat1] = React.useState('')
 
+  /* istanbul ignore next */
   useEffect(() => {
     handleCategory(setCat)
   }, [])
 
+  /* istanbul ignore next */
   return (
     <div className='content'>
       <Header title='Agregar nuevo producto' setOnShow={setOnShow} />
@@ -184,6 +191,7 @@ const AddProduct = ({ userName, setOnShow }) => {
         type='button'
         className='btnLogin'
         onClick={() => {
+          /* istanbul ignore next */
           if (
             [productName, Cat, description, price, ubication, Link].includes('')
           ) { return alert('Llene los campos para ingresar su producto') }

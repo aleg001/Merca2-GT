@@ -10,7 +10,7 @@ import '../styles/header.css'
 
 const Header = ({ title, user, setOnShow }) => (
   <header>
-    <img src={logo} alt='' onClick={() => setOnShow('home')} />
+    <img data-testid="headerglobal" src={logo} alt='' onClick={() => setOnShow('home')} />
     <h2>{title}</h2>
     <h3 className='benvenute'>{user}</h3>
   </header>

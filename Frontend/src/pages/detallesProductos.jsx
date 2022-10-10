@@ -12,26 +12,29 @@ import Header from '../Components/Header.jsx'
 
 import '../styles/detallesProducto.css'
 
+/* istanbul ignore next */
 const openInNewTab = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
     `https://wa.me/502${number}?text=¡Hola+${name}!+Estoy+interesado+en+comprar+${product}`,
     '_blank',
-    'noopener,noreferrer'
+    'noopener,noreferrer',
   )
 }
 
+/* istanbul ignore next */
 const whatsappOfer = (name, product) => {
   // eslint-disable-next-line no-param-reassign
   const number = '58747112'
   window.open(
     `https://wa.me/502${number}?text=¡Hola+${name}!+Me+gustaría+realizar+una+oferta+en+${product}.+¿A+cuanto+me+lo+dejas?`,
     '_blank',
-    'noopener,noreferrer'
+    'noopener,noreferrer',
   )
 }
 
+/* istanbul ignore next */
 const handleItems = (setItems, id) => {
   fetch('http://127.0.0.1:8000/getSelectedItem', {
     headers: {
@@ -49,6 +52,7 @@ const handleItems = (setItems, id) => {
     .catch((error) => console.log('error', error))
 }
 
+/* istanbul ignore next */
 const handleSellerName = (setSellerName, setSellerLastName, id) => {
   fetch('http://127.0.0.1:8000/getSellerName', {
     headers: {
@@ -67,6 +71,7 @@ const handleSellerName = (setSellerName, setSellerLastName, id) => {
     .catch((error) => console.log('error', error))
 }
 
+/* istanbul ignore next */
 const handleSellerPic = (setSellerPic, id) => {
   fetch('http://127.0.0.1:8000/getSellerPic', {
     headers: {
@@ -84,6 +89,7 @@ const handleSellerPic = (setSellerPic, id) => {
     .catch((error) => console.log('error', error))
 }
 
+/* istanbul ignore next */
 const handleProductPics = (setProductPics, id) => {
   fetch('http://127.0.0.1:8000/getProductPics', {
     headers: {
@@ -101,6 +107,7 @@ const handleProductPics = (setProductPics, id) => {
     .catch((error) => console.log('error', error))
 }
 
+/* istanbul ignore next */
 const handleReportProduct = (denunciadoID, itemID) => {
   fetch('http://127.0.0.1:8000/reportItem', {
     headers: {
@@ -117,6 +124,7 @@ const handleReportProduct = (denunciadoID, itemID) => {
     .catch((error) => console.log('error', error))
 }
 
+/* istanbul ignore next */
 const handleGetSellerID = (setSellerID, idItem) => {
   const info = {
     headers: {
@@ -152,6 +160,7 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
     handleItems(setItems, idItem)
   }, [])
 
+  /* istanbul ignore next */
   useEffect(() => {
     if (!items) return
     // eslint-disable-next-line array-callback-return
@@ -162,11 +171,12 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
     })
   }, [items])
 
+  /* istanbul ignore next */
   useEffect(() => {
     if (!productPics) return
     setMainPic(productPics[0].imagen)
   }, [productPics])
-
+  /* istanbul ignore next */
   return (
     <>
       <Header
@@ -228,9 +238,7 @@ const DetallesProductos = ({ idItem, setOnShow, setSelectedProduct }) => {
                     <button
                       key={index + 2}
                       onClick={() => {
-                        alert(
-                          'Gracias por tu reporte, verificaremos la publicación'
-                        )
+                        alert('Gracias por tu reporte, verificaremos la publicación')
                         handleGetSellerID(setSellerId, idItem)
                       }}
                       className='btnReport'
