@@ -9,6 +9,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Header from '../Components/Header.jsx'
+import Navbar from '../Components/navbar.jsx'
 
 import '../styles/detallesProducto.css'
 
@@ -43,6 +44,8 @@ const Stats = ({setOnShow }) => {
           setOnShow(Stats)
         }}
       />
+       <Navbar setOnShow={setOnShow} />
+
       <div className='content'>
         <h3>xd</h3>
       </div>
