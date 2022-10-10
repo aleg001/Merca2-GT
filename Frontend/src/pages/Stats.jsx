@@ -1,56 +1,69 @@
-import React from 'react'
+/* eslint-disable no-alert */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Header from '../Components/Header.jsx'
-import Navbar from '../Components/navbar.jsx'
 
-const handleItemsUser = (setItems, idUsuario) => {
-  const requestOptions = {
+import '../styles/detallesProducto.css'
+
+
+
+const userStats = (setItems) => {
+  fetch('http://127.0.0.1:8000/statsQuery', {
     headers: {
       'Content-Type': 'application/json',
     },
     method: 'POST',
     body: JSON.stringify({
-      idUsuario,
     }),
-    redirect: 'follow',
-  }
-
-  fetch('http://127.0.0.1:8000/getItemsUser', requestOptions)
-    .then(response => response.json())
-    .then(result => {
-      console.log(idUsuario, "iddd")
-      console.log(result.items)
+  })
+    .then((response) => response.json())
+    .then((result) => {
       setItems(result.items)
     })
+    .catch((error) => console.log('error', error))
 }
 
-const Stats = ({ userName, setOnShow }) => {
-  const [items, setItems] = React.useState()
-  React.useEffect(() => {
-    handleItemsUser(setItems, userName)
-  }, [])
+
+
+const Stats = ({ username, setOnShow }) => {
+
 
   return (
-    <div className='content'>
-      <Header title='Estadísticas' user={userName} setOnShow={setOnShow} />
-      <Navbar setOnShow={setOnShow} />
-      <div className='container'>
-        {items
-        && items.map((item, index) => (
-          <h3>Estadísticas generales</h3>
-        ))}
+    <>
+      <Header
+        title='Estadísticas'
+        setOnShow={(Stats) => {
+          setSelectedProduct(false)
+          setOnShow(Stats)
+        }}
+      />
+      <div className='content'>
+        {items &&
+          items.map((item, index) => (
+            <div className='wrapper'>
+              <div className='main-grid'>xw
+                <div className='seller-info'>
+                <div className='product-info'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
       </div>
-
-      <footer>
-        Merca2-GT | Tel: +502 5017 - 6509 | administracion@merca2gt.com
-      </footer>
-    </div>
+      {/* <Footer/> */}
+    </>
   )
 }
 
+// Props Validation
 Stats.propTypes = {
-  userName: PropTypes.string.isRequired,
   setOnShow: PropTypes.func.isRequired,
 }
 
