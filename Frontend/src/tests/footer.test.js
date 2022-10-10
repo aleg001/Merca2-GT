@@ -1,9 +1,9 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import userEvent from '@testing-library/user-event'
 import Footer from '../Components/footer.jsx'
 
+// eslint-disable-next-line no-undef
 it('Render sin crashear', () => {
   render(<Footer />)
 })

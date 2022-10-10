@@ -3,8 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../styles/navbar.css'
 
-import Perfil from './Perfil.jsx'
-
 const Navbar = ({ setOnShow, Cat, cat1 }) => (
   <div className='navbar'>
     <div>
@@ -21,15 +19,6 @@ const Navbar = ({ setOnShow, Cat, cat1 }) => (
       >
         Tus Artículos
       </button>
-      {Perfil
-        && (
-          <button
-            onClick={() => setOnShow('Perfil')}
-            type='button'
-          >
-            Perfil
-          </button>
-        )}
       <select
         data-testid="select-nav"
         onChange={(event) => cat1(event.target.value)}

@@ -18,8 +18,8 @@ const ItemInGrid = ({
 }) => (
   <div
     className='container_item'
+    data-testid="homePage"
     onClick={() => {
-      console.log('Click item:', itemId)
       setIdSelectedProduct(itemId)
       setSelectedProduct(true)
     }}
