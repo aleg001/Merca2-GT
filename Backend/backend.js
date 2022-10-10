@@ -24,13 +24,9 @@ const {
   login,
   checkLogin,
   getSellerId,
-
-  deleteUser,
-} = require("./controllers/Users");
-
   registerVisit,
+  deleteUser,
 } = require('./controllers/Users')
-
 
 const {
   getItems,
@@ -67,13 +63,12 @@ app.listen(8000, () => {
 
 // Registro de nuevos usuarios
 
-app.post("/checkNewUser", checkNewUser);
-app.post("/register", register);
-app.post("/login", login);
-app.post("/countlogin", countLogIn);
-app.post("/checkLogin", checkLogin);
-app.post("/deleteUser", deleteUser);
+app.post('/checkNewUser', checkNewUser)
+app.post('/register', register)
+app.post('/login', login)
 
+app.post('/checkLogin', checkLogin)
+app.post('/deleteUser', deleteUser)
 
 // Manejo de items
 app.post('/addItem', addItem)
