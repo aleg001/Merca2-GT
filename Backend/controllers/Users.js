@@ -176,7 +176,6 @@ const registerVisit = (req, res) => {
         succes: true,
       })
     })
-  })
 }
 
 
@@ -188,7 +187,6 @@ module.exports = {
   register,
   login,
   checkLogin,
-  countLogIn,
   getSellerId,
   registerVisit,
 }
