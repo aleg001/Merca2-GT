@@ -32,9 +32,9 @@ const totalUsersStat = () => {
       client.end()
       if (err) {
         console.error('error running query', err)
-        res.json({ success: false })
+        res.json({ succes: false })
       }
-      res.json({ success: true })
+      res.json({ succes: true })
     })
   })
 }

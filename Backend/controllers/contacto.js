@@ -36,7 +36,7 @@ const dataVendedor = (req, res) => {
     client.query(sql, (err, result) => {
       client.end()
       if(err) {
-        res.json({ success: false })
+        res.json({ succes: false })
         return console.error('error running query', err)
       }
       const data = result.rows[0]

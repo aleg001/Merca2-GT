@@ -63,9 +63,9 @@ const register = (req, res) => {
       client.end()
       if(err){
         console.error('error running query', err)
-        res.json({ success: false })
+        res.json({ succes: false })
       }
-      res.json({ success: true })
+      res.json({ succes: true })
     })
   })
 }
@@ -113,10 +113,10 @@ const checkLogin =  (req, res) => {
     client.query(sql, (err, result) => {
       client.end()
       if(err) {
-        res.json({ success: false })
+        res.json({ succes: false })
         return console.error('error running query', err)
       }
-      res.json({ success: true })
+      res.json({ succes: true })
     })
   })
 }
@@ -179,6 +179,29 @@ const countLogIn = (req, res) => {
   })
 }
 
+const deleteUser = (req, res) => {
+  console.log('\n> Post request /deleteUser')
+  const sql = `
+    DELETE FROM users u WHERE u.username = '${req.body.username}'
+  `
+  const client = new pg.Client(conString)
+
+  client.connect((err) => {
+    if (err) return console.error('could not connect to postgres', err)
+
+    client.query(sql, (err, result) => {
+      if (err) {
+        client.end()
+        res.json({ succes: false })
+        return console.error('error running query', err)
+      }
+
+      client.end()
+      res.json({ succes: true })
+    })
+  })
+}
+
 // Exports
 module.exports = {
   checkNewUser,
@@ -186,5 +209,6 @@ module.exports = {
   login,
   checkLogin,
   countLogIn,
+  deleteUser,
   getSellerId,
 }
