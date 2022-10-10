@@ -19,7 +19,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"\\\"succes\\\":true\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"\\\"success\\\":true\");\r",
 							"});\r",
 							""
 						],
@@ -150,7 +150,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"\\\"succes\\\":true\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"\\\"success\\\":true\");\r",
 							"});\r",
 							""
 						],
@@ -498,7 +498,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"\\\"succes\\\":true\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"\\\"success\\\":true\");\r",
 							"});\r",
 							""
 						],
@@ -548,7 +548,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"\\\"succes\\\":true\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"\\\"success\\\":true\");\r",
 							"});\r",
 							""
 						],
