@@ -32,7 +32,7 @@ const userStats = (setItems) => {
 
 
 
-const Stats = ({ username, setOnShow }) => {
+const Stats = ({setOnShow }) => {
 
 
   return (
@@ -40,22 +40,11 @@ const Stats = ({ username, setOnShow }) => {
       <Header
         title='Estadísticas'
         setOnShow={(Stats) => {
-          setSelectedProduct(false)
           setOnShow(Stats)
         }}
       />
       <div className='content'>
-        {items &&
-          items.map((item, index) => (
-            <div className='wrapper'>
-              <div className='main-grid'>xw
-                <div className='seller-info'>
-                <div className='product-info'>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        <h3>xd</h3>
       </div>
       {/* <Footer/> */}
     </>
