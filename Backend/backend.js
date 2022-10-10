@@ -23,7 +23,6 @@ const {
   register,
   login,
   checkLogin,
-  countLogIn,
   getSellerId,
   registerVisit,
 } = require("./controllers/Users");
@@ -65,7 +64,6 @@ app.listen(8000, () => {
 app.post("/checkNewUser", checkNewUser);
 app.post("/register", register);
 app.post("/login", login);
-app.post("/countlogin", countLogIn);
 app.post("/checkLogin", checkLogin);
 
 // Manejo de items
@@ -81,7 +79,6 @@ app.post("/getSelectedItem", getSelectedItem);
 app.post("/getItemsUser", getItemsUser);
 app.post("/getCategory", getCategory);
 app.post("/getCantItems", getCantItems);
-app.post("/getCantViewsItem", getCantViewsItem);
 
 app.post("/getSellerId", getSellerId);
 app.post("/registerVisit", registerVisit);
