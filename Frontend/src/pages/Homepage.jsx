@@ -58,6 +58,7 @@ const handleCategoryItems = (setItems, id_cat) => {
     })
 }
 
+/* istanbul ignore next */
 const handleRegisterVisit = (username) => {
   const requestOptions = {
     headers: {

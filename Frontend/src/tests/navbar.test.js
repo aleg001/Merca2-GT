@@ -21,6 +21,10 @@ describe('Cuando se da click a una opcion del navbar', () => {
     // opcion comprar
     await userEvent.click(await screen.getByText('Comprar'))
     expect(setOnShow).toHaveBeenCalledWith('home')
+
+    // opcion stadisticas
+    await userEvent.click(await screen.getByText('Estadísticas'))
+    expect(setOnShow).toHaveBeenCalledWith('Stats')
   })
 })
 

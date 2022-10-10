@@ -47,7 +47,7 @@ describe('Buscar ingreso de categorias', () => {
       userName={'pao'}
       setOnShow={setter}
     />)
-      
+
     expect(
       await screen.getByText('Ingrese una categoria:')
     ).toBeInTheDocument()
