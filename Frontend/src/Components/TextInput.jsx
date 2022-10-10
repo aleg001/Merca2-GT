@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import '../styles/login.css'
 
+/* istanbul ignore next */
 const TextInput = ({
   className,
   initValue,
