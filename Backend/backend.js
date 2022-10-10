@@ -14,19 +14,23 @@
  *********************************************/
 
 // Imports
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const {
   checkNewUser,
   register,
   login,
   checkLogin,
-  countLogIn,
   getSellerId,
+
   deleteUser,
 } = require("./controllers/Users");
+
+  registerVisit,
+} = require('./controllers/Users')
+
 
 const {
   getItems,
@@ -43,23 +47,26 @@ const {
   reportItem,
   getCategoryItems,
   getCategory,
-} = require("./controllers/Items");
-const {
-  dataVendedor,
-} = require("./controllers/contacto");
+  recordVisitItem,
+  getCantItems,
+} = require('./controllers/Items')
+const { dataVendedor } = require('./controllers/contacto')
+
+const { totalUsersStat } = require('./controllers/Stats')
 
 // Server para API
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+const app = express()
+app.use(bodyParser.json())
+app.use(cors())
 
 app.listen(8000, () => {
-  console.log("Backend server Running in port 8000");
-});
+  console.log('Backend server Running in port 8000')
+})
 
 // ROUTES
 
 // Registro de nuevos usuarios
+
 app.post("/checkNewUser", checkNewUser);
 app.post("/register", register);
 app.post("/login", login);
@@ -67,26 +74,31 @@ app.post("/countlogin", countLogIn);
 app.post("/checkLogin", checkLogin);
 app.post("/deleteUser", deleteUser);
 
+
 // Manejo de items
-app.post("/addItem", addItem);
-app.get("/getItems", getItems);
-app.post("/addItemPartes", addItemPartes);
-app.post("/deleteItem", deleteItem);
-app.post("/getSellerPic", getSellerPic);
-app.post("/getSellerName", getSellerName);
-app.post("/getProductPics", getProductPics);
-app.post("/filterItemsCat", filterItemsCat);
-app.post("/getSelectedItem", getSelectedItem);
-app.post("/getItemsUser", getItemsUser);
-app.post("/getCategory", getCategory);
+app.post('/addItem', addItem)
+app.get('/getItems', getItems)
+app.post('/addItemPartes', addItemPartes)
+app.post('/deleteItem', deleteItem)
+app.post('/getSellerPic', getSellerPic)
+app.post('/getSellerName', getSellerName)
+app.post('/getProductPics', getProductPics)
+app.post('/filterItemsCat', filterItemsCat)
+app.post('/getSelectedItem', getSelectedItem)
+app.post('/getItemsUser', getItemsUser)
+app.post('/getCategory', getCategory)
+app.post('/getCantItems', getCantItems)
 
-app.post("/getSellerId", getSellerId);
+app.post('/getSellerId', getSellerId)
+app.post('/registerVisit', registerVisit)
+app.post('/recordVisitItem', recordVisitItem)
 
-app.post("/disableItem", disableItem);
-app.post("/reportItem", reportItem);
-app.post("/getCategoryItems", getCategoryItems);
+app.post('/disableItem', disableItem)
+app.post('/reportItem', reportItem)
+app.post('/getCategoryItems', getCategoryItems)
 
 // Contacto con vendedor
-app.post("/dataVendedor", dataVendedor);
+app.post('/dataVendedor', dataVendedor)
 
-
+// Estadisticas
+app.get('/statsQuery', totalUsersStat)

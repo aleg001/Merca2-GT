@@ -151,17 +151,18 @@ const getSellerId = (req, res) => {
   })
 }
 
-const countLogIn = (req, res) => {
-  console.log('\n> GET request /getItems')
+const registerVisit = (req, res) => {
+  console.log('\n> POST request /registerVisit with body: ', req.body)
   const sql = `
-        SELECT COUNT(*), visiting_time FROM "public"."visits" 
-        WHERE visiting_time = CURRENT_DATE
-        GROUP BY visiting_time`
+    INSERT INTO public.visits
+    (username, visiting_time)
+    VALUES('${req.body.username}', CURRENT_TIMESTAMP);  
+  `
+  console.log(sql)
+
 
   const client = new pg.Client(conString)
 
-  client.connect((err) => {
-    if (err) return console.error('could not connect to postgres', err)
 
     client.query(sql, (err, result) => {
       if (err) {
@@ -173,11 +174,10 @@ const countLogIn = (req, res) => {
       client.end()
       res.json({
         succes: true,
-        items: result.rows,
       })
     })
-  })
 }
+
 
 const deleteUser = (req, res) => {
   console.log('\n> Post request /deleteUser')
@@ -202,6 +202,7 @@ const deleteUser = (req, res) => {
   })
 }
 
+
 // Exports
 module.exports = {
   checkNewUser,
@@ -211,4 +212,5 @@ module.exports = {
   countLogIn,
   deleteUser,
   getSellerId,
+  registerVisit,
 }

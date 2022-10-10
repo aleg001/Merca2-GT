@@ -19,6 +19,15 @@ const Navbar = ({ setOnShow, Cat, cat1 }) => (
       >
         Tus Artículos
       </button>
+
+
+      <button
+        onClick={() => setOnShow('Stats')}
+        type='button'
+      >
+        Estadísticas
+      </button>
+
       <select
         data-testid="select-nav"
         onChange={(event) => cat1(event.target.value)}

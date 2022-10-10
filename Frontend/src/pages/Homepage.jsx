@@ -58,6 +58,25 @@ const handleCategoryItems = (setItems, id_cat) => {
     })
 }
 
+const handleRegisterVisit = (username) => {
+  const requestOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      username,
+    }),
+    redirect: 'follow',
+  }
+
+  fetch('http://127.0.0.1:8000/registerVisit', requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      console.log(result, 'yess')
+    })
+}
+
 const Homepage = ({ userName, setOnShow }) => {
   const [items, setItems] = React.useState()
   const [Cat, setCat] = React.useState([])
@@ -67,12 +86,16 @@ const Homepage = ({ userName, setOnShow }) => {
 
   /* istanbul ignore next */
   useEffect(() => {
+
     try {
       handleItemsHomepage(setItems)
       handleCategory(setCat)
+
     } catch (e) {
       console.log('')
     }
+
+
   }, [])
 
   /* istanbul ignore next */
@@ -91,6 +114,7 @@ const Homepage = ({ userName, setOnShow }) => {
   if (selectedProduct) {
     return (
       <DetallesProductos
+        username={userName}
         idItem={idSelectedProduct}
         setOnShow={setOnShow}
         setSelectedProduct={setSelectedProduct}
