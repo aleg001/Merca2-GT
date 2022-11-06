@@ -9,7 +9,8 @@
     "build": "webpack --mode production",
     "lint": "eslint src/* --ext .js --ext .jsx",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "selenium": "selenium-side-runner /path/to/your-project.side"
   },
   "author": "Paola de Leon - Paola COntreras - Diego Cordova - Marco Jurado - Alejandro Gomez",
   "license": "ISC",
