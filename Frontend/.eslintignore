@@ -5,3 +5,5 @@ webpack.config.js
 *.test.js
 *.test.jsx
 *.cjs
+Testing/builder.js
+Frontend/Testing
