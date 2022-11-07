@@ -7,20 +7,18 @@ async function testLogin() {
   const driver = await new Builder().forBrowser('chrome').build()
   await driver.get('http://localhost:8080/')
 
+  //*[@id="root"]/div/div/form/div/div[1]/input
+  //*[@id="root"]/div/div/form/div/div[2]/input
+
   await driver
-    .findElement(By.cssSelector("input[id*='userInput']"))
-    .getAttribute('Usuario')
+    .findElement(By.xpath('//*[@id="root"]/div/div/form/div/div[1]/input'))
     .sendKeys('pao')
 
-  console
-    .log(
-      driver
-        .findElement(By.cssSelector("input[id*='userInput']"))
-        .getAttribute('Usuario')
-    )
+  await driver
+    .findElement(By.xpath('//*[@id="root"]/div/div/form/div/div[2]/input'))
     .sendKeys('pao')
 
-  driver.find_element_by_class_name('btnLogin').click()
+  driver.findElement(By.xpath('//*[@id="root"]/div/div/form/button[1]')).click()
 
   setInterval(function () {
     driver.quit()
