@@ -1,11 +1,14 @@
+/* eslint-disable no-plusplus */
 // import chrome from 'selenium-webdriver/chrome.js'
 // import { Builder, Browser, By, Key, until } from 'selenium-webdriver'
+/* eslint-disable */
 
 import { By, Key, Builder } from 'selenium-webdriver'
 import JavascriptExecutor from 'selenium-webdriver'
 
 async function testLogin() {
   const driver = await new Builder().forBrowser('chrome').build()
+
   await driver.get('http://localhost:8080/')
 
   await driver
@@ -21,8 +24,8 @@ async function testLogin() {
     .click()
 
   setInterval(function () {
-    driver.quit()
     driver.close()
+    driver.quit()
   }, 3000)
 }
 
@@ -230,3 +233,26 @@ async function testSignUp() {
   }, 3000)
 }
 */
+
+switch (process.argv[2]) {
+  case 'testLogin':
+    testLogin()
+    break
+  case 'testHomepageMisProductos':
+    testHomepageMisProductos()
+    break
+  case 'testEstadisticas':
+    testEstadisticas()
+    break
+  case 'testVerDetallesProducto':
+    testVerDetallesProducto()
+    break
+  case 'testContactarProducto':
+    testContactarProducto()
+    break
+  case 'testOfertarProducto':
+    testOfertarProducto()
+    break
+  default:
+    break
+}

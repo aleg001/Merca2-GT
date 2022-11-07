@@ -10,7 +10,12 @@
     "lint": "eslint src/* --ext .js --ext .jsx",
     "test": "jest",
     "coverage": "jest --coverage",
-    "selenium": "node ./Testing/builder.js"
+    "seleniumL": "node ./Testing/builder.js testLogin ",
+    "seleniumHP": "node ./Testing/builder.js testHomepageMisProductos",
+    "seleniumE": "node ./Testing/builder.js testEstadisticas",
+    "seleniumDP": "node ./Testing/builder.js testVerDetallesProducto",
+    "seleniumCP": "node ./Testing/builder.js testContactarProducto",
+    "seleniumOP": "node ./Testing/builder.js testOfertarProducto"
   },
   "author": "Paola de Leon - Paola COntreras - Diego Cordova - Marco Jurado - Alejandro Gomez",
   "license": "ISC",
