@@ -24,8 +24,8 @@ async function testLogin() {
     .click()
 
   setInterval(function () {
-    driver.close()
     driver.quit()
+    driver.close()
   }, 3000)
 }
 
@@ -50,8 +50,8 @@ async function testHomepageMisProductos() {
     .click()
 
   setInterval(function () {
-    //driver.quit()
-    //driver.close()
+    driver.quit()
+    driver.close()
   }, 3000)
 }
 
@@ -76,8 +76,8 @@ async function testEstadisticas() {
     .click()
 
   setInterval(function () {
-    //driver.quit()
-    //driver.close()
+    driver.quit()
+    driver.close()
   }, 3000)
 }
 
@@ -108,7 +108,7 @@ async function testVerDetallesProducto() {
 
   setInterval(function () {
     driver.quit()
-    //driver.close()
+    driver.close()
   }, 10000)
 }
 
@@ -146,7 +146,7 @@ async function testContactarProducto() {
 
   setInterval(function () {
     driver.quit()
-    //driver.close()
+    driver.close()
   }, 10000)
 }
 
@@ -184,7 +184,7 @@ async function testOfertarProducto() {
 
   setInterval(function () {
     driver.quit()
-    //driver.close()
+    driver.close()
   }, 10000)
 }
 
