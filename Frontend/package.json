@@ -10,7 +10,7 @@
     "lint": "eslint src/* --ext .js --ext .jsx",
     "test": "jest",
     "coverage": "jest --coverage",
-    "selenium": "selenium-side-runner /path/to/your-project.side"
+    "selenium": "selenium-side-runner ./Testing/builder.js"
   },
   "author": "Paola de Leon - Paola COntreras - Diego Cordova - Marco Jurado - Alejandro Gomez",
   "license": "ISC",
@@ -26,6 +26,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",
+    "selenium-side-runner": "^4.0.0-alpha.21",
     "selenium-webdriver": "^4.6.0",
     "style-loader": "^3.3.1",
     "testing-library": "^0.0.2",
