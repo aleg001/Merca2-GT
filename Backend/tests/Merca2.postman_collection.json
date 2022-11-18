@@ -15,7 +15,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -64,15 +64,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/register",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/register",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"register"
 					],
@@ -96,7 +94,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -121,15 +119,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/checkNewUser",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/checkNewUser",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"checkNewUser"
 					]
@@ -146,7 +142,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -171,15 +167,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/checkLogin",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/checkLogin",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"checkLogin"
 					]
@@ -196,7 +190,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -221,15 +215,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/login",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/login",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"login"
 					]
@@ -246,7 +238,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -271,15 +263,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/deleteUser",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/deleteUser",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"deleteUser"
 					]
@@ -296,7 +286,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -319,15 +309,13 @@
 					"file": {}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/getItems",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/getItems",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"getItems"
 					]
@@ -344,7 +332,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -369,15 +357,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/addItem",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/addItem",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"addItem"
 					]
@@ -394,7 +380,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -419,15 +405,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/filterItemsCat",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/filterItemsCat",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"filterItemsCat"
 					]
@@ -444,7 +428,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -469,15 +453,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/getCategoryItems",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/getCategoryItems",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"getCategoryItems"
 					]
@@ -494,7 +476,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -519,15 +501,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/reportItem",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/reportItem",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"reportItem"
 					]
@@ -544,7 +524,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -569,15 +549,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/disableItem",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/disableItem",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"disableItem"
 					]
@@ -594,7 +572,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -619,15 +597,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/deleteItem",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/deleteItem",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"deleteItem"
 					]
@@ -644,7 +620,7 @@
 						"exec": [
 							"\r",
 							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body matches string\", function () {\r",
@@ -669,15 +645,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/dataVendedor",
-					"protocol": "http",
+					"raw": "https://backend-merca2.onrender.com/dataVendedor",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"backend-merca2",
+						"onrender",
+						"com"
 					],
-					"port": "8000",
 					"path": [
 						"dataVendedor"
 					]
