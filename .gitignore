@@ -4,3 +4,6 @@ node_modules
 /node_modules
 /Frontend/dist/bundle.js
 /Frontend/dist/bundle.js.LICENSE.txt
+/Frontend/coverage/coverage.data
+/Frontend/coverage/
+/Frontend/dist/
