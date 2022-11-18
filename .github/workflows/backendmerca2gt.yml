@@ -20,6 +20,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
+          
+      - name: npm install, build, and test
+        run: |
+          cd Backend
+          npm install
+          npm start
 
 
   deploy:
@@ -38,9 +44,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_236853EF751E40E3897677B2614EC531 }}
           package: .
-
-      - name: npm install, build, and test
-        run: |
-          cd Backend
-          npm install
-          npm start
