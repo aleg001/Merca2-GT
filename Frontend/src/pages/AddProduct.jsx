@@ -25,7 +25,7 @@ const handleAddItem = (
   rating,
   image,
 ) => {
-  fetch('http://127.0.0.1:8000/addItem', {
+  fetch('https://backend-merca2.onrender.com/addItem', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -57,7 +57,7 @@ const handleAddItem = (
 
 /* istanbul ignore next */
 const handleAddItemPartes = (id_item, imagen) => {
-  fetch('http://127.0.0.1:8000/addItemPartes', {
+  fetch('https://backend-merca2.onrender.com/addItemPartes', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -90,7 +90,7 @@ const handleCategory = (setCat) => {
     redirect: 'follow',
   }
 
-  fetch('http://127.0.0.1:8000/getCategory', requestOptions)
+  fetch('https://backend-merca2.onrender.com/getCategory', requestOptions)
     .then((response) => response.json())
     .then((result) => {
       const categories = result.user

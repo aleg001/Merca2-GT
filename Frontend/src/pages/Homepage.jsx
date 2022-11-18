@@ -13,7 +13,7 @@ const handleItemsHomepage = (setItems) => {
     redirect: 'follow',
   }
 
-  fetch('http://127.0.0.1:8000/getItems', requestOptions)
+  fetch('https://backend-merca2.onrender.com/getItems', requestOptions)
     .then((response) => response.json())
     .then((result) => setItems(result.items))
     .catch((error) => console.log('error', error))
@@ -31,7 +31,7 @@ const handleCategory = (setCat) => {
     redirect: 'follow',
   }
 
-  fetch('http://127.0.0.1:8000/getCategory', requestOptions)
+  fetch('https://backend-merca2.onrender.com/getCategory', requestOptions)
     .then(response => response.json())
     .then(result => {
       setCat(result.user)
@@ -51,7 +51,7 @@ const handleCategoryItems = (setItems, id_cat) => {
     redirect: 'follow',
   }
 
-  fetch('http://127.0.0.1:8000/getCategoryItems', requestOptions)
+  fetch('https://backend-merca2.onrender.com/getCategoryItems', requestOptions)
     .then(response => response.json())
     .then(result => {
       setItems(result.items)
@@ -71,7 +71,7 @@ const handleRegisterVisit = (username) => {
     redirect: 'follow',
   }
 
-  fetch('http://127.0.0.1:8000/registerVisit', requestOptions)
+  fetch('https://backend-merca2.onrender.com/registerVisit', requestOptions)
     .then(response => response.json())
     .then(result => {
       console.log(result, 'yess')
