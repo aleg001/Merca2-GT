@@ -17,6 +17,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const port = process.env.PORT || 8000
 
 const {
   checkNewUser,
@@ -55,7 +56,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.listen(8000, () => {
+app.listen(port, () => {
   console.log('Backend server Running in port 8000')
 })
 
