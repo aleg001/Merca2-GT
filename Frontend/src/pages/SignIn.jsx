@@ -20,7 +20,7 @@ const handleRegister = (
   date,
   setIsRegis,
 ) => {
-  fetch('http://127.0.0.1:8000/register', {
+  fetch('https://backend-merca2.onrender.com/register', {
     headers: {
       'Content-Type': 'application/json',
     },

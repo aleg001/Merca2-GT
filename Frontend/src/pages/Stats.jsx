@@ -16,7 +16,7 @@ import '../styles/detallesProducto.css'
 
 
 const userStats = () => {
-  fetch('http://127.0.0.1:8000/statsQuery', {
+  fetch('https://backend-merca2.onrender.com/statsQuery', {
     headers: {
       'Content-Type': 'application/json',
     },

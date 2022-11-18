@@ -36,7 +36,7 @@ const whatsappOfer = (name, product) => {
 
 /* istanbul ignore next */
 const handleItems = (setItems, id) => {
-  fetch('http://127.0.0.1:8000/getSelectedItem', {
+  fetch('https://backend-merca2.onrender.com/getSelectedItem', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -54,7 +54,7 @@ const handleItems = (setItems, id) => {
 
 /* istanbul ignore next */
 const handleSellerName = (setSellerName, setSellerLastName, id) => {
-  fetch('http://127.0.0.1:8000/getSellerName', {
+  fetch('https://backend-merca2.onrender.com/getSellerName', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -73,7 +73,7 @@ const handleSellerName = (setSellerName, setSellerLastName, id) => {
 
 /* istanbul ignore next */
 const handleSellerPic = (setSellerPic, id) => {
-  fetch('http://127.0.0.1:8000/getSellerPic', {
+  fetch('https://backend-merca2.onrender.com/getSellerPic', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -91,7 +91,7 @@ const handleSellerPic = (setSellerPic, id) => {
 
 /* istanbul ignore next */
 const handleProductPics = (setProductPics, id) => {
-  fetch('http://127.0.0.1:8000/getProductPics', {
+  fetch('https://backend-merca2.onrender.com/getProductPics', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -109,7 +109,7 @@ const handleProductPics = (setProductPics, id) => {
 
 /* istanbul ignore next */
 const handleReportProduct = (denunciadoID, itemID) => {
-  fetch('http://127.0.0.1:8000/reportItem', {
+  fetch('https://backend-merca2.onrender.com/reportItem', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -128,7 +128,7 @@ const handleReportProduct = (denunciadoID, itemID) => {
 /* istanbul ignore next */
 
 const handleRecordVisitItem = (username, id_item) => {
-  fetch('http://127.0.0.1:8000/recordVisitItem', {
+  fetch('https://backend-merca2.onrender.com/recordVisitItem', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -158,7 +158,7 @@ const handleGetSellerID = (setSellerID, idItem) => {
   // console.log('idItem', idItem)
   // console.log('sellerID', info)
 
-  fetch('http://127.0.0.1:8000/getSellerId', info)
+  fetch('https://backend-merca2.onrender.com/getSellerId', info)
     .then((response) => response.json())
     .then((result) => {
       handleReportProduct(result.items[0].id_usuario, idItem)

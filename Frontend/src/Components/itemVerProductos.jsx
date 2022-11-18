@@ -15,7 +15,7 @@ const handleDeleteItem = (itemId, setItems) => {
     redirect: 'follow',
   }
 
-  fetch('http://127.0.0.1:8000/deleteItem', requestOptions)
+  fetch('https://backend-merca2.onrender.com/deleteItem', requestOptions)
     .then(response => response.json())
     .then(result => {
       console.log(result.succes)

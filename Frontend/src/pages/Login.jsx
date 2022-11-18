@@ -19,7 +19,7 @@ const handleLogin = (
   setIsAdmin,
 ) => {
   console.log('llego')
-  fetch('http://127.0.0.1:8000/login', {
+  fetch('https://backend-merca2.onrender.com/login', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -39,7 +39,7 @@ const handleLogin = (
       setIsLogedIn(true)
       setUsername(user)
       setIsAdmin(admin)
-      fetch('http://127.0.0.1:8000/checkLogin', {
+      fetch('https://backend-merca2.onrender.com/checkLogin', {
         headers: {
           'Content-Type': 'application/json',
         },
