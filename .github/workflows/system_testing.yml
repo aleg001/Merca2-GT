@@ -1,0 +1,29 @@
+name: Unit_testing
+
+on:
+  push:
+    branches:
+      - prod
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - prod
+    
+jobs:
+  perform_unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: npm install
+        run: |
+          npm install
+      - name: perform jest tests
+        run: |
+          npm run seleniumL
+          npm run seleniumHP
+          npm run seleniumE
+          npm run seleniumDP
+          npm run seleniumCP
+          npm run seleniumOP
