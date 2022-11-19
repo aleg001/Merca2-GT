@@ -1,0 +1,23 @@
+name: Integration_tests
+
+on:
+  push:
+    branches:
+      - prod
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - prod
+
+jobs:
+  perform_unit_tests:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: run newmman cli
+        run: |
+          npm run test
