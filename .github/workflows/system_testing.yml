@@ -54,5 +54,6 @@ jobs:
           submodules: true
       - name: run_test
         run: |
+          ls
           npm run seleniumL
 
