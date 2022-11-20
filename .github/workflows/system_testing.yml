@@ -54,7 +54,6 @@ jobs:
           submodules: true
       
       - name: run_test
-        working-directory: ./Frontend
         run: |
           npm run seleniumL
 
