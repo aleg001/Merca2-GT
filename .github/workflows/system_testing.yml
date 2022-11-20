@@ -54,8 +54,7 @@ jobs:
           submodules: true
       
       - name: run_test
+        working-directory: ./Frontend
         run: |
-          cd Frontend
-          cd  selenium.psl
           npm run seleniumL
 
