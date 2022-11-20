@@ -55,5 +55,6 @@ jobs:
       - name: run_test
         run: |
           cd Frontend
+          npm install
           npm run seleniumL
 
