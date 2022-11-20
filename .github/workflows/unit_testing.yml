@@ -54,6 +54,4 @@ jobs:
           submodules: true
       - name: run_test
         run: |
-          cd ../
-          cd Backend
-          npm run test
+          ls
