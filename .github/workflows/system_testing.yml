@@ -60,4 +60,4 @@ jobs:
           npm run seleniumE
           npm run seleniumDP
           npm run seleniumCP
-          npm run seleniumOP
+
