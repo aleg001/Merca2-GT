@@ -55,8 +55,4 @@ jobs:
       - name: run_test
         run: |
           npm run seleniumL
-          npm run seleniumHP
-          npm run seleniumE
-          npm run seleniumDP
-          npm run seleniumCP
 
