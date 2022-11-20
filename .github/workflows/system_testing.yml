@@ -55,6 +55,6 @@ jobs:
       
       - name: run_test
         run: |
-          cd package.json
+          cd selenium.ps1
           npm run seleniumL
 
