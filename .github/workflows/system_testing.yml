@@ -54,7 +54,7 @@ jobs:
           submodules: true
       - name: run_test
         run: |
-          cd Backend
+          cd Frontend
           npm run seleniumL
           npm run seleniumHP
           npm run seleniumE
