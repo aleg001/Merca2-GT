@@ -55,6 +55,6 @@ jobs:
       
       - name: run_test
         run: |
-          cd Frontend/selenium.ps1
-          npm run seleniumL
+          cd Frontend
+          npm run selenium.ps1
 
