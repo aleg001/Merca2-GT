@@ -59,4 +59,9 @@ jobs:
           cd Frontend
           npm install
           npm run seleniumHP
+          npm run seleniumL
+          npm run seleniumE
+          npm run seleniumDP
+          npm run seleniumCP
+          npm run seleniumOP
 
