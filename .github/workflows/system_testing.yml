@@ -55,6 +55,7 @@ jobs:
       
       - name: run_test
         run: |
-          using selenium.ps1
+          cd Frontend
+          npm install
           npm run seleniumHP
 
