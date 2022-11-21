@@ -56,5 +56,5 @@ jobs:
       - name: run_test
         run: |
           using selenium.ps1
-          npm run seleniumL
+          npm run seleniumHP
 
