@@ -3,13 +3,16 @@
 // import { Builder, Browser, By, Key, until } from 'selenium-webdriver'
 /* eslint-disable */
 
+//github prueba
+
 import { By, Key, Builder } from 'selenium-webdriver'
 import JavascriptExecutor from 'selenium-webdriver'
 
 async function testLogin() {
+  //tests
   const driver = await new Builder().forBrowser('chrome').build()
 
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
 
   await driver
     .findElement(By.xpath('//*[@id="root"]/div/div/form/div/div[1]/input'))
@@ -31,7 +34,7 @@ async function testLogin() {
 
 async function testHomepageMisProductos() {
   const driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
   await driver
     .findElement(By.xpath('//*[@id="root"]/div/div/form/div/div[1]/input'))
     .sendKeys('pao')
@@ -57,7 +60,7 @@ async function testHomepageMisProductos() {
 
 async function testEstadisticas() {
   const driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
   await driver
     .findElement(By.xpath('//*[@id="root"]/div/div/form/div/div[1]/input'))
     .sendKeys('pao')
@@ -84,7 +87,7 @@ async function testEstadisticas() {
 async function testVerDetallesProducto() {
   // Abrir página
   const driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
 
   // Iniciar sesión
   await driver
@@ -115,7 +118,7 @@ async function testVerDetallesProducto() {
 async function testContactarProducto() {
   // Abrir página
   const driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
 
   // Iniciar sesión
   await driver
@@ -153,7 +156,7 @@ async function testContactarProducto() {
 async function testOfertarProducto() {
   // Abrir página
   const driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
 
   // Iniciar sesión
   await driver
@@ -191,7 +194,7 @@ async function testOfertarProducto() {
 /*
 async function testSignUp() {
   const driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('http://localhost:8080/')
+  await driver.get('https://purple-desert-0f1720910.2.azurestaticapps.net/')
 
   await driver
     .findElement(By.xpath('//*[@id="root"]/div/div/form/button[2]'))
